@@ -92,8 +92,8 @@ category <
 > category
 
 category <
-	title : "Professioanl information"
-	description : "Your professioanl information"
+	title : "Other information"
+	description : "Your other information"
 	
 	step <
 		ranking <
