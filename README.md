@@ -1,10 +1,13 @@
 Taco-DSL
 ========
 
-The Taco domain specific language to generate surveys 
+The Taco domain specific language to generate surveys
+
 Model Driven Development Spring 2014 - IT University of Copenhagen 
 
-####Usage (instance example: dk.itu.smdp.survey.xtext/instance_example/example.taco)
+####Usage
+
+(Instance example: dk.itu.smdp.survey.xtext/instance_example/example.taco)
 
 ```java
 
