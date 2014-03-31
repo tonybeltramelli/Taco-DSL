@@ -1,0 +1,141 @@
+title : "Survey"
+date : "01/01/2014"
+description : "Survey example instance."
+
+person <
+	"name",
+	"age"
+> person
+
+category <
+	title : "Category number 1 about cool stuffs."
+	description : "Your cool information."
+	
+	step <
+		openField <
+			questionText: "What is your point of view ?"
+			isMandatory: true
+		> openField
+
+		multipleChoice <
+			questionText: "What is your favorite color ?"
+			isMandatory: true
+			min: 1
+			max: 2
+			
+			option <
+				isCheckedByDefault: false
+				isUserInputAllowed: false
+				text: "RED", image: "wwww.google.com/red.jpg"
+			> option
+			
+			option <
+				isCheckedByDefault: false
+				isUserInputAllowed: false
+				text: "GREEN", image: "wwww.google.com/green.jpg"
+			> option
+			
+			option <
+				isCheckedByDefault: false
+				isUserInputAllowed: true
+				text: "OTHER"
+			> option
+		> multipleChoice
+
+		rating <
+			questionText: "How much do you like the canteen's coffee ?"
+			isMandatory: false
+			start: 0.0
+			end: 100.0
+			interval: 10.0
+		> rating
+	> step
+	
+	step <
+		mutuallyExclusive <
+			questionText: "Select your favorite cat"
+			isMandatory: true
+			
+			option <
+				image: "wwww.google.com/cat_photo1.jpg"
+			> option 
+			
+			option <
+				image: "wwww.google.com/cat_photo2.jpg"
+			> option 
+			
+			option <
+				image: "wwww.google.com/cat_photo3.jpg"
+			> option 
+			
+			option <
+				image: "wwww.google.com/cat_photo4.jpg"
+			> option 
+		> mutuallyExclusive
+
+		yesNo <
+			questionText: "Are you married ?"
+			isMandatory: true
+		> yesNo
+	> step
+> category
+
+category <
+	title : "Professioanl information"
+	description : "Your professioanl information"
+	
+	step <
+		ranking <
+			questionText: "Rate those stuffs by preference order"
+			isMandatory: true
+			
+			option <
+				text: "french fries"
+			> option
+			
+			option <
+				text: "smorebrod"
+			> option
+			
+			option <
+				text: "mousaka"
+			> option
+			
+			option <
+				text: "hamburger"
+			> option
+			
+			option <
+				text: "tacos"
+			> option
+		> ranking
+
+		rating <
+			questionText: "How much do you like this language ?"
+			isMandatory: true
+			start: 1.0
+			end: 10.0
+			interval: 1.0
+		> rating
+		
+		openField <
+			questionText: "What is your favorite identifier ?"
+			isMandatory: true
+		> openField
+			
+		mutuallyExclusive <
+			questionText: "How often do you use this language ?"
+			isMandatory: false
+			
+			option <
+				isCheckedByDefault: false
+				text: "every day"
+			> option
+			
+			option <
+				isCheckedByDefault: false
+				text: "every week"
+			> option
+		> mutuallyExclusive
+	> step
+> category
