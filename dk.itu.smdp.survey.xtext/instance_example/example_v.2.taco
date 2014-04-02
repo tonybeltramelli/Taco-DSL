@@ -1,0 +1,57 @@
+survey "Surveyfdsfdsfdsfsf"
+date "01/01/2014"
+description "Survey example instance."
+
+person "name", "age"
+
+category "Category number 1 about cool stuffs."
+	description "Your cool information."
+	
+	page
+	
+		Q "What is your point of view ?"
+
+		Q "What is your favorite color ?" [2-3]
+			A "RED"
+			A "YELLOW"
+			A "BLUE"		
+			A "GREEN"
+			A "OTHER" [input]
+			
+		Q* "How much do you like the canteen's coffee ?" [1-10,1]
+	
+	page
+	
+		Q* "Select your favorite cat"
+			A "First option"
+				subQ "Why?" end
+			A "Second option"
+				subQ "What?" [2-2]
+					A "Option 1"
+						subQ "Where?" [1-100,10] end
+					A "Option 2"
+				end
+			A "Third option"
+			A "Fourth option"
+
+		Q "Are you married ?" [y/n]
+
+category "Professioanl information?" 
+	description "Your professioanl information"
+	
+	page
+		
+		Q Rate those stuffs by preference order" [rank]
+			A "french fries"
+			A "smorebrod"
+			A "mousaka"
+			A "hamburger"
+			A "tacos"
+
+		Q* "How much do you like this language ?" [1-10,1] 
+		
+		Q "What is your favorite identifier ?"
+
+		Q "How often do you use this language ?"
+			A "every day"
+			A "every week"
