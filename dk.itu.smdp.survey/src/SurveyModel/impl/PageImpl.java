@@ -2,48 +2,54 @@
  */
 package SurveyModel.impl;
 
-import SurveyModel.Person;
-import SurveyModel.PersonAttribute;
+import SurveyModel.Page;
+import SurveyModel.Question;
 import SurveyModel.SurveyModelPackage;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Person</b></em>'.
+ * An implementation of the model object '<em><b>Page</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SurveyModel.impl.PersonImpl#getAttribute <em>Attribute</em>}</li>
+ *   <li>{@link SurveyModel.impl.PageImpl#getQuestions <em>Questions</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
+public class PageImpl extends MinimalEObjectImpl.Container implements Page {
 	/**
-	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' containment reference list.
+	 * The cached value of the '{@link #getQuestions() <em>Questions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAttribute()
+	 * @see #getQuestions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<PersonAttribute> attribute;
+	protected EList<Question> questions;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PersonImpl() {
+	protected PageImpl() {
 		super();
 	}
 
@@ -54,7 +60,7 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SurveyModelPackage.Literals.PERSON;
+		return SurveyModelPackage.Literals.PAGE;
 	}
 
 	/**
@@ -62,11 +68,11 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<PersonAttribute> getAttribute() {
-		if (attribute == null) {
-			attribute = new EObjectContainmentEList<PersonAttribute>(PersonAttribute.class, this, SurveyModelPackage.PERSON__ATTRIBUTE);
+	public EList<Question> getQuestions() {
+		if (questions == null) {
+			questions = new EObjectContainmentEList<Question>(Question.class, this, SurveyModelPackage.PAGE__QUESTIONS);
 		}
-		return attribute;
+		return questions;
 	}
 
 	/**
@@ -77,8 +83,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SurveyModelPackage.PERSON__ATTRIBUTE:
-				return ((InternalEList<?>)getAttribute()).basicRemove(otherEnd, msgs);
+			case SurveyModelPackage.PAGE__QUESTIONS:
+				return ((InternalEList<?>)getQuestions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -91,8 +97,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SurveyModelPackage.PERSON__ATTRIBUTE:
-				return getAttribute();
+			case SurveyModelPackage.PAGE__QUESTIONS:
+				return getQuestions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,9 +112,9 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SurveyModelPackage.PERSON__ATTRIBUTE:
-				getAttribute().clear();
-				getAttribute().addAll((Collection<? extends PersonAttribute>)newValue);
+			case SurveyModelPackage.PAGE__QUESTIONS:
+				getQuestions().clear();
+				getQuestions().addAll((Collection<? extends Question>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +128,8 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SurveyModelPackage.PERSON__ATTRIBUTE:
-				getAttribute().clear();
+			case SurveyModelPackage.PAGE__QUESTIONS:
+				getQuestions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,10 +143,10 @@ public class PersonImpl extends MinimalEObjectImpl.Container implements Person {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SurveyModelPackage.PERSON__ATTRIBUTE:
-				return attribute != null && !attribute.isEmpty();
+			case SurveyModelPackage.PAGE__QUESTIONS:
+				return questions != null && !questions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //PersonImpl
+} //PageImpl

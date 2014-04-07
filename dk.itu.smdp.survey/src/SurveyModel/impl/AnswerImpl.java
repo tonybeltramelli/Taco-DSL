@@ -2,8 +2,8 @@
  */
 package SurveyModel.impl;
 
-import SurveyModel.Category;
-import SurveyModel.Step;
+import SurveyModel.Answer;
+import SurveyModel.Question;
 import SurveyModel.SurveyModelPackage;
 
 import java.util.Collection;
@@ -24,49 +24,49 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Category</b></em>'.
+ * An implementation of the model object '<em><b>Answer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link SurveyModel.impl.CategoryImpl#getSteps <em>Steps</em>}</li>
- *   <li>{@link SurveyModel.impl.CategoryImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link SurveyModel.impl.CategoryImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link SurveyModel.impl.AnswerImpl#isIsUserInputAllowed <em>Is User Input Allowed</em>}</li>
+ *   <li>{@link SurveyModel.impl.AnswerImpl#getSubquestion <em>Subquestion</em>}</li>
+ *   <li>{@link SurveyModel.impl.AnswerImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CategoryImpl extends MinimalEObjectImpl.Container implements Category {
+public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	/**
-	 * The cached value of the '{@link #getSteps() <em>Steps</em>}' containment reference list.
+	 * The default value of the '{@link #isIsUserInputAllowed() <em>Is User Input Allowed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSteps()
+	 * @see #isIsUserInputAllowed()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Step> steps;
+	protected static final boolean IS_USER_INPUT_ALLOWED_EDEFAULT = false;
 
 	/**
-	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * The cached value of the '{@link #isIsUserInputAllowed() <em>Is User Input Allowed</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
+	 * @see #isIsUserInputAllowed()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TITLE_EDEFAULT = null;
+	protected boolean isUserInputAllowed = IS_USER_INPUT_ALLOWED_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
+	 * The cached value of the '{@link #getSubquestion() <em>Subquestion</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTitle()
+	 * @see #getSubquestion()
 	 * @generated
 	 * @ordered
 	 */
-	protected String title = TITLE_EDEFAULT;
+	protected EList<Question> subquestion;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -93,7 +93,7 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected CategoryImpl() {
+	protected AnswerImpl() {
 		super();
 	}
 
@@ -104,7 +104,7 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return SurveyModelPackage.Literals.CATEGORY;
+		return SurveyModelPackage.Literals.ANSWER;
 	}
 
 	/**
@@ -112,11 +112,8 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Step> getSteps() {
-		if (steps == null) {
-			steps = new EObjectContainmentEList<Step>(Step.class, this, SurveyModelPackage.CATEGORY__STEPS);
-		}
-		return steps;
+	public boolean isIsUserInputAllowed() {
+		return isUserInputAllowed;
 	}
 
 	/**
@@ -124,20 +121,23 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTitle() {
-		return title;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTitle(String newTitle) {
-		String oldTitle = title;
-		title = newTitle;
+	public void setIsUserInputAllowed(boolean newIsUserInputAllowed) {
+		boolean oldIsUserInputAllowed = isUserInputAllowed;
+		isUserInputAllowed = newIsUserInputAllowed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SurveyModelPackage.CATEGORY__TITLE, oldTitle, title));
+			eNotify(new ENotificationImpl(this, Notification.SET, SurveyModelPackage.ANSWER__IS_USER_INPUT_ALLOWED, oldIsUserInputAllowed, isUserInputAllowed));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Question> getSubquestion() {
+		if (subquestion == null) {
+			subquestion = new EObjectContainmentEList<Question>(Question.class, this, SurveyModelPackage.ANSWER__SUBQUESTION);
+		}
+		return subquestion;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 		String oldDescription = description;
 		description = newDescription;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SurveyModelPackage.CATEGORY__DESCRIPTION, oldDescription, description));
+			eNotify(new ENotificationImpl(this, Notification.SET, SurveyModelPackage.ANSWER__DESCRIPTION, oldDescription, description));
 	}
 
 	/**
@@ -169,8 +169,8 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case SurveyModelPackage.CATEGORY__STEPS:
-				return ((InternalEList<?>)getSteps()).basicRemove(otherEnd, msgs);
+			case SurveyModelPackage.ANSWER__SUBQUESTION:
+				return ((InternalEList<?>)getSubquestion()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -183,11 +183,11 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case SurveyModelPackage.CATEGORY__STEPS:
-				return getSteps();
-			case SurveyModelPackage.CATEGORY__TITLE:
-				return getTitle();
-			case SurveyModelPackage.CATEGORY__DESCRIPTION:
+			case SurveyModelPackage.ANSWER__IS_USER_INPUT_ALLOWED:
+				return isIsUserInputAllowed();
+			case SurveyModelPackage.ANSWER__SUBQUESTION:
+				return getSubquestion();
+			case SurveyModelPackage.ANSWER__DESCRIPTION:
 				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -202,14 +202,14 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case SurveyModelPackage.CATEGORY__STEPS:
-				getSteps().clear();
-				getSteps().addAll((Collection<? extends Step>)newValue);
+			case SurveyModelPackage.ANSWER__IS_USER_INPUT_ALLOWED:
+				setIsUserInputAllowed((Boolean)newValue);
 				return;
-			case SurveyModelPackage.CATEGORY__TITLE:
-				setTitle((String)newValue);
+			case SurveyModelPackage.ANSWER__SUBQUESTION:
+				getSubquestion().clear();
+				getSubquestion().addAll((Collection<? extends Question>)newValue);
 				return;
-			case SurveyModelPackage.CATEGORY__DESCRIPTION:
+			case SurveyModelPackage.ANSWER__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
 		}
@@ -224,13 +224,13 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case SurveyModelPackage.CATEGORY__STEPS:
-				getSteps().clear();
+			case SurveyModelPackage.ANSWER__IS_USER_INPUT_ALLOWED:
+				setIsUserInputAllowed(IS_USER_INPUT_ALLOWED_EDEFAULT);
 				return;
-			case SurveyModelPackage.CATEGORY__TITLE:
-				setTitle(TITLE_EDEFAULT);
+			case SurveyModelPackage.ANSWER__SUBQUESTION:
+				getSubquestion().clear();
 				return;
-			case SurveyModelPackage.CATEGORY__DESCRIPTION:
+			case SurveyModelPackage.ANSWER__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 		}
@@ -245,11 +245,11 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case SurveyModelPackage.CATEGORY__STEPS:
-				return steps != null && !steps.isEmpty();
-			case SurveyModelPackage.CATEGORY__TITLE:
-				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case SurveyModelPackage.CATEGORY__DESCRIPTION:
+			case SurveyModelPackage.ANSWER__IS_USER_INPUT_ALLOWED:
+				return isUserInputAllowed != IS_USER_INPUT_ALLOWED_EDEFAULT;
+			case SurveyModelPackage.ANSWER__SUBQUESTION:
+				return subquestion != null && !subquestion.isEmpty();
+			case SurveyModelPackage.ANSWER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
@@ -265,12 +265,12 @@ public class CategoryImpl extends MinimalEObjectImpl.Container implements Catego
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (title: ");
-		result.append(title);
+		result.append(" (isUserInputAllowed: ");
+		result.append(isUserInputAllowed);
 		result.append(", description: ");
 		result.append(description);
 		result.append(')');
 		return result.toString();
 	}
 
-} //CategoryImpl
+} //AnswerImpl

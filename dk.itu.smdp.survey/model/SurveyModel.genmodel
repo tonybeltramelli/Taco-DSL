@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.itu.smdp.survey/src" modelPluginID="dk.itu.smdp.survey"
-    modelName="Survey" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    modelName="SurveyModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>SurveyModel.ecore</foreignModel>
   <genPackages prefix="SurveyModel" disposableProviderFactory="true" ecorePackage="SurveyModel.ecore#/">
     <genClasses ecoreClass="SurveyModel.ecore#//Category">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Category/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Category/pages"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Category/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Category/description"/>
     </genClasses>
-    <genClasses ecoreClass="SurveyModel.ecore#//Step">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Step/questions"/>
+    <genClasses ecoreClass="SurveyModel.ecore#//Page">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Page/questions"/>
     </genClasses>
     <genClasses image="false" ecoreClass="SurveyModel.ecore#//Question">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Question/subquestion"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Question/questionText"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Question/isMandatory"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Question/option"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Question/answers"/>
     </genClasses>
-    <genClasses ecoreClass="SurveyModel.ecore#//Option">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Option/contains"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Option/isCheckedByDefault"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Option/isUserInputAllowed"/>
+    <genClasses ecoreClass="SurveyModel.ecore#//Answer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Answer/isUserInputAllowed"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Answer/subquestion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Answer/description"/>
     </genClasses>
     <genClasses ecoreClass="SurveyModel.ecore#//MultipleChoice">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//MultipleChoice/min"/>
@@ -36,9 +35,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Rating/interval"/>
     </genClasses>
     <genClasses ecoreClass="SurveyModel.ecore#//YesNo"/>
-    <genClasses image="false" ecoreClass="SurveyModel.ecore#//Description">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Description/content"/>
-    </genClasses>
     <genClasses ecoreClass="SurveyModel.ecore#//OpenField"/>
     <genClasses ecoreClass="SurveyModel.ecore#//Survey">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Survey/categories"/>
@@ -48,8 +44,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Survey/description"/>
     </genClasses>
     <genClasses ecoreClass="SurveyModel.ecore#//MutuallyExclusive"/>
-    <genClasses ecoreClass="SurveyModel.ecore#//Text"/>
-    <genClasses ecoreClass="SurveyModel.ecore#//Image"/>
     <genClasses ecoreClass="SurveyModel.ecore#//Person">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Person/attribute"/>
     </genClasses>

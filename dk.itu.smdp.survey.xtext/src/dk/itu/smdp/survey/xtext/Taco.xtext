@@ -5,114 +5,93 @@ import "platform:/resource/dk.itu.smdp.survey/model/SurveyModel.ecore"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Survey returns Survey:
-		'title' ':' title=EString
-		('date' ':' date=EString)?
-		('description' ':' description=EString)?
+		'survey' title=EString
+		('date' date=EString)?
+		('description' description=EString)?
 		(person=Person)?
 		categories+=Category (categories+=Category)*
 	;
 
 Question returns Question:
-	MultipleChoice_Impl | Ranking | Rating | YesNo | OpenField | MutuallyExclusive_Impl;
-
-Description returns Description:
-	Text | Image;
+	(MultipleChoice_Impl | Ranking | Rating | YesNo | OpenField | MutuallyExclusive_Impl);
 
 Category returns Category:
-	'category' '<'
-		'title' ':' title=EString
-		('description' ':' description=EString)?
-		 steps+=Step (steps+=Step)*
-	'>' 'category';
+	'category'
+		title=EString
+		('description' description=EString)?
+		pages+=Page (pages+=Page)*
+	;
 
 EString returns ecore::EString:
 	STRING | ID;
 
 Person returns Person:
-	'person' '<'
+	'person'
 		attribute+=PersonAttribute ( "," attribute+=PersonAttribute)*
-	'>' 'person';
+	;
 
-Step returns Step:
-	'step' '<'
-		questions+=Question (questions+=Question)* 
-	'>' 'step';
+Page returns Page:
+	'page'
+		questions+=Question (questions+=Question)*
+	;
 
 EBoolean returns ecore::EBoolean:
 	'true' | 'false';
 
-Option returns Option:
-	{Option}
-	'option' '<'
-		('isCheckedByDefault' ':' isCheckedByDefault=EBoolean)?		
-		('isUserInputAllowed' ':' isUserInputAllowed=EBoolean)?
-		(contains+=Description ( "," contains+=Description)*)?
-	'>' 'option';
+Answer returns Answer:
+	{Answer}
+	'A'
+		description=EString
+		(isUserInputAllowed?='[' 'input' ']')?
+		('sub' subquestion+=Question (subquestion+=Question)* 'end' )?
+	;
 
 MultipleChoice_Impl returns MultipleChoice:
-	'multipleChoice' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		'min' ':' min=EInt
-		'max' ':' max=EInt
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'multipleChoice';
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+		'[' min=EInt '-' max=EInt ']'
+		answers+=Answer (answers+=Answer)*
+	;
 
 Ranking returns Ranking:
-	'ranking' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'ranking';
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+		'[' 'rank' ']'
+		answers+=Answer (answers+=Answer)*
+	;
 
 Rating returns Rating:
-	'rating' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		'start' ':' start=EFloat
-		'end' ':' end=EFloat
-		('interval' ':' interval=EFloat)?
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'rating';
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+		'[' start=EInt '-' end=EInt ',' interval=EInt ']'
+	;
 
 YesNo returns YesNo:
-	'yesNo' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'yesNo';
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+		'[' 'y/n' ']'
+	;
 
 OpenField returns OpenField:
-	'openField' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'openField';
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+	;
 
 MutuallyExclusive_Impl returns MutuallyExclusive:
-	'mutuallyExclusive' '<'
-		'questionText' ':' questionText=EString
-		('isMandatory' ':' isMandatory=EBoolean)?
-		(option+=Option ( option+=Option)* )?
-		('subQuestions' '<' subquestion+=Question (subquestion+=Question)* '>' 'subQuestions')?
-	'>' 'mutuallyExclusive';
-
-Text returns Text:
-	'text' ':' content=EString;
-
-Image returns Image:
-	'image' ':' content=EString;
+	'Q'
+		(isMandatory?='*')?
+		questionText=EString
+		answers+=Answer (answers+=Answer)*
+	;
 
 EInt returns ecore::EInt:
 	'-'? INT;
 
-EFloat returns ecore::EFloat:
-	'-'? INT? '.' INT (('E'|'e') '-'? INT)?;
-
 PersonAttribute returns PersonAttribute:
-	key=EString;
+		key=EString
+	;

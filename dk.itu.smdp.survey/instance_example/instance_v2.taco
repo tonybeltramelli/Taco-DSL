@@ -8,7 +8,7 @@ category "Category number 1 about cool stuffs."
 	description "Your cool information."
 	
 	page
-	
+
 		Q "What is your point of view ?"
 
 		Q "What is your favorite color ?" [2-3]
@@ -24,11 +24,14 @@ category "Category number 1 about cool stuffs."
 	
 		Q* "Select your favorite cat"
 			A "First option"
-				subQ "Why?" end
+				sub Q "Why?" end
 			A "Second option"
-				subQ "What?" [2-2]
+				sub Q "What?" [2-2]
 					A "Option 1"
-						subQ "Where?" [1-100,10] end
+						sub
+							Q "Where?" [1-100,10]
+							Q "When?" [1-100,10]
+						end
 					A "Option 2"
 				end
 			A "Third option"
@@ -38,10 +41,10 @@ category "Category number 1 about cool stuffs."
 
 category "Professioanl information?" 
 	description "Your professioanl information"
-	
+		
 	page
 		
-		Q Rate those stuffs by preference order" [rank]
+		Q "Rate those stuffs by preference order" [rank]
 			A "french fries"
 			A "smorebrod"
 			A "mousaka"
@@ -53,5 +56,9 @@ category "Professioanl information?"
 		Q "What is your favorite identifier ?"
 
 		Q "How often do you use this language ?"
+			A "every second"
+			A "every hour"
 			A "every day"
 			A "every week"
+			A "every month"
+			A "every year"

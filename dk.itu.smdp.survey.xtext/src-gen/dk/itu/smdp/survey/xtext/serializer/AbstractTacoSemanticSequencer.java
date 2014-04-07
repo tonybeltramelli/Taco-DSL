@@ -1,19 +1,17 @@
 package dk.itu.smdp.survey.xtext.serializer;
 
+import SurveyModel.Answer;
 import SurveyModel.Category;
-import SurveyModel.Image;
 import SurveyModel.MultipleChoice;
 import SurveyModel.MutuallyExclusive;
 import SurveyModel.OpenField;
-import SurveyModel.Option;
+import SurveyModel.Page;
 import SurveyModel.Person;
 import SurveyModel.PersonAttribute;
 import SurveyModel.Ranking;
 import SurveyModel.Rating;
-import SurveyModel.Step;
 import SurveyModel.Survey;
 import SurveyModel.SurveyModelPackage;
-import SurveyModel.Text;
 import SurveyModel.YesNo;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -38,16 +36,15 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == SurveyModelPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case SurveyModelPackage.CATEGORY:
-				if(context == grammarAccess.getCategoryRule()) {
-					sequence_Category(context, (Category) semanticObject); 
+			case SurveyModelPackage.ANSWER:
+				if(context == grammarAccess.getAnswerRule()) {
+					sequence_Answer(context, (Answer) semanticObject); 
 					return; 
 				}
 				else break;
-			case SurveyModelPackage.IMAGE:
-				if(context == grammarAccess.getDescriptionRule() ||
-				   context == grammarAccess.getImageRule()) {
-					sequence_Image(context, (Image) semanticObject); 
+			case SurveyModelPackage.CATEGORY:
+				if(context == grammarAccess.getCategoryRule()) {
+					sequence_Category(context, (Category) semanticObject); 
 					return; 
 				}
 				else break;
@@ -72,9 +69,9 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 					return; 
 				}
 				else break;
-			case SurveyModelPackage.OPTION:
-				if(context == grammarAccess.getOptionRule()) {
-					sequence_Option(context, (Option) semanticObject); 
+			case SurveyModelPackage.PAGE:
+				if(context == grammarAccess.getPageRule()) {
+					sequence_Page(context, (Page) semanticObject); 
 					return; 
 				}
 				else break;
@@ -104,22 +101,9 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 					return; 
 				}
 				else break;
-			case SurveyModelPackage.STEP:
-				if(context == grammarAccess.getStepRule()) {
-					sequence_Step(context, (Step) semanticObject); 
-					return; 
-				}
-				else break;
 			case SurveyModelPackage.SURVEY:
 				if(context == grammarAccess.getSurveyRule()) {
 					sequence_Survey(context, (Survey) semanticObject); 
-					return; 
-				}
-				else break;
-			case SurveyModelPackage.TEXT:
-				if(context == grammarAccess.getDescriptionRule() ||
-				   context == grammarAccess.getTextRule()) {
-					sequence_Text(context, (Text) semanticObject); 
 					return; 
 				}
 				else break;
@@ -136,7 +120,16 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (title=EString description=EString? steps+=Step steps+=Step*)
+	 *     (description=EString isUserInputAllowed?='['? (subquestion+=Question subquestion+=Question*)?)
+	 */
+	protected void sequence_Answer(EObject context, Answer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (title=EString description=EString? pages+=Page pages+=Page*)
 	 */
 	protected void sequence_Category(EObject context, Category semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -145,29 +138,13 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     content=EString
-	 */
-	protected void sequence_Image(EObject context, Image semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SurveyModelPackage.Literals.DESCRIPTION__CONTENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SurveyModelPackage.Literals.DESCRIPTION__CONTENT));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImageAccess().getContentEStringParserRuleCall_2_0(), semanticObject.getContent());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (
+	 *         isMandatory?='*'? 
 	 *         questionText=EString 
-	 *         isMandatory=EBoolean? 
 	 *         min=EInt 
 	 *         max=EInt 
-	 *         (option+=Option option+=Option*)? 
-	 *         (subquestion+=Question subquestion+=Question*)?
+	 *         answers+=Answer 
+	 *         answers+=Answer*
 	 *     )
 	 */
 	protected void sequence_MultipleChoice_Impl(EObject context, MultipleChoice semanticObject) {
@@ -177,7 +154,7 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (questionText=EString isMandatory=EBoolean? (option+=Option option+=Option*)? (subquestion+=Question subquestion+=Question*)?)
+	 *     (isMandatory?='*'? questionText=EString answers+=Answer answers+=Answer*)
 	 */
 	protected void sequence_MutuallyExclusive_Impl(EObject context, MutuallyExclusive semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -186,7 +163,7 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (questionText=EString isMandatory=EBoolean? (option+=Option option+=Option*)? (subquestion+=Question subquestion+=Question*)?)
+	 *     (isMandatory?='*'? questionText=EString)
 	 */
 	protected void sequence_OpenField(EObject context, OpenField semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -195,9 +172,9 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (isCheckedByDefault=EBoolean? isUserInputAllowed=EBoolean? (contains+=Description contains+=Description*)?)
+	 *     (questions+=Question questions+=Question*)
 	 */
-	protected void sequence_Option(EObject context, Option semanticObject) {
+	protected void sequence_Page(EObject context, Page semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -229,7 +206,7 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (questionText=EString isMandatory=EBoolean? (option+=Option option+=Option*)? (subquestion+=Question subquestion+=Question*)?)
+	 *     (isMandatory?='*'? questionText=EString answers+=Answer answers+=Answer*)
 	 */
 	protected void sequence_Ranking(EObject context, Ranking semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -238,26 +215,9 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         questionText=EString 
-	 *         isMandatory=EBoolean? 
-	 *         start=EFloat 
-	 *         end=EFloat 
-	 *         interval=EFloat? 
-	 *         (option+=Option option+=Option*)? 
-	 *         (subquestion+=Question subquestion+=Question*)?
-	 *     )
+	 *     (isMandatory?='*'? questionText=EString start=EInt end=EInt interval=EInt)
 	 */
 	protected void sequence_Rating(EObject context, Rating semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (questions+=Question questions+=Question*)
-	 */
-	protected void sequence_Step(EObject context, Step semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -280,23 +240,7 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	
 	/**
 	 * Constraint:
-	 *     content=EString
-	 */
-	protected void sequence_Text(EObject context, Text semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, SurveyModelPackage.Literals.DESCRIPTION__CONTENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SurveyModelPackage.Literals.DESCRIPTION__CONTENT));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getTextAccess().getContentEStringParserRuleCall_2_0(), semanticObject.getContent());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (questionText=EString isMandatory=EBoolean? (option+=Option option+=Option*)? (subquestion+=Question subquestion+=Question*)?)
+	 *     (isMandatory?='*'? questionText=EString)
 	 */
 	protected void sequence_YesNo(EObject context, YesNo semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

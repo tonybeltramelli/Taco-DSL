@@ -15,7 +15,7 @@ Workflow {
 		scanClassPath  = true
 		platformUri = "${runtimeProject}/.."
 		registerGeneratedEPackage = "SurveyModel.SurveyModelPackage"
-		registerGenModelFile = "platform:/resource/dk.itu.smdp.survey/model/survey.genmodel"
+		registerGenModelFile = "platform:/resource/dk.itu.smdp.survey/model/SurveyModel.genmodel"
 	}
 
 	component = DirectoryCleaner {

@@ -8,21 +8,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Step</b></em>'.
+ * A representation of the model object '<em><b>Page</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link SurveyModel.Step#getQuestions <em>Questions</em>}</li>
+ *   <li>{@link SurveyModel.Page#getQuestions <em>Questions</em>}</li>
  * </ul>
  * </p>
  *
- * @see SurveyModel.SurveyModelPackage#getStep()
+ * @see SurveyModel.SurveyModelPackage#getPage()
  * @model
  * @generated
  */
-public interface Step extends EObject {
+public interface Page extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Questions</b></em>' containment reference list.
 	 * The list contents are of type {@link SurveyModel.Question}.
@@ -33,10 +33,10 @@ public interface Step extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Questions</em>' containment reference list.
-	 * @see SurveyModel.SurveyModelPackage#getStep_Questions()
+	 * @see SurveyModel.SurveyModelPackage#getPage_Questions()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EList<Question> getQuestions();
 
-} // Step
+} // Page
