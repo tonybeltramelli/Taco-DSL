@@ -3,10 +3,8 @@ package dk.itu.smdp;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
-    /**
-     * Called when the activity is first created.
-     */
+public class MainActivity extends Activity
+{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
