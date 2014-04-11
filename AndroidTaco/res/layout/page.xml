@@ -18,27 +18,35 @@
             <!--should be filled dynamically with all the questions-->
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
                 android:id="@+id/page_screen_button_area"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_below="@id/questions_linearlayout"
                 android:layout_height="wrap_content">
-            <Button
+            <ImageButton
                     android:id="@+id/page_screen_previous_button"
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/page_image_button_size"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/page_screen_previous_button_string"
+                    android:src="@drawable/ic_action_previous_item_white"
+                    android:layout_alignParentLeft="true"
                     />
-            <Button
+
+            <ImageButton
+                    android:id="@+id/page_screen_send_button"
+                    android:layout_width="@dimen/page_image_button_size"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_action_email"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content"/>
+
+            <ImageButton
                     android:id="@+id/page_screen_next_button"
-                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_action_next_item_white"
+                    android:layout_width="@dimen/page_image_button_size"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/page_screen_next_button_string"
+                    android:layout_alignParentRight="true"
                     />
-        </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 

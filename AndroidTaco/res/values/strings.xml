@@ -8,6 +8,8 @@
     <!--page screen strings-->
     <string name="page_screen_next_button_string">Next</string>
     <string name="page_screen_previous_button_string">Previous</string>
+    <string name="page_screen_send_button_string">Send</string>
+
 
     <!--question screen strings-->
     <string name="openfield_hint">Please enter your answer here</string>
