@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/page_screen_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:id="@+id/questions_linearlayout"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <!--should be filled dynamically with all the questions-->
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/page_screen_button_area"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_below="@id/questions_linearlayout"
+                android:layout_height="wrap_content">
+            <Button
+                    android:id="@+id/page_screen_previous_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/page_screen_previous_button_string"
+                    />
+            <Button
+                    android:id="@+id/page_screen_next_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/page_screen_next_button_string"
+                    />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</ScrollView>

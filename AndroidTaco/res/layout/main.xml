@@ -1,13 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-        >
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hello World, MainActivity"
-            />
-</LinearLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/home_screen_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:id="@+id/person_attributes_linearlayout"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <!--should be filled dynamically with person attributes-->
+        </LinearLayout>
+
+        <Button
+                android:id="@+id/home_screen_start_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/person_attributes_linearlayout"
+                android:layout_alignParentBottom="true"
+                android:text="@string/home_screen_start_button_string"
+                />
+    </RelativeLayout>
+</ScrollView>
 

@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">AndroidTaco</string>
+
+
+    <!--home screen strings-->
+    <string name="home_screen_start_button_string">Start Survey</string>
+
+
+    <!--page screen strings-->
+    <string name="page_screen_next_button_string">Next</string>
+    <string name="page_screen_previous_button_string">Previous</string>
+
+
 </resources>
