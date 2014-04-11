@@ -9,7 +9,7 @@ Model Driven Development Spring 2014 - [IT University of Copenhagen](www.itu.dk/
 
 ```java
 
-survey "Surveyfdsfdsfdsfsf"
+survey "Survey"
 date "01/01/2014"
 description "Survey example instance."
 
