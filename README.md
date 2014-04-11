@@ -9,146 +9,65 @@ Model Driven Development Spring 2014 - [IT University of Copenhagen](www.itu.dk/
 
 ```java
 
-title : "Survey"
-date : "01/01/2014"
-description : "Survey example instance."
+survey "Surveyfdsfdsfdsfsf"
+date "01/01/2014"
+description "Survey example instance."
 
-person <
-	"name",
-	"age"
-> person
+person "name", "age"
 
-category <
-	title : "Category number 1 about cool stuffs."
-	description : "Your cool information."
+category "Category number 1 about cool stuffs."
+	description "Your cool information."
 	
-	step <
-		openField <
-			questionText: "What is your point of view ?"
-			isMandatory: true
-		> openField
+	page
 
-		multipleChoice <
-			questionText: "What is your favorite color ?"
-			isMandatory: true
-			min: 1
-			max: 2
-			
-			option <
-				isCheckedByDefault: false
-				isUserInputAllowed: false
-				text: "RED", image: "wwww.google.com/red.jpg"
-			> option
-			
-			option <
-				isCheckedByDefault: false
-				isUserInputAllowed: false
-				text: "GREEN", image: "wwww.google.com/green.jpg"
-			> option
-			
-			option <
-				isCheckedByDefault: false
-				isUserInputAllowed: true
-				text: "OTHER"
-			> option
-		> multipleChoice
+		Q "What is your point of view ?"
 
-		rating <
-			questionText: "How much do you like the canteen's coffee ?"
-			isMandatory: false
-			start: 0.0
-			end: 100.0
-			interval: 10.0
-		> rating
-	> step
+		Q "What is your favorite color ?" [2-3]
+			A "RED"
+			A "YELLOW"
+			A "BLUE"		
+			A "GREEN"
+			A "OTHER" [input]
+			
+		Q* "How much do you like the canteen's coffee ?" [1-10,1]
 	
-	step <
-		mutuallyExclusive <
-			questionText: "Select your favorite cat"
-			isMandatory: true
-			
-			option <
-				image: "wwww.google.com/cat_photo1.jpg"
-			> option 
-			
-			option <
-				image: "wwww.google.com/cat_photo2.jpg"
-			> option 
-			
-			option <
-				image: "wwww.google.com/cat_photo3.jpg"
-			> option 
-			
-			option <
-				image: "wwww.google.com/cat_photo4.jpg"
-			> option 
-		> mutuallyExclusive
-
-		yesNo <
-			questionText: "Are you married ?"
-			isMandatory: true
-		> yesNo
-	> step
-> category
-
-category <
-	title : "Other information"
-	description : "Your other information"
+	page
 	
-	step <
-		ranking <
-			questionText: "Rate those stuffs by preference order"
-			isMandatory: true
-			
-			option <
-				text: "french fries"
-			> option
-			
-			option <
-				text: "smorebrod"
-			> option
-			
-			option <
-				text: "mousaka"
-			> option
-			
-			option <
-				text: "hamburger"
-			> option
-			
-			option <
-				text: "tacos"
-			> option
-		> ranking
+		Q* "Select your favorite cat"
+			A "First option"
+				sub Q "Why?" end
+			A "Second option"
+				sub Q "What?" [2-2]
+					A "Option 1"
+					A "Option 2"
+				end
+			A "Third option"
+			A "Fourth option"
 
-		rating <
-			questionText: "How much do you like this language ?"
-			isMandatory: true
-			start: 1.0
-			end: 10.0
-			interval: 1.0
-		> rating
+		Q "Are you married ?" [y/n]
+
+category "Professioanl information?" 
+	description "Your professioanl information"
 		
-		openField <
-			questionText: "What is your favorite identifier ?"
-			isMandatory: true
-		> openField
-			
-		mutuallyExclusive <
-			questionText: "How often do you use this language ?"
-			isMandatory: false
-			
-			option <
-				isCheckedByDefault: false
-				text: "every day"
-			> option
-			
-			option <
-				isCheckedByDefault: false
-				text: "every week"
-			> option
-		> mutuallyExclusive
-	> step
-> category
+	page
+		
+		Q "Rate those stuffs by preference order" [rank]
+			A "french fries"
+			A "smorebrod"
+			A "mousaka"
+			A "hamburger"
+			A "tacos"
+
+		Q* "How much do you like this language ?" [1-10,1] 
+		
+		Q "What is your favorite identifier ?"
+
+		Q "How often do you use this language ?"
+			A "every second"
+			A "every hour"
+			A "every day"
+			A "every week"
+			A "every month"
+			A "every year"
 
 ```
