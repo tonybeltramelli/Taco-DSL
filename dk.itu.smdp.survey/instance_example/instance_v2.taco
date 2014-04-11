@@ -1,4 +1,4 @@
-survey "Surveyfdsfdsfdsfsf"
+survey "Survey"
 date "01/01/2014"
 description "Survey example instance."
 
@@ -28,10 +28,6 @@ category "Category number 1 about cool stuffs."
 			A "Second option"
 				sub Q "What?" [2-2]
 					A "Option 1"
-						sub
-							Q "Where?" [1-100,10]
-							Q "When?" [1-100,10]
-						end
 					A "Option 2"
 				end
 			A "Third option"
