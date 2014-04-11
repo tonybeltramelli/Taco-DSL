@@ -1,4 +1,4 @@
-package com.example.AndroidTaco;
+package dk.itu.smdp;
 
 import android.app.Activity;
 import android.os.Bundle;
