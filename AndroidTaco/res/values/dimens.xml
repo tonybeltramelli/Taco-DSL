@@ -4,6 +4,9 @@
     <dimen name="person_attribute_value_text_size">26sp</dimen>
 
 
+    <dimen name="page_image_button_size">120dp</dimen>
+
+
 
 
 </resources>
