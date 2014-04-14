@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements
         _survey = Survey.getInstance();
 
         //set title
-        ((TextView)this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.get_title());
+                ((TextView) this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.get_title());
         //set description
         ((TextView)this.findViewById(R.id.home_screen_survey_description_text_view)).setText(_survey.get_description());
 

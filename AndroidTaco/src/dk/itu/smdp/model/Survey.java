@@ -1,12 +1,5 @@
 package dk.itu.smdp.model;
 
-import dk.itu.smdp.model.answer.BinaryAnswer;
-import dk.itu.smdp.model.answer.UserInputAnswer;
-import dk.itu.smdp.model.question.MutuallyExclusive;
-import dk.itu.smdp.model.question.OpenFieldQuestion;
-import dk.itu.smdp.model.question.RatingQuestion;
-import dk.itu.smdp.model.question.YesNoQuestion;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -110,41 +103,6 @@ public class Survey {
         p.addAttribute(age);
         p.addAttribute(sex);
         this.setPerson(p);
-
-
-        YesNoQuestion q1 = new YesNoQuestion(true , "Are you married?");
-        YesNoQuestion q2 = new YesNoQuestion(true , "Are you gay?");
-        YesNoQuestion q3 = new YesNoQuestion(true , "Are you stupid?");
-
-        MutuallyExclusive mE = new MutuallyExclusive(true , "Choose something...");
-        mE.addAnswer(new BinaryAnswer("Red"));
-        mE.addAnswer(new BinaryAnswer("Green"));
-        mE.addAnswer(new BinaryAnswer("Blue"));
-        mE.addAnswer(new BinaryAnswer("Brown"));
-        mE.addAnswer(new BinaryAnswer("Yellow"));
-        mE.addAnswer(new BinaryAnswer("Black"));
-        mE.addAnswer(new UserInputAnswer("Other"));
-
-        RatingQuestion r = new RatingQuestion(true , "Rate dat shit..." , 0 , 10 , 1);
-
-
-        OpenFieldQuestion oQ = new OpenFieldQuestion(true , "Please write a comment...");
-
-
-
-        Page page = new Page();
-        page.addQuestion(q1);
-        page.addQuestion(q2);
-        page.addQuestion(q3);
-        page.addQuestion(mE);
-        page.addQuestion(r);
-        page.addQuestion(oQ);
-
-
-        Category c = new Category("Personal information");
-        c.addPage(page);
-
-        this.addCategory(c);
 
     }
 
