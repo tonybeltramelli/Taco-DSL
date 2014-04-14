@@ -40,8 +40,8 @@ public class TacoGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCategoriesCategoryParserRuleCall_6_0 = (RuleCall)cCategoriesAssignment_6.eContents().get(0);
 		
 		//Survey:
-		//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person?
-		//	categories+=Category categories+=Category*;
+		//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
+		//	categories+=Category*;
 		public ParserRule getRule() { return rule; }
 
 		//"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
@@ -807,8 +807,8 @@ public class TacoGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Survey:
-	//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person?
-	//	categories+=Category categories+=Category*;
+	//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
+	//	categories+=Category*;
 	public SurveyElements getSurveyAccess() {
 		return (pSurvey != null) ? pSurvey : (pSurvey = new SurveyElements());
 	}

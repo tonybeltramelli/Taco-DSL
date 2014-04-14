@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="«description»">
+    <title>«Survey Title»</title>
+	<link href="css/surveycustom.css" rel="stylesheet">
+	
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div id="infoWrapper">
+        <div class="surveyInfo">
+            <h1>«Survey Title»</h1>
+            
+            <!--«IF date != null»-->
+                <p>Date: «date»</p>
+            <!--«ENDIF»-->
+            <!--«IF date != null»-->
+                <p>Description: «description»</p>
+            <!--«ENDIF»-->
+        </div>
+    
+        <div class="category">
+            <p><strong>«category.title»</strong></p>
+            <p>«description»</p>
+        </div>
+    </div>
+    
+    <div id="splash">   
+        <div class="user">
+            <p class="mutuallyExc">«Gender»</p>
+            <p class="answer">
+                <ul>
+                    <li><input type="radio" name="gender" id="male" value="Male" multiple> <label for="ans1">Male</label></li>
+                    <li><input type="radio" name="gesno" id="female" value="Female"> <label for="ans2">Female</label></li>
+                </ul>
+            </p>
+        </div> 
+        <input type="submit" value="Start Survey" onClick="showHide()">       
+	</div>
+    
+	<div id="questionsWrapper">
+    
+        <div class="question">
+            <p class="openField">«This is an open field question?»</p>
+            <p class="answer">
+                <input type="text" name="answer">
+            </p>
+        </div>
+        
+        <div class="question">
+            <p class="multipleChoice">«This is a multiple choice question?»<span>*</span></p>
+            <p class="answer">
+                <ul>
+                  <li><label for="red">Red</label> <input type="checkbox" name="red" id="red" value="red"></li>
+                  <li><label for="yellow">Yellow </label> <input type="checkbox" name="yellow" id="yellow" value="yellow"></li>
+                  <li><label for="green">Green </label> <input type="checkbox" name="green" id="green" value="green"></li>
+                  <li><label for="other">Other </label> <input type="text" name="other" id="other"></li>
+                </ul>
+            </p>
+        </div>
+        
+        <div class="question">
+            <p class="rating">«This is a rating question?»</p>
+            <p class="answer">
+                <label for="ans1" style="float: left;">Please rate: «0»&nbsp;</label>
+                <input type="range" name="points" min="0" max="10" style="width: 200px; float: left;">
+                <label for="ans1" style="float: left;">&nbsp;«10»</label>
+            </p><br /><br />
+        </div>
+         
+        <div class="question">
+            <p class="mutuallyExc">«This is a mutually exclusive question?»<span>*</span></p>
+            <p class="answer">
+                <ul>
+                    <li><input type="radio" name="mutuallyExc" id="ans1" value="ans1" multiple> <label for="ans1">«answer1»</label></li>
+                    <li><input type="radio" name="mutuallyExc" id="ans2" value="ans2"> <label for="ans2">«answer2»</label></li>
+                    <li><input type="radio" name="mutuallyExc" id="ans3" value="ans3"> <label for="ans3">«answer3»</label></li>
+                    <li><input type="radio" name="mutuallyExc" id="ans4" value="ans4"> <label for="ans4">«answer4»</label></li>
+                </ul>
+            </p>
+        </div>
+         
+        <div class="question">
+            <p class="yesno">«This is a mutually exclusive question?»<span>*</span></p>
+            <p class="answer">
+                <ul>
+                    <li><input type="radio" name="yesno" id="yes" value="Yes" multiple> <label for="ans1">Yes</label></li>
+                    <li><input type="radio" name="yesno" id="no" value="No"> <label for="ans2">No</label></li>
+                </ul>
+            </p>
+        </div>
+        
+        <div class="question">
+            <p class="ranking">«This is a ranking question»</p>
+            <p class="answer">
+                <ul id="sortable">
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 1
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 2
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 3
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 4
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 5
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 6
+                    </li>
+                    <li class="ui-state-default">
+                        <span>&#x21C5;</span><input type="text" name="rank"/>Item 7
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+		<div class="action"><!-- next/back/submit button-->
+            <input type="submit" value="Submit" onClick="submitSurvey()"><!-- next/back/submit button to email-->
+        </div>
+        
+        <br /><br /><br /><br />
+        
+        <div class="page"><!--or a visual progress bar-->
+            <p>1 of 1<!--«step» of «stepNums»--></p>
+        </div>
+    
+	</div>
+    
+     
+    <div id="requestPage"> 
+    	<div class="requestPage">  
+        	Thank you for submitting this survey! 
+        </div>      
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/themes/base/jquery-ui.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+   
+   
+    <script language="javascript">
+	//// SORTABLE ////
+		sort_ul = $('#sortable');
+		itemsCount = $('#sortable li').length;
+	
+		function updateIndexes(){
+			$('#sortable li input').each(function(i){
+					  $(this).val(i+1);
+				  });
+		}
+		
+		updateIndexes();
+				 
+		sort_ul.sortable({handle:'span',
+						  stop:function(event,ui){ updateIndexes(); }
+		});
+		
+		$('#sortable li input').keyup(function(event) {
+		  if(event.keyCode == '13'){      
+			event.preventDefault();
+			  
+			order = parseInt($(this).val());
+			  
+			li = $(this).parent();
+			if(order>=1 && order <= itemsCount){      
+				
+				li.effect('drop', function(){
+					li.detach();
+						
+					if(order == itemsCount)
+						sort_ul.append(li);
+					else
+						li.insertBefore($('#sortable li:eq('+(order-1)+')'));
+					
+					updateIndexes();
+					li.effect('slide');
+				});
+			}else{
+				li.effect('highlight');
+			}
+		  }    
+		});
+		
+		
+		
+		function showHide() {
+			document.getElementById("splash").style.display = "none";
+			document.getElementById("questionsWrapper").style.display = "block";
+		}
+
+		function submitSurvey() {
+			document.getElementById("questionsWrapper").style.display = "none";
+			document.getElementById("requestPage").style.display = "block";
+		}
+	</script>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

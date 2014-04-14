@@ -3,7 +3,14 @@
  */
 package dk.itu.smdp.survey.xtext.ui.quickfix;
 
+import dk.itu.smdp.survey.xtext.validation.TacoValidator;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.model.edit.IModification;
+import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.Fix;
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
+import org.eclipse.xtext.validation.Issue;
 
 /**
  * Custom quickfixes.
@@ -12,4 +19,21 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
  */
 @SuppressWarnings("all")
 public class TacoQuickfixProvider extends DefaultQuickfixProvider {
+  @Fix(TacoValidator.CHECK_MULTIPLE_CHOICE_MAX_MIN)
+  public void setMaxHigherThanMin(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IModification _function = new IModification() {
+      public void apply(final IModificationContext context) throws Exception {
+        final IXtextDocument xtextDocument = context.getXtextDocument();
+        Integer _offset = issue.getOffset();
+        Integer _length = issue.getLength();
+        String _get = xtextDocument.get((_offset).intValue(), (_length).intValue());
+        final Integer max = Integer.valueOf(_get);
+        Integer _offset_1 = issue.getOffset();
+        Integer _length_1 = issue.getLength();
+        String _valueOf = String.valueOf(((max).intValue() * 2));
+        xtextDocument.replace((_offset_1).intValue(), (_length_1).intValue(), _valueOf);
+      }
+    };
+    acceptor.accept(issue, "Max higher than min", "Set max higher than min.", null, _function);
+  }
 }
