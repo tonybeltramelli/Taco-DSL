@@ -3,7 +3,6 @@ package dk.itu.smdp.model.answer;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import dk.itu.smdp.Answerable;
 
 /**
  * Created by centos on 4/13/14.
@@ -11,8 +10,8 @@ import dk.itu.smdp.Answerable;
 public class RatingAnswer extends BinaryAnswer {
 
 
-    public RatingAnswer(String _description, Answerable a) {
-        super(_description, a);
+    public RatingAnswer(String _description) {
+        super(_description);
     }
 
     @Override

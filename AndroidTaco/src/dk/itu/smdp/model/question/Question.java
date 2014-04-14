@@ -1,7 +1,5 @@
 package dk.itu.smdp.model.question;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -13,6 +11,8 @@ import dk.itu.smdp.R;
 import dk.itu.smdp.Viewable;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.utils.FixedStack;
+
+import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
@@ -77,10 +77,13 @@ public abstract class Question implements Viewable, Answerable
 		_answers.add(a);
 	}
 	
-	protected void populateAnswerViews(Context context, ViewGroup parent, ViewGroup container)
+	protected void populateAnswerViews(Context context, ViewGroup parent, ViewGroup container , Answerable answerable)
 	{
-		for (Answer a : _answers)
-			container.addView(a.getView(context, parent));
+		for (Answer a : _answers){
+            container.addView(a.getView(context, parent));
+            a.setUpListener(answerable);
+        }
+
 	}
 	
 	protected LinearLayout initQuestionLayout(Context context, ViewGroup parent)

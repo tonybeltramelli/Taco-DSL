@@ -15,8 +15,8 @@ public class BinaryAnswer extends Answer {
 
     protected RadioButton _radio;
 
-    public BinaryAnswer(String _description, Answerable a) {
-        super(_description, a);
+    public BinaryAnswer(String _description) {
+        super(_description);
     }
 
 
@@ -34,21 +34,21 @@ public class BinaryAnswer extends Answer {
     }
 
     @Override
-    public void setUpListener() {
-        _radio.setOnClickListener( new View.OnClickListener() {
+    public void setUpListener(final Answerable answerable) {
+        _radio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if( !_radio.isSelected() ){
+                if (!_radio.isSelected()) {
                     _radio.setSelected(true);
                     _radio.setChecked(true);
-                    _answerable.onAnswerSelected(BinaryAnswer.this);
-                }
-                else{
+                    answerable.onAnswerSelected(BinaryAnswer.this);
+                } else {
                     clear();
-                    _answerable.onAnswerDeselected(BinaryAnswer.this);
+                    answerable.onAnswerDeselected(BinaryAnswer.this);
                 }
             }
         });
+
     }
 
     @Override
@@ -59,8 +59,6 @@ public class BinaryAnswer extends Answer {
         _radio = (RadioButton) inflater.inflate(R.layout.boolean_field , parent , false);
 
         _radio.setText(_description);
-
-        setUpListener();
 
         return _radio;
     }

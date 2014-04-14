@@ -15,8 +15,8 @@ public class OpenFieldAnswer extends Answer{
 
     private EditText _editText;
 
-    public OpenFieldAnswer(String _description, Answerable a) {
-        super(_description, a);
+    public OpenFieldAnswer(String _description) {
+        super(_description);
     }
 
 
@@ -31,8 +31,10 @@ public class OpenFieldAnswer extends Answer{
     }
 
     @Override
-    public void setUpListener() {
+    public void setUpListener(final Answerable answerable) {
+        //TODO
         //empty for now
+
     }
 
     @Override
