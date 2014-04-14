@@ -1,10 +1,8 @@
 package dk.itu.smdp.model;
 
 import dk.itu.smdp.model.answer.BinaryAnswer;
-import dk.itu.smdp.model.answer.UserInputAnswer;
+import dk.itu.smdp.model.question.MultipleChoice;
 import dk.itu.smdp.model.question.MutuallyExclusive;
-import dk.itu.smdp.model.question.OpenFieldQuestion;
-import dk.itu.smdp.model.question.RatingQuestion;
 import dk.itu.smdp.model.question.YesNoQuestion;
 
 import java.util.ArrayList;
@@ -112,39 +110,42 @@ public class Survey {
         this.setPerson(p);
 
 
-        YesNoQuestion q1 = new YesNoQuestion(true , "Are you married?");
-        YesNoQuestion q2 = new YesNoQuestion(true , "Are you gay?");
-        YesNoQuestion q3 = new YesNoQuestion(true , "Are you stupid?");
+        MultipleChoice multipleChoice = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
+        multipleChoice.addAnswer(new BinaryAnswer("Green" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Red" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Blue" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Black" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("White" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Purple" , multipleChoice));
 
-        MutuallyExclusive mE = new MutuallyExclusive(true , "Choose something...");
-        mE.addAnswer(new BinaryAnswer("Red"));
-        mE.addAnswer(new BinaryAnswer("Green"));
-        mE.addAnswer(new BinaryAnswer("Blue"));
-        mE.addAnswer(new BinaryAnswer("Brown"));
-        mE.addAnswer(new BinaryAnswer("Yellow"));
-        mE.addAnswer(new BinaryAnswer("Black"));
-        mE.addAnswer(new UserInputAnswer("Other"));
-
-        RatingQuestion r = new RatingQuestion(true , "Rate dat shit..." , 0 , 10 , 1);
-
-
-        OpenFieldQuestion oQ = new OpenFieldQuestion(true , "Please write a comment...");
+        MultipleChoice multipleChoice2 = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
+        multipleChoice2.addAnswer(new BinaryAnswer("Green" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Red" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Blue" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Black" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("White" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Purple" , multipleChoice2));
 
 
+        MutuallyExclusive exclusive = new MutuallyExclusive(true , "Pick dat shit");
+        exclusive.addAnswer(new BinaryAnswer("Green" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("Red" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("Black" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("White" , exclusive));
 
+
+        YesNoQuestion yesNoQuestion = new YesNoQuestion(true , "Are you something?");
+
+        Category category = new Category("Skata");
         Page page = new Page();
-        page.addQuestion(q1);
-        page.addQuestion(q2);
-        page.addQuestion(q3);
-        page.addQuestion(mE);
-        page.addQuestion(r);
-        page.addQuestion(oQ);
 
+        page.addQuestion(multipleChoice);
+        page.addQuestion(multipleChoice2);
+        page.addQuestion(exclusive);
+        page.addQuestion(yesNoQuestion);
+        category.addPage(page);
 
-        Category c = new Category("Personal information");
-        c.addPage(page);
-
-        this.addCategory(c);
+        this.addCategory(category);
 
     }
 

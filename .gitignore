@@ -29,7 +29,7 @@ local.properties
 
 .mtj.tmp/
 
-##*.jar
+*.jar
 *.war
 *.ear
 
@@ -38,4 +38,8 @@ hs_err_pid*
 .idea/
 *.iml
 *.iws
+
+plugin.xml_gen
+src-gen
+xtend-gen
 

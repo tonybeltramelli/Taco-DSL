@@ -13,7 +13,7 @@ import dk.itu.smdp.model.question.Question;
 /**
  * Created by centos on 4/13/14.
  */
-public class SurvayActivity extends Activity{
+public class SurveyActivity extends Activity{
 
     private Survey _survey;
 
