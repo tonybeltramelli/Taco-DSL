@@ -3,7 +3,11 @@
  */
 package dk.itu.smdp.survey.xtext.validation;
 
+import SurveyModel.MultipleChoice;
+import SurveyModel.Rating;
+import SurveyModel.SurveyModelPackage;
 import dk.itu.smdp.survey.xtext.validation.AbstractTacoValidator;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * Custom validation rules.
@@ -12,4 +16,53 @@ import dk.itu.smdp.survey.xtext.validation.AbstractTacoValidator;
  */
 @SuppressWarnings("all")
 public class TacoValidator extends AbstractTacoValidator {
+  public final static String CHECK_MULTIPLE_CHOICE_MAX_MIN = "check_multiple_choice_max_min";
+  
+  public final static String CHECK_RATING_START_END = "check_rating_start_end";
+  
+  public final static String CHECK_RATING_INTERVAL = "check_rating_interval";
+  
+  @Check
+  public void checkMultipleChoiceMaxMin(final MultipleChoice it) {
+    int _max = it.getMax();
+    int _min = it.getMin();
+    boolean _lessThan = (_max < _min);
+    if (_lessThan) {
+      int _max_1 = it.getMax();
+      String _string = Integer.toString(_max_1);
+      this.error("The max value must be higher than or equal to the min value : [min-max]", 
+        SurveyModelPackage.Literals.MULTIPLE_CHOICE__MAX, 
+        TacoValidator.CHECK_MULTIPLE_CHOICE_MAX_MIN, _string);
+    }
+  }
+  
+  @Check
+  public void checkRatingStartEnd(final Rating it) {
+    int _end = it.getEnd();
+    int _start = it.getStart();
+    boolean _lessEqualsThan = (_end <= _start);
+    if (_lessEqualsThan) {
+      int _end_1 = it.getEnd();
+      String _string = Integer.toString(_end_1);
+      this.error("The end value must be higher than the start value : [start-end, interval]", 
+        SurveyModelPackage.Literals.RATING__END, 
+        TacoValidator.CHECK_RATING_START_END, _string);
+    }
+  }
+  
+  @Check
+  public void checkRatingInterval(final Rating it) {
+    int _end = it.getEnd();
+    int _start = it.getStart();
+    int _minus = (_end - _start);
+    int _interval = it.getInterval();
+    boolean _lessThan = (_minus < _interval);
+    if (_lessThan) {
+      int _interval_1 = it.getInterval();
+      String _string = Integer.toString(_interval_1);
+      this.error("The interval value must be smaller than the distance between start and end : [start-end, interval]", 
+        SurveyModelPackage.Literals.RATING__INTERVAL, 
+        TacoValidator.CHECK_RATING_INTERVAL, _string);
+    }
+  }
 }

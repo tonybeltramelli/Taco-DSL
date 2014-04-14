@@ -10037,11 +10037,10 @@ public class InternalTacoParser extends AbstractInternalContentAssistParser {
     static final String DFA1_eofS =
         "\3\uffff\2\7\14\uffff";
     static final String DFA1_minS =
-        "\1\27\2\4\2\16\1\uffff\1\6\1\uffff\1\6\1\31\2\uffff\2\6\1\20\2"+
-        "\uffff";
+        "\1\27\2\4\2\16\1\uffff\1\6\1\uffff\1\6\1\31\2\uffff\2\6\1\20\2\uffff";
     static final String DFA1_maxS =
-        "\1\27\1\34\1\5\2\30\1\uffff\1\33\1\uffff\1\6\1\31\2\uffff\1\31"+
-        "\1\6\1\24\2\uffff";
+        "\1\27\1\34\1\5\2\30\1\uffff\1\33\1\uffff\1\6\1\31\2\uffff\1\31\1"+
+        "\6\1\24\2\uffff";
     static final String DFA1_acceptS =
         "\5\uffff\1\6\1\uffff\1\5\2\uffff\1\4\1\2\3\uffff\1\1\1\3";
     static final String DFA1_specialS =
