@@ -1,8 +1,10 @@
 package dk.itu.smdp.model;
 
 import dk.itu.smdp.model.answer.BinaryAnswer;
+import dk.itu.smdp.model.answer.UserInputAnswer;
 import dk.itu.smdp.model.question.MultipleChoice;
 import dk.itu.smdp.model.question.MutuallyExclusive;
+import dk.itu.smdp.model.question.RatingQuestion;
 import dk.itu.smdp.model.question.YesNoQuestion;
 
 import java.util.ArrayList;
@@ -132,9 +134,12 @@ public class Survey {
         exclusive.addAnswer(new BinaryAnswer("Red" , exclusive));
         exclusive.addAnswer(new BinaryAnswer("Black" , exclusive));
         exclusive.addAnswer(new BinaryAnswer("White" , exclusive));
+        exclusive.addAnswer(new UserInputAnswer("White" , exclusive));
 
 
         YesNoQuestion yesNoQuestion = new YesNoQuestion(true , "Are you something?");
+
+        RatingQuestion rating = new RatingQuestion(true , "asdf" , 1 , 5 , 2);
 
         Category category = new Category("Skata");
         Page page = new Page();
@@ -143,6 +148,7 @@ public class Survey {
         page.addQuestion(multipleChoice2);
         page.addQuestion(exclusive);
         page.addQuestion(yesNoQuestion);
+        page.addQuestion(rating);
         category.addPage(page);
 
         this.addCategory(category);

@@ -30,6 +30,26 @@ public class UserInputAnswer extends BinaryAnswer{
     public void clear() {
         super.clear();
         _editText.setText("");
+        _editText.setEnabled(false);
+    }
+
+    @Override
+    public void setUpListener() {
+        _radio.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if( !_radio.isSelected() ){
+                    _radio.setSelected(true);
+                    _radio.setChecked(true);
+                    _answerable.onAnswerSelected(UserInputAnswer.this);
+                    _editText.setEnabled(true);
+                }
+                else{
+                    clear();
+                    _answerable.onAnswerDeselected(UserInputAnswer.this);
+                }
+            }
+        });
     }
 
     @Override
@@ -45,7 +65,7 @@ public class UserInputAnswer extends BinaryAnswer{
 
         _radio.setText(_description);
 
-        super.setUpListener();
+        setUpListener();
 
         return layout;
     }

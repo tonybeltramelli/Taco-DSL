@@ -44,8 +44,7 @@ public class BinaryAnswer extends Answer {
                     _answerable.onAnswerSelected(BinaryAnswer.this);
                 }
                 else{
-                    _radio.setSelected(false);
-                    _radio.setChecked(false);
+                    clear();
                     _answerable.onAnswerDeselected(BinaryAnswer.this);
                 }
             }

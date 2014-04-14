@@ -1,6 +1,7 @@
 package dk.itu.smdp.model.question;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -47,6 +48,9 @@ public class MultipleChoice extends Question {
         Answer popedItem = _answeredAnswers.pushAndPopExtraItem(answer);
         if (popedItem != null)
             popedItem.clear();
+
+        for( int i = 0 ; i < _answeredAnswers.size() ; i++ )
+            Log.i("TAG" , "A : " + _answeredAnswers.get(i).getUserAnswer());
     }
 
     @Override
