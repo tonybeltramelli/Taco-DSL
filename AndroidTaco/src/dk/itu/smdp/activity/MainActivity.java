@@ -14,8 +14,8 @@ import dk.itu.smdp.model.Survey;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity implements
-        View.OnClickListener ,
-        TextWatcher{
+        View.OnClickListener,
+        TextWatcher {
 
     Survey _survey;
     Button _startButton;
@@ -34,29 +34,29 @@ public class MainActivity extends Activity implements
         _survey = Survey.getInstance();
 
         //set title
-                ((TextView) this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.get_title());
+        ((TextView) this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.get_title());
         //set description
-        ((TextView)this.findViewById(R.id.home_screen_survey_description_text_view)).setText(_survey.get_description());
+        ((TextView) this.findViewById(R.id.home_screen_survey_description_text_view)).setText(_survey.get_description());
 
-        if( !_survey.isAnonymous() ){
+        if (!_survey.isAnonymous()) {
             populatePersonAttributes();
             setUpEditTexts();
         }
     }
 
 
-    private void setUpEditTexts(){
-        _editTexts = new ArrayList<>();
+    private void setUpEditTexts() {
+        _editTexts = new ArrayList<EditText>();
         LinearLayout attributes = (LinearLayout) this.findViewById(R.id.person_attributes_linearlayout);
 
         //save all editTexts
         //this is the linear layout for all attributes
-        for( int i = 0 ; i < attributes.getChildCount() ; i++ ){
+        for (int i = 0; i < attributes.getChildCount(); i++) {
             //this is the linear layout of a single attribute
             //search for edit texts in this layout
             LinearLayout singleAttribute = (LinearLayout) attributes.getChildAt(i);
-            for( int j = 0 ; j < singleAttribute.getChildCount() ; j++ ){
-                if( singleAttribute.getChildAt(j) instanceof EditText ){
+            for (int j = 0; j < singleAttribute.getChildCount(); j++) {
+                if (singleAttribute.getChildAt(j) instanceof EditText) {
 
                     EditText e = (EditText) singleAttribute.getChildAt(j);
 
@@ -68,22 +68,22 @@ public class MainActivity extends Activity implements
         }
     }
 
-    private void populatePersonAttributes(){
+    private void populatePersonAttributes() {
         //disable start button
-       _startButton.setEnabled(false);
+        _startButton.setEnabled(false);
         //show hint
-        ((TextView)this.findViewById(R.id.home_screen_label_text_view)).setVisibility(View.VISIBLE);
+        ((TextView) this.findViewById(R.id.home_screen_label_text_view)).setVisibility(View.VISIBLE);
 
         ScrollView parent = (ScrollView) this.findViewById(R.id.home_screen_scrollview);
-        LinearLayout attributes = (LinearLayout) _survey.getPerson().getView(this , parent);
+        LinearLayout attributes = (LinearLayout) _survey.getPerson().getView(this, parent);
 
         //add attribues view to parent
-        parent.addView(attributes , getLayoutParams());
+        parent.addView(attributes, getLayoutParams());
     }
 
-    private ScrollView.LayoutParams getLayoutParams(){
+    private ScrollView.LayoutParams getLayoutParams() {
         ScrollView.LayoutParams params = new ScrollView.LayoutParams(
-                ScrollView.LayoutParams.MATCH_PARENT ,
+                ScrollView.LayoutParams.MATCH_PARENT,
                 ScrollView.LayoutParams.MATCH_PARENT
         );
         return params;
@@ -92,15 +92,15 @@ public class MainActivity extends Activity implements
     @Override
     public void onClick(View v) {
 
-        Log.i("TAG" , "asdfasdfasdf");
+        Log.i("TAG", "asdfasdfasdf");
 
         //if the survey is not anonymous save first the attributes
-        if( !_survey.isAnonymous() )
-            for( int i = 0 ; i < _editTexts.size() ; i++ )
+        if (!_survey.isAnonymous())
+            for (int i = 0; i < _editTexts.size(); i++)
                 _survey.getPerson().getAttribute(i).set_value(_editTexts.get(i).getText().toString());
 
         //start the survey
-        Intent intent = new Intent( this , SurvayActivity.class);
+        Intent intent = new Intent(this, SurveyActivity.class);
         this.startActivity(intent);
         //finish this activity so the user cannot go back to home screen
         this.finish();
@@ -113,14 +113,14 @@ public class MainActivity extends Activity implements
         boolean flag = true;
         //check all editTexts. if all of them have text enable the start button.
         //otherwise leave it disabled
-        for( EditText e : _editTexts ){
-            if( e.getText().toString().equals("")){
+        for (EditText e : _editTexts) {
+            if (e.getText().toString().equals("")) {
                 flag = false;
                 break;
             }
         }
 
-        if( flag )
+        if (flag)
             _startButton.setEnabled(true);
         else
             _startButton.setEnabled(false);

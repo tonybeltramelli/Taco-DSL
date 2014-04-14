@@ -13,6 +13,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="dk.itu.smdp.activity.SurvayActivity"/>
+        <activity android:name=".activity.SurveyActivity"/>
     </application>
 </manifest>

@@ -40,7 +40,13 @@ public class BinaryAnswer extends Answer {
             public void onClick(View v) {
                 if( !_radio.isSelected() ){
                     _radio.setSelected(true);
-                    _answerable.onAnswer(BinaryAnswer.this);
+                    _radio.setChecked(true);
+                    _answerable.onAnswerSelected(BinaryAnswer.this);
+                }
+                else{
+                    _radio.setSelected(false);
+                    _radio.setChecked(false);
+                    _answerable.onAnswerDeselected(BinaryAnswer.this);
                 }
             }
         });

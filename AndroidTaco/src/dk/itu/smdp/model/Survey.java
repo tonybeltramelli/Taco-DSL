@@ -1,5 +1,10 @@
 package dk.itu.smdp.model;
 
+import dk.itu.smdp.model.answer.BinaryAnswer;
+import dk.itu.smdp.model.question.MultipleChoice;
+import dk.itu.smdp.model.question.MutuallyExclusive;
+import dk.itu.smdp.model.question.YesNoQuestion;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -103,6 +108,44 @@ public class Survey {
         p.addAttribute(age);
         p.addAttribute(sex);
         this.setPerson(p);
+
+
+        MultipleChoice multipleChoice = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
+        multipleChoice.addAnswer(new BinaryAnswer("Green" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Red" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Blue" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Black" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("White" , multipleChoice));
+        multipleChoice.addAnswer(new BinaryAnswer("Purple" , multipleChoice));
+
+        MultipleChoice multipleChoice2 = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
+        multipleChoice2.addAnswer(new BinaryAnswer("Green" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Red" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Blue" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Black" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("White" , multipleChoice2));
+        multipleChoice2.addAnswer(new BinaryAnswer("Purple" , multipleChoice2));
+
+
+        MutuallyExclusive exclusive = new MutuallyExclusive(true , "Pick dat shit");
+        exclusive.addAnswer(new BinaryAnswer("Green" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("Red" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("Black" , exclusive));
+        exclusive.addAnswer(new BinaryAnswer("White" , exclusive));
+
+
+        YesNoQuestion yesNoQuestion = new YesNoQuestion(true , "Are you something?");
+
+        Category category = new Category("Skata");
+        Page page = new Page();
+
+        page.addQuestion(multipleChoice);
+        page.addQuestion(multipleChoice2);
+        page.addQuestion(exclusive);
+        page.addQuestion(yesNoQuestion);
+        category.addPage(page);
+
+        this.addCategory(category);
 
     }
 
