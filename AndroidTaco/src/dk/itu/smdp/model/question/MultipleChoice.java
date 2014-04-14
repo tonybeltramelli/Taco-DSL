@@ -26,7 +26,7 @@ public class MultipleChoice extends Question {
         _max = max;
 
         //create a stack for the maximum answers
-        _answeredAnswers = new FixedStack<>(_max);
+        _answeredAnswers = new FixedStack<Answer>(_max);
     }
 
     @Override
