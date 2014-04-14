@@ -19,7 +19,14 @@ import java.util.ArrayList;
  */
 public abstract class Question implements Viewable, Answerable
 {
-	
+
+    public static final String MULTIPLE_CHOICE = "multiple_choice";
+    public static final String MUTUALLY_EXCLUSIVE = "mutually_exclusive";
+    public static final String YES_NO = "yes_no";
+    public static final String RATING = "rating";
+    public static final String OPEN_FIELD = "open_field";
+    public static final String RANKING = "ranking";
+
 	protected boolean _isMandatory;
 	
 	protected String _questionText;
