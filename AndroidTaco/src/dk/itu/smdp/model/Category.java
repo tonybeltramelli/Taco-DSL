@@ -14,7 +14,7 @@ public class Category {
 
     public Category( String title ){
         _title = title;
-        _pages = new ArrayList<>();
+        _pages = new ArrayList<Page>();
     }
 
     public String get_title() {

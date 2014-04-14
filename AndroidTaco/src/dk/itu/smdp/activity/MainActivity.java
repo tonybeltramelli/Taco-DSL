@@ -46,7 +46,7 @@ public class MainActivity extends Activity implements
 
 
     private void setUpEditTexts(){
-        _editTexts = new ArrayList<>();
+        _editTexts = new ArrayList<EditText>();
         LinearLayout attributes = (LinearLayout) this.findViewById(R.id.person_attributes_linearlayout);
 
         //save all editTexts
