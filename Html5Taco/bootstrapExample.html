@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="«description»">
+	<link href="css/surveycustom.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <title>«Survey Title»</title>
+  </head>
+  <body>
+  	<div id="infoWrapper">
+
+        <div class="surveyInfo">
+            <h1 id="survey_title">«Survey Title»</h1>
+            <p>
+                Description: <span id="desctiption">«Content»</span>
+            </p>
+            <p id="date" visibility="hidden">«date»</span>
+        </div>
+    
+        <div class="category">
+            <p><strong><span id="category_title">«category.title»</span></strong></p>
+            <p><span id="category_description">«description»</span></p>
+        </div>
+    </div>
+    
+    <div id="personWrapper">   
+        <div class="attr">
+            <span class="key">«Name»</span>
+            <span class="value">«Daniel»</span>
+        </div>
+         <div class="attr">
+            <span class="key">«Age»</span>
+            <span class="value">«30»</span>
+        </div>        
+	</div>
+    
+	<div id="questionsWrapper">
+
+        <div class="category">
+
+            <span class="category_title" visibility="hidden"></span>
+            <span class="category_description" visibility="hidden"></span>
+
+            <div class="page">
+
+                <div class="question openField">
+                    <p class="text">«This is an open field question?»</p>
+                    <p class="answer">
+                        <input type="text"/>
+                    </p>
+                </div>
+                
+                <div class="question multipleChoice">
+                 
+                    <p class="text">«This is a multiple choice question?» <span class="required">*</span></p>
+
+                    Select <span class="min">2</span> to <span class="max">3</span> options.
+
+                    <p class="answer">
+                        <ul>
+                            <li><label>Red</label><input type="checkbox" value="red"></li>
+                            <li><label>Yellow</label><input type="checkbox" value="yellow"></li>
+                            <li><label>Green</label><input type="checkbox" value="green"></li>
+                            <li><label>Other</label><input type="checkbox"><input type="text"></li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="question rating">
+                    <p class="text">«This is a rating question?»</p>
+                    <p class="answer">
+                        <span class="min">0</span><input type="range" name="points" min="0" max="10"><span class="max">10</span>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="page">
+                    <div class="question mutuallyExc">
+                        <p class="text">«This is a mutually exclusive question?»<span class="required">*</span></p>
+                        <p class="answer">
+                            <ul>
+                                <li><input type="radio" value="ans1"><label>«answer1»</label></li>
+                                <li><input type="radio" value="ans2"><label>«answer2»</label></li>
+                                <li><input type="radio" value="ans3"><label>«answer3»</label></li>
+                                <li><input type="radio" value="ans4"><label>«answer4»</label></li>
+                            </ul>
+                        </p>
+                    </div>
+            </div>
+        </div>
+
+        <div class="category">
+
+            <span class="category_title" visibility="hidden"></span>
+            <span class="category_description" visibility="hidden"></span>
+
+            <div class="page">
+                  <div class="question yesno">
+                    <p class="text">«This is a yes/no question?»<span class="required">*</span></p>
+                    <p class="answer">
+                        <ul>
+                            <li><input type="radio" value="Yes"><label>Yes</label></li>
+                            <li><input type="radio" value="No"><label>No</label></li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <div class="question ranking">
+                    <p class="text">«This is a ranking question»</p>
+                    <p class="answer">
+                        <ul id="sortable">
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 1
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 2
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 3
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 4
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 5
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 6
+                            </li>
+                            <li class="ui-state-default">
+                                <span>&#x21C5;</span><input type="text" name="rank"/>Item 7
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+      
+		<div class="action">
+            <input type="submit" value="Submit" onClick="submitSurvey()"><!-- next/back/submit button to email-->
+        </div>
+    
+	</div>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+    <script src="js/bootstrap.min.js" />
+    <script src="js/setup.js" />
+
+  </body>
+</html>
