@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="«description»">
+    <title>«Survey Title»</title>
+
+	<style>
+	/*** MY CUSTOM CSS ***/
+		ul {
+			list-style: none;
+			
+		}
+		#infoWrapper{
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+		.surveyInfo { 
+			background-color: #CEC9C7;
+			border-bottom: 1px solid #808080;
+			line-height: 10px;
+			margin-top: -20px;
+			padding: 5px 15px
+		}
+		.category { 
+			background-color: #E8E2E2;
+			border-bottom: 1px solid #808080;
+			line-height: 10px;
+			padding: 10px 15px 1px;
+		}
+		#questionsWrapper{
+			padding: 190px 0 0 15px;
+		}
+		.question, .user {
+			font-weight: bold;
+			margin-bottom: 70px;
+		}
+		.answer {
+			padding-left: 42px;
+		}
+
+	/*** SORTABLE ***/
+    	li {
+			margin: 1px;
+			width: 130px;
+			padding:2px;
+			vertical-align:middle;
+		}
+		
+		li span {
+			color: gray;
+			font-size: 1.1em;
+			margin-right: 5px;
+			margin-left: 5px;
+			cursor: pointer;
+			height:100%;
+		}
+		
+		input[name="rank"] {
+			width: 32px;
+			margin-right: 5px;
+			border: 1px solid lightgay;
+			color: blue;
+			text-align: center;
+		}
+    </style>
+    
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<div id="infoWrapper">
+        <div class="surveyInfo">
+            <h1>«Survey Title»</h1>
+            
+            <!--«IF date != null»-->
+                <p>Date: «date»</p>
+            <!--«ENDIF»-->
+            <!--«IF date != null»-->
+                <p>Description: «description»</p>
+            <!--«ENDIF»-->
+        </div>
+    </div>
+    
+	<div id="questionsWrapper">
+    
+        <div class="user">
+            <p class="mutuallyExc">«Gender»</p>
+            <p class="answer">
+                <ul>
+                    <li><input type="radio" name="gender" id="male" value="Male" multiple> <label for="ans1">Male</label></li>
+                    <li><input type="radio" name="gesno" id="female" value="Female"> <label for="ans2">Female</label></li>
+                </ul>
+            </p>
+        </div>
+        
+	</div>
+    
+    <div class="action"><!-- next/back/submit button-->
+    	<input type="submit" value="Start Survey"><!-- next/back/submit button to email-->
+    </div>
+    
+
+	
+   
+   
+    
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

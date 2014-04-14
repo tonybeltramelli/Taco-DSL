@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:lines="5"
     android:textAppearance="?android:attr/textAppearanceMedium"
+    android:gravity="bottom|left"
     android:hint="@string/openfield_hint"
-    android:inputType="text">
+    android:inputType="textMultiLine">
 
-</AutoCompleteTextView>
+</EditText>

@@ -3,6 +3,7 @@
     <string name="app_name">AndroidTaco</string>
     <!--home screen strings-->
     <string name="home_screen_start_button_string">Start Survey</string>
+    <string name="home_screen_label_string">Please fill all the information below</string>
 
 
     <!--page screen strings-->
