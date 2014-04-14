@@ -20,7 +20,7 @@ public class Page {
         _questions.add(q);
     }
 
-    public ArrayList<Question> getQuestios(){
+    public ArrayList<Question> getQuestions(){
         return _questions;
     }
 
