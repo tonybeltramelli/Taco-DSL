@@ -1,5 +1,6 @@
 package dk.itu.smdp.model.answer;
 
+import dk.itu.smdp.Answerable;
 import dk.itu.smdp.Viewable;
 
 /**
@@ -9,16 +10,21 @@ public abstract class Answer implements Viewable{
 
     protected String _description;
 
+    protected Answerable _answerable;
 
-    public Answer(String _description) {
+    public Answer(String _description , Answerable a) {
         this._description = _description;
+        this._answerable = a;
     }
 
-    public String get_description() {
+    public String getDescription() {
         return _description;
     }
 
-    public void set_description(String _description) {
-        this._description = _description;
-    }
+    public abstract String getUserAnswer();
+
+    public abstract void clear();
+
+    public abstract void setUpListener();
+
 }

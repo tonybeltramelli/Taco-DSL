@@ -5,16 +5,18 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import dk.itu.smdp.Answerable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.Viewable;
 import dk.itu.smdp.model.answer.Answer;
+import dk.itu.smdp.utils.FixedStack;
 
 import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
  */
-public abstract class Question implements Viewable{
+public abstract class Question implements Viewable , Answerable{
 
     protected boolean _isMandatory;
 
@@ -22,7 +24,7 @@ public abstract class Question implements Viewable{
 
     protected ArrayList<Answer> _answers;
 
-    protected boolean isQuestionAnswered = false;
+    protected FixedStack<Answer> _answeredAnswers;
 
 
     public Question(boolean _isMandatory, String _questionText) {
@@ -32,15 +34,15 @@ public abstract class Question implements Viewable{
     }
 
 
-    public boolean is_isMandatory() {
+    public boolean isMandatory() {
         return _isMandatory;
     }
 
-    public String get_questionText() {
+    public String getQuestionText() {
         return _questionText;
     }
 
-    public ArrayList<Answer> get_answers() {
+    public ArrayList<Answer> getAnswers() {
         return _answers;
     }
 
@@ -65,9 +67,7 @@ public abstract class Question implements Viewable{
         return layout;
     }
 
-    public boolean isQuestionAnswered(){
-        return isQuestionAnswered;
-    }
+    public abstract boolean isQuestionAnswered();
 
 
 
