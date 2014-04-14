@@ -100,7 +100,7 @@ public class MainActivity extends Activity implements
                 _survey.getPerson().getAttribute(i).set_value(_editTexts.get(i).getText().toString());
 
         //start the survey
-        Intent intent = new Intent( this , SurvayActivity.class);
+        Intent intent = new Intent( this , SurveyActivity.class);
         this.startActivity(intent);
         //finish this activity so the user cannot go back to home screen
         this.finish();
