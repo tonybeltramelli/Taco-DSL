@@ -3,7 +3,9 @@
  */
 package dk.itu.smdp.survey.xtext.validation
 
+import SurveyModel.Answer
 import SurveyModel.MultipleChoice
+import SurveyModel.Ranking
 import SurveyModel.Rating
 import SurveyModel.SurveyModelPackage
 import org.eclipse.xtext.validation.Check
@@ -17,7 +19,9 @@ class TacoValidator extends AbstractTacoValidator {
 	
 	public static final String CHECK_MULTIPLE_CHOICE_MAX_MIN = "check_multiple_choice_max_min";
 	public static final String CHECK_RATING_START_END = "check_rating_start_end";
-	public static final String CHECK_RATING_INTERVAL = "check_rating_interval";
+	public static final String CHECK_RATING_INTERVAL_BOUNDARY = "check_rating_interval_boundary";
+	public static final String CHECK_RATING_INTERVAL_VALUE = "check_rating_interval_value";
+	public static final String CHECK_RANKING_NO_SUBQUESTION = "check_ranking_no_subquestion";
 	
 	@Check
 	def checkMultipleChoiceMaxMin(MultipleChoice it)
@@ -46,14 +50,40 @@ class TacoValidator extends AbstractTacoValidator {
 	}
 	
 	@Check
-	def checkRatingInterval(Rating it)
+	def checkRatingIntervalBoundary(Rating it)
 	{
 		if((end - start) < interval)
 		{
 			error("The interval value must be smaller than the distance between start and end : [start-end, interval]",
 				SurveyModelPackage.Literals.RATING__INTERVAL,
-				CHECK_RATING_INTERVAL,
+				CHECK_RATING_INTERVAL_BOUNDARY,
 				Integer.toString(interval)
+			);
+		}
+	}
+	
+	@Check
+	def checkRatingIntervalValue(Rating it)
+	{
+		if(((end - start) % interval) != 0)
+		{
+			error("The interval value must be multiples of the distance between start and end : [start-end, interval]",
+				SurveyModelPackage.Literals.RATING__INTERVAL,
+				CHECK_RATING_INTERVAL_VALUE,
+				Integer.toString(interval)
+			);
+		}
+	}
+	
+	@Check
+	def checkRankingNoSubquestion(Ranking it)
+	{
+		if(answers.filter[subquestion.length != 0].length != 0)
+		{
+			error("Ranking answers cannot contain subquestions",
+				SurveyModelPackage.Literals.ANSWER__SUBQUESTION,
+				CHECK_RANKING_NO_SUBQUESTION,
+				answers.filter[subquestion.length != 0].head.description
 			);
 		}
 	}
