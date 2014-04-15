@@ -64,9 +64,7 @@ public abstract class Question implements Viewable, Answerable
 	}
 
 	private void _updateAnswer()
-	{
-		Log.wtf("Question", "_updateAnswer");
-		
+	{		
 		if(_container != null)
 		{
 			_container.updateQuestionAnswer(this);

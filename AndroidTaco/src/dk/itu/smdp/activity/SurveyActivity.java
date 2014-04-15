@@ -9,6 +9,8 @@ import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.Page;
 import dk.itu.smdp.model.question.Question;
+import dk.itu.smdp.model.question.RankingQuestion;
+import dk.itu.smdp.model.question.RatingQuestion;
 
 /**
  * Created by centos on 4/13/14.
@@ -44,7 +46,10 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
             View questionView = q.getView(this , parent);
             parent.addView(questionView);
             
-            if(q.isMandatory()) _mandatoryQuestionsNumber ++;
+            if(q.isMandatory() && !(q instanceof RatingQuestion) && !(q instanceof RankingQuestion))
+            {
+            	_mandatoryQuestionsNumber ++;
+            }
         }
         
         _nextButton = findViewById(R.id.page_screen_next_button);
@@ -54,8 +59,6 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	@Override
 	public void updateQuestionAnswer(Question question)
 	{
-		Log.wtf("updateQuestionAnswer", "updateQuestionAnswer");
-		
 		if(question.isMandatory() && question.isQuestionAnswered())
 		{
 			int answeredQuestions = 0;
@@ -75,6 +78,8 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			if(answeredQuestions == _mandatoryQuestionsNumber)
 			{
 				_nextButton.setVisibility(View.VISIBLE);
+			}else{
+				_nextButton.setVisibility(View.INVISIBLE);
 			}
 		}
 	}
