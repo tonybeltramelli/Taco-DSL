@@ -1,8 +1,10 @@
 package dk.itu.smdp.model.answer;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import dk.itu.smdp.Answerable;
@@ -32,9 +34,15 @@ public class OpenFieldAnswer extends Answer{
 
     @Override
     public void setUpListener(final Answerable answerable) {
-        //TODO
-        //empty for now
-
+    	_editText.setOnKeyListener(new OnKeyListener()
+		{		
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event)
+			{
+				answerable.onAnswerUpdated(OpenFieldAnswer.this);
+				return false;
+			}
+		});
     }
 
     @Override

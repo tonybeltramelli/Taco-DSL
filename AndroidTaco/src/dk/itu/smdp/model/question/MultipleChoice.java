@@ -51,10 +51,13 @@ public class MultipleChoice extends Question {
 
         for( int i = 0 ; i < _answeredAnswers.size() ; i++ )
             Log.i("TAG" , "A : " + _answeredAnswers.get(i).getUserAnswer());
+        
+        super.onAnswerSelected(answer);
     }
 
     @Override
     public void onAnswerDeselected(Answer answer) {
         _answeredAnswers.remove(answer);
+        super.onAnswerDeselected(answer);
     }
 }

@@ -1,23 +1,24 @@
 package dk.itu.smdp.activity;
 
-import android.app.Activity;
+import java.util.ArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import dk.itu.smdp.R;
-import dk.itu.smdp.model.Survey;
 
-import java.util.ArrayList;
-
-public class MainActivity extends Activity implements
+public class MainActivity extends AbtractActivity implements
         View.OnClickListener,
         TextWatcher {
-
-    Survey _survey;
+	
     Button _startButton;
 
 
@@ -31,12 +32,10 @@ public class MainActivity extends Activity implements
         _startButton = (Button) this.findViewById(R.id.home_screen_start_button);
         _startButton.setOnClickListener(this);
 
-        _survey = Survey.getInstance();
-
         //set title
-        ((TextView) this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.get_title());
+        ((TextView) this.findViewById(R.id.home_screen_survey_title_text_view)).setText(_survey.getTitle());
         //set description
-        ((TextView) this.findViewById(R.id.home_screen_survey_description_text_view)).setText(_survey.get_description());
+        ((TextView) this.findViewById(R.id.home_screen_survey_description_text_view)).setText(_survey.getDescription());
 
         if (!_survey.isAnonymous()) {
             populatePersonAttributes();

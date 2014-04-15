@@ -1,22 +1,20 @@
 package dk.itu.smdp.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.Page;
-import dk.itu.smdp.model.Survey;
 import dk.itu.smdp.model.question.Question;
 
 /**
  * Created by centos on 4/13/14.
  */
-public class SurveyActivity extends Activity implements QuestionContainable {
+public class SurveyActivity extends AbtractActivity implements QuestionContainable {
 
-    private Survey _survey;
     private int _currentCategory = 0;
     private int _currentPage = 0;
     private int _mandatoryQuestionsNumber = 0;
@@ -27,10 +25,8 @@ public class SurveyActivity extends Activity implements QuestionContainable {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.page);
 
-        _survey = Survey.getInstance();
-
         TextView categoryTitle = (TextView) this.findViewById(R.id.category_title_text_view);
-        categoryTitle.setText(_survey.get_categories().get(0).get_title());
+        categoryTitle.setText(_survey.getCategories().get(0).get_title());
 
         displayPage();
 
@@ -38,12 +34,13 @@ public class SurveyActivity extends Activity implements QuestionContainable {
 
     private void displayPage()
     {
-    	Page page = _survey.get_categories().get(_currentCategory).get_pages().get(_currentPage);
+    	Page page = _survey.getCategories().get(_currentCategory).get_pages().get(_currentPage);
     	
     	LinearLayout parent = (LinearLayout) this.findViewById(R.id.questions_linearlayout);
 
         for(Question q : page.getQuestions() )
         {
+        	q.setContainer(this);
             View questionView = q.getView(this , parent);
             parent.addView(questionView);
             
@@ -57,11 +54,13 @@ public class SurveyActivity extends Activity implements QuestionContainable {
 	@Override
 	public void updateQuestionAnswer(Question question)
 	{
+		Log.wtf("updateQuestionAnswer", "updateQuestionAnswer");
+		
 		if(question.isMandatory() && question.isQuestionAnswered())
 		{
 			int answeredQuestions = 0;
 			
-			Page page = _survey.get_categories().get(_currentCategory).get_pages().get(_currentPage);
+			Page page = _survey.getCategories().get(_currentCategory).get_pages().get(_currentPage);
 	    	
 			for(Question q : page.getQuestions() )
 	        {
@@ -70,6 +69,8 @@ public class SurveyActivity extends Activity implements QuestionContainable {
 					answeredQuestions ++;
 				}
 	        }
+			
+			Log.wtf("update question answer", answeredQuestions + " / " + _mandatoryQuestionsNumber);
 			
 			if(answeredQuestions == _mandatoryQuestionsNumber)
 			{
