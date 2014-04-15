@@ -8,13 +8,16 @@ import dk.itu.smdp.Viewable;
  */
 public abstract class Answer implements Viewable{
 
+
+    public static final String BINARY = "binary";
+    public static final String USER_INPUT = "user_input";
+    public static final String OPEN_FIELD = "open_field";
+    public static final String RANKING = "ranking";
+
     protected String _description;
 
-    protected Answerable _answerable;
-
-    public Answer(String _description , Answerable a) {
+    public Answer(String _description) {
         this._description = _description;
-        this._answerable = a;
     }
 
     public String getDescription() {
@@ -25,6 +28,6 @@ public abstract class Answer implements Viewable{
 
     public abstract void clear();
 
-    public abstract void setUpListener();
+    public abstract void setUpListener( final Answerable answerable);
 
 }

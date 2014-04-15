@@ -11,7 +11,7 @@ import dk.itu.smdp.model.answer.Answer;
 /**
  * Created by centos on 4/13/14.
  */
-public class RatingQuestion extends MultipleChoice {
+public class RatingQuestion extends MutuallyExclusive {
 
     private int _min;
     private int _max;
@@ -25,7 +25,7 @@ public class RatingQuestion extends MultipleChoice {
 
 
     public RatingQuestion(boolean isMandatory, String questionText, int min, int max, int interval) {
-        super(isMandatory, questionText, 1, 1);
+        super(isMandatory, questionText);
         _min = min;
         _max = max;
         _interval = interval;

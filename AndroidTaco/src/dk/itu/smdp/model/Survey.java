@@ -1,11 +1,9 @@
 package dk.itu.smdp.model;
 
-import dk.itu.smdp.model.answer.BinaryAnswer;
-import dk.itu.smdp.model.answer.UserInputAnswer;
-import dk.itu.smdp.model.question.MultipleChoice;
-import dk.itu.smdp.model.question.MutuallyExclusive;
-import dk.itu.smdp.model.question.RatingQuestion;
-import dk.itu.smdp.model.question.YesNoQuestion;
+import dk.itu.smdp.model.answer.Answer;
+import dk.itu.smdp.model.answer.AnswerFactory;
+import dk.itu.smdp.model.question.Question;
+import dk.itu.smdp.model.question.QuestionFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -112,43 +110,30 @@ public class Survey {
         this.setPerson(p);
 
 
-        MultipleChoice multipleChoice = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
-        multipleChoice.addAnswer(new BinaryAnswer("Green" , multipleChoice));
-        multipleChoice.addAnswer(new BinaryAnswer("Red" , multipleChoice));
-        multipleChoice.addAnswer(new BinaryAnswer("Blue" , multipleChoice));
-        multipleChoice.addAnswer(new BinaryAnswer("Black" , multipleChoice));
-        multipleChoice.addAnswer(new BinaryAnswer("White" , multipleChoice));
-        multipleChoice.addAnswer(new BinaryAnswer("Purple" , multipleChoice));
+        Question q1 = QuestionFactory.create(Question.YES_NO , true , "Are you bla?");
+        Question q2 = QuestionFactory.create(Question.RATING , true , "Rate dat shit" , 1 , 10 , 1);
+        Question q3 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE , true , "Pick something");
+        q3.addAnswer(AnswerFactory.create(Answer.BINARY , "Black"));
+        q3.addAnswer(AnswerFactory.create(Answer.BINARY , "White"));
+        q3.addAnswer(AnswerFactory.create(Answer.BINARY , "Blue"));
+        q3.addAnswer(AnswerFactory.create(Answer.USER_INPUT , "Red"));
 
-        MultipleChoice multipleChoice2 = new MultipleChoice(true , "Chooce dat shit" , 2 , 4);
-        multipleChoice2.addAnswer(new BinaryAnswer("Green" , multipleChoice2));
-        multipleChoice2.addAnswer(new BinaryAnswer("Red" , multipleChoice2));
-        multipleChoice2.addAnswer(new BinaryAnswer("Blue" , multipleChoice2));
-        multipleChoice2.addAnswer(new BinaryAnswer("Black" , multipleChoice2));
-        multipleChoice2.addAnswer(new BinaryAnswer("White" , multipleChoice2));
-        multipleChoice2.addAnswer(new BinaryAnswer("Purple" , multipleChoice2));
+        Question q4 = QuestionFactory.create(Question.MULTIPLE_CHOICE , true , "Choose something" , 2 , 3);
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY , "White"));
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY , "Black"));
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY , "Red"));
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY , "Blue"));
 
-
-        MutuallyExclusive exclusive = new MutuallyExclusive(true , "Pick dat shit");
-        exclusive.addAnswer(new BinaryAnswer("Green" , exclusive));
-        exclusive.addAnswer(new BinaryAnswer("Red" , exclusive));
-        exclusive.addAnswer(new BinaryAnswer("Black" , exclusive));
-        exclusive.addAnswer(new BinaryAnswer("White" , exclusive));
-        exclusive.addAnswer(new UserInputAnswer("White" , exclusive));
-
-
-        YesNoQuestion yesNoQuestion = new YesNoQuestion(true , "Are you something?");
-
-        RatingQuestion rating = new RatingQuestion(true , "asdf" , 1 , 5 , 2);
+        Question q5 = QuestionFactory.create(Question.OPEN_FIELD , true , "Say something");
 
         Category category = new Category("Skata");
         Page page = new Page();
+        page.addQuestion(q1);
+        page.addQuestion(q2);
+        page.addQuestion(q3);
+        page.addQuestion(q4);
+        page.addQuestion(q5);
 
-        page.addQuestion(multipleChoice);
-        page.addQuestion(multipleChoice2);
-        page.addQuestion(exclusive);
-        page.addQuestion(yesNoQuestion);
-        page.addQuestion(rating);
         category.addPage(page);
 
         this.addCategory(category);

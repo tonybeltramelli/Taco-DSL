@@ -38,7 +38,7 @@ public class MultipleChoice extends Question {
     public View getView(Context context, ViewGroup parent) {
         LinearLayout layout = initQuestionLayout(context, parent);
 
-        this.populateAnswerViews(context, layout, layout);
+        this.populateAnswerViews(context, layout, layout , this);
 
         return layout;
     }
