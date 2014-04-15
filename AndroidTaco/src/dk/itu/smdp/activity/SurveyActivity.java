@@ -16,8 +16,7 @@ import dk.itu.smdp.model.question.RatingQuestion;
  * Created by centos on 4/13/14.
  */
 public class SurveyActivity extends AbtractActivity implements QuestionContainable
-{
-	
+{	
 	private int _currentCategory = 0;
 	private int _currentPage = 0;
 	private int _mandatoryQuestionsNumber = 0;
@@ -30,15 +29,14 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		this.setContentView(R.layout.page);
 		
 		TextView categoryTitle = (TextView) this.findViewById(R.id.category_title_text_view);
-		categoryTitle.setText(_survey.getCategories().get(0).get_title());
+		categoryTitle.setText(_survey.getCategories().get(0).getTitle());
 		
 		displayPage();
-		
 	}
 	
 	private void displayPage()
 	{
-		Page page = _survey.getCategories().get(_currentCategory).get_pages().get(_currentPage);
+		Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 		
 		LinearLayout parent = (LinearLayout) this.findViewById(R.id.questions_linearlayout);
 		
@@ -65,7 +63,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		
 		if (question.isMandatory() && question.isQuestionAnswered())
 		{
-			Page page = _survey.getCategories().get(_currentCategory).get_pages().get(_currentPage);
+			Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 			
 			for (Question q : page.getQuestions())
 			{

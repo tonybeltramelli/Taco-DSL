@@ -13,8 +13,7 @@ import dk.itu.smdp.model.question.QuestionFactory;
  * Created by centos on 4/13/14.
  */
 public class Survey
-{
-	
+{	
 	private String _title;
 	private String _description;
 	private Date _date;
@@ -47,9 +46,9 @@ public class Survey
 		return _title;
 	}
 	
-	public void setTitle(String _title)
+	public void setTitle(String title)
 	{
-		this._title = _title;
+		this._title = title;
 	}
 	
 	public String getDescription()
@@ -57,9 +56,9 @@ public class Survey
 		return _description;
 	}
 	
-	public void setDescription(String _description)
+	public void setDescription(String description)
 	{
-		this._description = _description;
+		this._description = description;
 	}
 	
 	public Date getDate()
@@ -67,9 +66,9 @@ public class Survey
 		return _date;
 	}
 	
-	public void setDate(Date _date)
+	public void setDate(Date date)
 	{
-		this._date = _date;
+		this._date = date;
 	}
 	
 	public void setPerson(Person person)
@@ -93,9 +92,9 @@ public class Survey
 		return _categories;
 	}
 	
-	public void setCategories(ArrayList<Category> _categories)
+	public void setCategories(ArrayList<Category> categories)
 	{
-		this._categories = _categories;
+		this._categories = categories;
 	}
 	
 	public void addCategory(Category c)
@@ -108,9 +107,9 @@ public class Survey
 		return _context;
 	}
 	
-	public void setContext(Activity _context)
+	public void setContext(Activity context)
 	{
-		this._context = _context;
+		this._context = context;
 	}
 	
 	// dummy method just to test
@@ -118,7 +117,6 @@ public class Survey
 	{
 		this.setTitle("The survey");
 		this.setDescription("bla bla bla bla");
-		
 		
 		PersonAttribute name = new PersonAttribute("Name");
 		PersonAttribute age = new PersonAttribute("Age");

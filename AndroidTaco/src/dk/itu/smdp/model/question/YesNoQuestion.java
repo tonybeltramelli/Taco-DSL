@@ -10,15 +10,15 @@ import dk.itu.smdp.model.answer.BinaryAnswer;
  */
 public class YesNoQuestion extends MutuallyExclusive
 {
-	public YesNoQuestion(boolean _isMandatory, String _questionText)
+	public YesNoQuestion(boolean isMandatory, String questionText)
 	{
-		super(_isMandatory, _questionText);
+		super(isMandatory, questionText);
 		
 		super.addAnswer(new BinaryAnswer("Yes"));
 		super.addAnswer(new BinaryAnswer("No"));
 		
 		// Survey.getInstance().getContext().getResources().getString(R.string.boolean_answer_yes)
-		// Survey.getInstance().getContext().getResources().getString(R.string.boolean_answer_no)	
+		// Survey.getInstance().getContext().getResources().getString(R.string.boolean_answer_no)
 	}
 	
 	@Override

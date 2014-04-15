@@ -13,13 +13,12 @@ import dk.itu.smdp.utils.FixedStack;
  */
 public class MultipleChoice extends Question
 {
-	
 	private int _min;
 	private int _max;
 	
-	public MultipleChoice(boolean _isMandatory, String _questionText)
+	public MultipleChoice(boolean isMandatory, String questionText)
 	{
-		this(_isMandatory, _questionText, 1, 1);
+		this(isMandatory, questionText, 1, 1);
 	}
 	
 	public MultipleChoice(boolean isMandatory, String questionText, int min, int max)

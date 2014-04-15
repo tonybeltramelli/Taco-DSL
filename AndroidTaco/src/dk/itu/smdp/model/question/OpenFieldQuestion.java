@@ -13,10 +13,9 @@ import dk.itu.smdp.model.answer.OpenFieldAnswer;
  */
 public class OpenFieldQuestion extends MultipleChoice
 {
-	
-	public OpenFieldQuestion(boolean _isMandatory, String _questionText)
+	public OpenFieldQuestion(boolean isMandatory, String questionText)
 	{
-		super(_isMandatory, _questionText, 1, 1);
+		super(isMandatory, questionText, 1, 1);
 		
 		Answer a = AnswerFactory.create(Answer.OPEN_FIELD, "");
 		super.addAnswer(a);
@@ -27,7 +26,6 @@ public class OpenFieldQuestion extends MultipleChoice
 	@Override
 	public void addAnswer(Answer a)
 	{
-		
 	}
 	
 	@Override
@@ -38,13 +36,11 @@ public class OpenFieldQuestion extends MultipleChoice
 	
 	@Override
 	public View getView(Context context, ViewGroup parent)
-	{
-		
+	{	
 		LinearLayout layout = initQuestionLayout(context, parent);
 		
 		populateAnswerViews(context, layout, layout, this);
 		
 		return layout;
 	}
-	
 }

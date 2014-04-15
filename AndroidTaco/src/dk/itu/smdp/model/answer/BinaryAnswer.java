@@ -11,55 +11,63 @@ import dk.itu.smdp.R;
 /**
  * Created by centos on 4/13/14.
  */
-public class BinaryAnswer extends Answer {
-
-    protected RadioButton _radio;
-
-    public BinaryAnswer(String _description) {
-        super(_description);
-    }
-
-
-    @Override
-    public String getUserAnswer() {
-        return _description;
-    }
-
-    @Override
-    public void clear() {
-        if( _radio.isSelected() ){
-            _radio.setSelected(false);
-            _radio.setChecked(false);
-        }
-    }
-
-    @Override
-    public void setUpListener(final Answerable answerable) {
-        _radio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!_radio.isSelected()) {
-                    _radio.setSelected(true);
-                    _radio.setChecked(true);
-                    answerable.onAnswerSelected(BinaryAnswer.this);
-                } else {
-                    clear();
-                    answerable.onAnswerDeselected(BinaryAnswer.this);
-                }
-            }
-        });
-
-    }
-
-    @Override
-    public View getView(Context context, ViewGroup parent) {
-
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        _radio = (RadioButton) inflater.inflate(R.layout.boolean_field , parent , false);
-
-        _radio.setText(_description);
-
-        return _radio;
-    }
+public class BinaryAnswer extends Answer
+{
+	protected RadioButton _radio;
+	
+	public BinaryAnswer(String description)
+	{
+		super(description);
+	}
+	
+	@Override
+	public String getUserAnswer()
+	{
+		return _description;
+	}
+	
+	@Override
+	public void clear()
+	{
+		if (_radio.isSelected())
+		{
+			_radio.setSelected(false);
+			_radio.setChecked(false);
+		}
+	}
+	
+	@Override
+	public void setUpListener(final Answerable answerable)
+	{
+		_radio.setOnClickListener(new View.OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				if (!_radio.isSelected())
+				{
+					_radio.setSelected(true);
+					_radio.setChecked(true);
+					answerable.onAnswerSelected(BinaryAnswer.this);
+				} else
+				{
+					clear();
+					answerable.onAnswerDeselected(BinaryAnswer.this);
+				}
+			}
+		});	
+	}
+	
+	@Override
+	public View getView(Context context, ViewGroup parent)
+	{
+		
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		_radio = (RadioButton) inflater.inflate(R.layout.boolean_field, parent, false);
+		
+		_radio.setText(_description);
+		
+		return _radio;
+	}
 }

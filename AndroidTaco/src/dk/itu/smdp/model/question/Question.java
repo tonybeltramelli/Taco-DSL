@@ -20,14 +20,13 @@ import dk.itu.smdp.utils.FixedStack;
  */
 public abstract class Question implements Viewable, Answerable
 {
-
-    public static final String MULTIPLE_CHOICE = "multiple_choice";
-    public static final String MUTUALLY_EXCLUSIVE = "mutually_exclusive";
-    public static final String YES_NO = "yes_no";
-    public static final String RATING = "rating";
-    public static final String OPEN_FIELD = "open_field";
-    public static final String RANKING = "ranking";
-
+	public static final String MULTIPLE_CHOICE = "multiple_choice";
+	public static final String MUTUALLY_EXCLUSIVE = "mutually_exclusive";
+	public static final String YES_NO = "yes_no";
+	public static final String RATING = "rating";
+	public static final String OPEN_FIELD = "open_field";
+	public static final String RANKING = "ranking";
+	
 	protected boolean _isMandatory;
 	
 	protected String _questionText;
@@ -38,10 +37,10 @@ public abstract class Question implements Viewable, Answerable
 	
 	private QuestionContainable _container;
 	
-	public Question(boolean _isMandatory, String _questionText)
+	public Question(boolean isMandatory, String questionText)
 	{
-		this._isMandatory = _isMandatory;
-		this._questionText = _questionText;
+		this._isMandatory = isMandatory;
+		this._questionText = questionText;
 		_answers = new ArrayList<Answer>();
 	}
 	
@@ -62,10 +61,10 @@ public abstract class Question implements Viewable, Answerable
 	{
 		_updateAnswer();
 	}
-
+	
 	private void _updateAnswer()
-	{		
-		if(_container != null)
+	{
+		if (_container != null)
 		{
 			_container.updateQuestionAnswer(this);
 		}
@@ -91,13 +90,13 @@ public abstract class Question implements Viewable, Answerable
 		_answers.add(a);
 	}
 	
-	protected void populateAnswerViews(Context context, ViewGroup parent, ViewGroup container , Answerable answerable)
+	protected void populateAnswerViews(Context context, ViewGroup parent, ViewGroup container, Answerable answerable)
 	{
-		for (Answer a : _answers){
-            container.addView(a.getView(context, parent));
-            a.setUpListener(answerable);
-        }
-
+		for (Answer a : _answers)
+		{
+			container.addView(a.getView(context, parent));
+			a.setUpListener(answerable);
+		}
 	}
 	
 	protected LinearLayout initQuestionLayout(Context context, ViewGroup parent)
