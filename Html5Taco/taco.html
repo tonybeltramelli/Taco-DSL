@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="«description»">
+    <!--Style-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <title>«Survey Title»</title>
+
+  </head>
+  <body>
+
+    <!--Survey header-->
+  	<div class="page-header">
+        <h1 id="survey_title">«Survey Title» 
+            <small><span id="survey_description">«Content»</span></small>
+        </h1>
+    </div>
+
+    <input type="hidden" id="survey_date" value="«date»"/>
+
+    <!--Progress bar-->
+    <div class="progress progress-striped active">
+      <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+        1 Step Complet
+      </div>
+    </div>
+
+    <!--Personal information-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Personal information:</h3>
+        </div>
+        <table class="table">
+            <tr>
+                <td>
+                    <div class="input-group">
+                      <span class="key input-group-addon">«Name»</span><input type="text" class="value form-control">
+                    </div>
+                </td>
+            </tr>
+                <td>
+                    <div class="input-group">
+                      <span class="key input-group-addon">«Age»</span><input type="text" class="value form-control">
+                    </div>
+                </td>
+        </table>
+    </div>
+
+    <!--Category header-->
+    <h3 id="category_title">«category.title»</h3> 
+    <div class="panel-header blue">
+          <div class="alert alert-info">
+            <span id="category_description"><strong>«description»</strong></span>
+    </div>
+
+    <!--Questions-->
+
+    <div class="category">
+        <input class="category_title" type="hidden" value="«title»"/>
+        <input class="category_description" type="hidden" value="«description»"/>
+
+        <div class="page">
+
+                <!--Open field-->
+                <div class="question openField panel panel-default">
+                    <div class="text panel-heading">«This is an open field question?»</div>
+                    
+                    <div class="panel-body">
+                        <textarea class="answer form-control" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <!--Multiple choice-->
+                <div class="question multipleChoice panel panel-default">
+                    <div class="text panel-heading">«This is a multiple choice question?» <span class="red">*</span> </div>
+                    <div class="panel-footer">Select <span class="min">2</span> to <span class="max">3</span> options. </div>
+                    
+                    <div class="panel-body">   
+                        <div class="input-group">
+                          <span class="input-group-addon"><input class="answer" type="checkbox" value="«Red»"></span>
+                          <strong><span class="answer_text form-control">«Red»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input class="answer" type="checkbox" value="«Yellow»"></span>
+                          <strong><span class="answer_text form-control">«Yellow»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input class="answer" type="checkbox" value="«Green»"></span>
+                          <strong><span class="answer_text form-control">«Green»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input class="answer" type="checkbox" value="«Other»"></span>
+                          <input type="text" class="answer_text form-control" placeholder="«Other»"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Rating-->
+                <div class="question openField panel panel-default">
+                    <div class="text panel-heading">«This is a rating question?»</div>
+                    
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="min input-group-addon">«0»</span>
+                            <input type="range" class="form-control" min="0" max="10">
+                            <span class="max input-group-addon">«10»</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--End of page-->
+
+            <div class="page">
+
+                <!--Mutually exclusive-->
+                <div class="question mutuallyExc panel panel-default">
+                    <div class="text panel-heading">«This is a mutually exclusive question?» <span class="red">*</span> </div>
+                    
+                    <div class="panel-body">   
+                        <div class="input-group">
+                          <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer1»"></span>
+                          <strong><span class="answer_text form-control">«answer1»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer2»"></span>
+                          <strong><span class="answer_text form-control">«answer2»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer3»"></span>
+                          <strong><span class="answer_text form-control">«answer3»</span></strong>
+                        </div>
+                        <div class="input-group">
+                          <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«Other»"></span>
+                          <input type="text" class="answer_text form-control" placeholder="«Other»"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--End of page-->
+
+        </div>
+        <!--End of category-->
+
+        <div class="category">
+
+            <input class="category_title" type="hidden" value="«title»"/>
+            <input class="category_description" type="hidden" value="«description»"/>
+
+            <div class="page">
+
+                <!--Yes/No-->
+                <div class="question mutuallyExc panel panel-default">
+                    <div class="text panel-heading">«This is a yes/no question?»<span class="red">*</span></div>
+                    
+                    <div class="panel-body">   
+                        <div class="input-group">
+                          <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="yes"></span>
+                          <strong><span class="answer_text form-control">Yes</span></strong>
+
+                          <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="no"></span>
+                          <strong><span class="answer_text form-control">No</span></strong>
+                        </div>
+                    </div>
+                </div>
+
+                 <!--Ranking-->
+                <div class="question mutuallyExc panel panel-default">
+                    <div class="text panel-heading">«This is a ranking question»<span class="red">*</span></div>
+                    
+                    <div class="panel-body">
+                        <ul class="list-group sortable">
+                            <li class="list-group-item">
+                                <span>&#x21C5;</span>Item 1
+                            </li>
+                            <li class="list-group-item">
+                                <span>&#x21C5;</span>Item 2
+                            </li>
+                            <li class="list-group-item">
+                                <span>&#x21C5;</span>Item 3
+                            </li>
+                            <li class="list-group-item">
+                                <span>&#x21C5;</span>Item 4
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--End of page-->
+
+        </div>
+        <!--End of category-->
+
+        <!--Action buttons-->    
+        <div class="centered">
+            <button type="button" class="btn btn-large btn-primary" id="btn_back" onClick="back()">«Back</button>
+            <button type="button" class="btn btn-large btn-primary" id="btn_next" onClick="next()">Next»</button>
+            <button type="button" class="btn btn-large btn-primary" id="btn_submit" onClick="submit()">Submit</button>
+        </div>
+
+	</div>
+
+    <!--JavaScript-->
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/setup.js"></script>
+
+  </body>
+</html>
