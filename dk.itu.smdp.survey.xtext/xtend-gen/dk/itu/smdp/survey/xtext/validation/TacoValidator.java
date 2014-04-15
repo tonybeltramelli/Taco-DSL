@@ -3,11 +3,18 @@
  */
 package dk.itu.smdp.survey.xtext.validation;
 
+import SurveyModel.Answer;
 import SurveyModel.MultipleChoice;
+import SurveyModel.Question;
+import SurveyModel.Ranking;
 import SurveyModel.Rating;
 import SurveyModel.SurveyModelPackage;
 import dk.itu.smdp.survey.xtext.validation.AbstractTacoValidator;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * Custom validation rules.
@@ -20,7 +27,11 @@ public class TacoValidator extends AbstractTacoValidator {
   
   public final static String CHECK_RATING_START_END = "check_rating_start_end";
   
-  public final static String CHECK_RATING_INTERVAL = "check_rating_interval";
+  public final static String CHECK_RATING_INTERVAL_BOUNDARY = "check_rating_interval_boundary";
+  
+  public final static String CHECK_RATING_INTERVAL_VALUE = "check_rating_interval_value";
+  
+  public final static String CHECK_RANKING_NO_SUBQUESTION = "check_ranking_no_subquestion";
   
   @Check
   public void checkMultipleChoiceMaxMin(final MultipleChoice it) {
@@ -51,7 +62,7 @@ public class TacoValidator extends AbstractTacoValidator {
   }
   
   @Check
-  public void checkRatingInterval(final Rating it) {
+  public void checkRatingIntervalBoundary(final Rating it) {
     int _end = it.getEnd();
     int _start = it.getStart();
     int _minus = (_end - _start);
@@ -62,7 +73,55 @@ public class TacoValidator extends AbstractTacoValidator {
       String _string = Integer.toString(_interval_1);
       this.error("The interval value must be smaller than the distance between start and end : [start-end, interval]", 
         SurveyModelPackage.Literals.RATING__INTERVAL, 
-        TacoValidator.CHECK_RATING_INTERVAL, _string);
+        TacoValidator.CHECK_RATING_INTERVAL_BOUNDARY, _string);
+    }
+  }
+  
+  @Check
+  public void checkRatingIntervalValue(final Rating it) {
+    int _end = it.getEnd();
+    int _start = it.getStart();
+    int _minus = (_end - _start);
+    int _interval = it.getInterval();
+    int _modulo = (_minus % _interval);
+    boolean _notEquals = (_modulo != 0);
+    if (_notEquals) {
+      int _interval_1 = it.getInterval();
+      String _string = Integer.toString(_interval_1);
+      this.error("The interval value must be multiples of the distance between start and end : [start-end, interval]", 
+        SurveyModelPackage.Literals.RATING__INTERVAL, 
+        TacoValidator.CHECK_RATING_INTERVAL_VALUE, _string);
+    }
+  }
+  
+  @Check
+  public void checkRankingNoSubquestion(final Ranking it) {
+    EList<Answer> _answers = it.getAnswers();
+    final Function1<Answer,Boolean> _function = new Function1<Answer,Boolean>() {
+      public Boolean apply(final Answer it) {
+        EList<Question> _subquestion = it.getSubquestion();
+        int _length = ((Object[])Conversions.unwrapArray(_subquestion, Object.class)).length;
+        return Boolean.valueOf((_length != 0));
+      }
+    };
+    Iterable<Answer> _filter = IterableExtensions.<Answer>filter(_answers, _function);
+    int _length = ((Object[])Conversions.unwrapArray(_filter, Object.class)).length;
+    boolean _notEquals = (_length != 0);
+    if (_notEquals) {
+      EList<Answer> _answers_1 = it.getAnswers();
+      final Function1<Answer,Boolean> _function_1 = new Function1<Answer,Boolean>() {
+        public Boolean apply(final Answer it) {
+          EList<Question> _subquestion = it.getSubquestion();
+          int _length = ((Object[])Conversions.unwrapArray(_subquestion, Object.class)).length;
+          return Boolean.valueOf((_length != 0));
+        }
+      };
+      Iterable<Answer> _filter_1 = IterableExtensions.<Answer>filter(_answers_1, _function_1);
+      Answer _head = IterableExtensions.<Answer>head(_filter_1);
+      String _description = _head.getDescription();
+      this.error("Ranking answers cannot contain subquestions", 
+        SurveyModelPackage.Literals.ANSWER__SUBQUESTION, 
+        TacoValidator.CHECK_RANKING_NO_SUBQUESTION, _description);
     }
   }
 }
