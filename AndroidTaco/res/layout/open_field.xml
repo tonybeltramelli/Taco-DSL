@@ -4,8 +4,6 @@
     android:layout_height="wrap_content"
     android:gravity="bottom|left"
     android:hint="@string/openfield_hint"
-    android:inputType="textMultiLine"
-    android:lines="5"
     android:textAppearance="?android:attr/textAppearanceMedium" >
 
 </EditText>

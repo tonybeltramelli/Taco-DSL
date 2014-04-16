@@ -115,43 +115,44 @@ public class Survey
 	// dummy method just to test
 	private void init()
 	{
-		this.setTitle("The survey");
-		this.setDescription("bla bla bla bla");
+		this.setTitle("Survey");
+		this.setDescription("Survey example instance.");
 		
 		PersonAttribute name = new PersonAttribute("Name");
 		PersonAttribute age = new PersonAttribute("Age");
-		PersonAttribute sex = new PersonAttribute("Sex");
 		
 		Person p = new Person();
 		p.addAttribute(name);
 		p.addAttribute(age);
-		p.addAttribute(sex);
 		this.setPerson(p);
 		
-		Question q1 = QuestionFactory.create(Question.YES_NO, true, "Are you bla?");
-		Question q2 = QuestionFactory.create(Question.RATING, true, "Rate dat shit", 1, 10, 1);
+		Question q1 = QuestionFactory.create(Question.OPEN_FIELD, true, "What is your point of view ?");
 		
-		Question q3 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Pick something");
-		q3.addAnswer(AnswerFactory.create(Answer.BINARY, "Black"));
-		q3.addAnswer(AnswerFactory.create(Answer.BINARY, "White"));
-		q3.addAnswer(AnswerFactory.create(Answer.BINARY, "Blue"));
-		q3.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "Red"));
+		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
+		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "RED"));
+		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
+		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
+		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
+		q2.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
 		
-		Question q4 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "Choose something", 2, 3);
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "White"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Black"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Red"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Blue"));
+		Question q3 = QuestionFactory.create(Question.RATING, true, "How much do you like the canteen's coffee ?", 1, 10, 1);
 		
-		Question q5 = QuestionFactory.create(Question.OPEN_FIELD, true, "Say something");
+		Question q4 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Select your favorite cat");
+		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "First option"));
+		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Second option"));
+		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Third option"));
+		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Fourth option"));
+
+		Question q5 = QuestionFactory.create(Question.YES_NO, true, "Are you married ?");
 		
-		Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate your favorite booze");
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Cocktail"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Beer"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Wine"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Liquor"));
+		Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate those stuffs by preference order");
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "french fries"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "smorebrod"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "mousaka"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "hamburger"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "tacos"));
 		
-		Category category = new Category("Skata");
+		Category category = new Category("Category number 1 about cool stuffs.", "Your cool information.");
 		Page page = new Page();
 		page.addQuestion(q1);
 		page.addQuestion(q2);

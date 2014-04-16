@@ -93,9 +93,6 @@ public class MainActivity extends AbtractActivity implements View.OnClickListene
 	@Override
 	public void onClick(View v)
 	{
-		
-		Log.i("TAG", "asdfasdfasdf");
-		
 		// if the survey is not anonymous save first the attributes
 		if (!_survey.isAnonymous()) for (int i = 0; i < _editTexts.size(); i++)
 			_survey.getPerson().getAttribute(i).setValue(_editTexts.get(i).getText().toString());

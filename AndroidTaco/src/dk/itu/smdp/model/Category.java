@@ -14,7 +14,14 @@ public class Category
 	
 	public Category(String title)
 	{
+		this(title, "");
+	}
+	
+	public Category(String title, String description)
+	{
 		_title = title;
+		_description = description;
+		
 		_pages = new ArrayList<Page>();
 	}
 	

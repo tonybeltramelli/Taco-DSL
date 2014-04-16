@@ -29,7 +29,10 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		this.setContentView(R.layout.page);
 		
 		TextView categoryTitle = (TextView) this.findViewById(R.id.category_title_text_view);
+		TextView categoryDescription = (TextView) this.findViewById(R.id.category_description_text_view);
+		
 		categoryTitle.setText(_survey.getCategories().get(0).getTitle());
+		categoryDescription.setText(_survey.getCategories().get(0).getDescription());
 		
 		displayPage();
 	}

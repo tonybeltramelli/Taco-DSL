@@ -50,12 +50,14 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.ranking_question, parent, false);
+		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
 		TextView titleView = (TextView) layout.findViewById(R.id.question_textview);
 		titleView.setText(_questionText);
 		
-		_dragSortListView = (DragSortListView) layout.findViewById(R.id.drag_sort_listview);
+		_dragSortListView = (DragSortListView) inflater.inflate(R.layout.ranking_list, parent, false);
+		
+		layout.addView(_dragSortListView);
 		
 		_dragSortController = new DragSortController(_dragSortListView);
 		_dragSortController.setDragHandleId(R.id.drag_handle);
