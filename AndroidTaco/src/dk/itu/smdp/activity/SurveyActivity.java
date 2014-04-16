@@ -28,16 +28,20 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.page);
 		
+		_displayCategory();
+		_displayPage();
+	}
+	
+	private void _displayCategory()
+	{
 		TextView categoryTitle = (TextView) this.findViewById(R.id.category_title_text_view);
 		TextView categoryDescription = (TextView) this.findViewById(R.id.category_description_text_view);
 		
-		categoryTitle.setText(_survey.getCategories().get(0).getTitle());
-		categoryDescription.setText(_survey.getCategories().get(0).getDescription());
-		
-		displayPage();
+		categoryTitle.setText(_survey.getCategories().get(_currentCategory).getTitle());
+		categoryDescription.setText(_survey.getCategories().get(_currentCategory).getDescription());
 	}
-	
-	private void displayPage()
+
+	private void _displayPage()
 	{
 		Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 		
@@ -92,7 +96,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		
 		_currentPage --;
 		
-		displayPage();
+		_displayPage();
 	}
 	
 	public void nextButtonClickHandler(View view)
@@ -101,6 +105,6 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		
 		_currentPage ++;
 		
-		displayPage();
+		_displayPage();
 	}
 }
