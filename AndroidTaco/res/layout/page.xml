@@ -1,73 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <TextView
-            android:id="@+id/category_title_text_view"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:textSize="@dimen/category_title_text_zie"
-            android:gravity="center"
-            android:layout_height="wrap_content"/>
-
+        android:id="@+id/category_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textSize="@dimen/category_title_text_zie" />
 
     <ScrollView
-            android:id="@+id/page_screen_scroll_view"
+        android:id="@+id/page_screen_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/page_screen_button_area"
+        android:layout_below="@+id/category_title_text_view" >
+
+        <LinearLayout
+            android:id="@+id/questions_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/category_title_text_view"
-            android:layout_above="@+id/page_screen_button_area"
-            >
-            <LinearLayout
-                    android:id="@+id/questions_linearlayout"
-                    android:orientation="vertical"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical" >
 
-                <!--should be filled dynamically with all the questions-->
-            </LinearLayout>
-
+            <!-- should be filled dynamically with all the questions -->
+        </LinearLayout>
     </ScrollView>
 
-
     <RelativeLayout
-            android:id="@+id/page_screen_button_area"
-            android:layout_width="match_parent"
+        android:id="@+id/page_screen_button_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <ImageButton
+            android:id="@+id/page_screen_previous_button"
+            android:layout_width="@dimen/page_image_button_size"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            >
-        <ImageButton
-                android:id="@+id/page_screen_previous_button"
-                android:layout_width="@dimen/page_image_button_size"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_previous_item_white"
-                android:layout_alignParentLeft="true"
-                />
+            android:layout_alignParentLeft="true"
+            android:onClick="prevButtonClickHandler"
+            android:src="@drawable/ic_action_previous_item_white" />
 
         <ImageButton
-                android:id="@+id/page_screen_send_button"
-                android:layout_width="@dimen/page_image_button_size"
-                android:visibility="invisible"
-                android:src="@drawable/ic_action_email"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"/>
+            android:id="@+id/page_screen_send_button"
+            android:layout_width="@dimen/page_image_button_size"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_action_email"
+            android:visibility="invisible" />
 
         <ImageButton
-                android:id="@+id/page_screen_next_button"
-                android:src="@drawable/ic_action_next_item_white"
-                android:layout_width="@dimen/page_image_button_size"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                />
+            android:id="@+id/page_screen_next_button"
+            android:layout_width="@dimen/page_image_button_size"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:onClick="nextButtonClickHandler"
+            android:src="@drawable/ic_action_next_item_white" />
     </RelativeLayout>
-
 
 </RelativeLayout>

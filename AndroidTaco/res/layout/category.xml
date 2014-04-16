@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <include layout="@layout/page"/>
-    
+
+    <include layout="@layout/page" />
+
 </LinearLayout>

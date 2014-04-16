@@ -1,57 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-    <TextView
-            android:id="@+id/home_screen_survey_title_text_view"
-            android:layout_width="match_parent"
-            android:layout_alignParentTop="true"
-            android:gravity="center"
-            android:textSize="@dimen/home_screen_title_text_size"
-            android:textColor="@android:color/holo_blue_bright"
-            android:layout_alignParentLeft="true"
-            android:layout_height="wrap_content"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <TextView
-            android:id="@+id/home_screen_survey_description_text_view"
-            android:layout_width="match_parent"
-            android:layout_below="@id/home_screen_survey_title_text_view"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/home_screen_survey_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="@dimen/home_screen_title_text_size" />
 
     <TextView
-            android:id="@+id/home_screen_label_text_view"
-            android:text="@string/home_screen_label_string"
-            android:visibility="invisible"
-            android:layout_below="@id/home_screen_survey_description_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        android:id="@+id/home_screen_survey_description_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_screen_survey_title_text_view" />
+
+    <TextView
+        android:id="@+id/home_screen_label_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_screen_survey_description_text_view"
+        android:text="@string/home_screen_label_string"
+        android:visibility="invisible" />
 
     <ScrollView
-                android:layout_below="@id/home_screen_label_text_view"
-                android:id="@+id/home_screen_scrollview"
-                android:layout_width="match_parent"
-                android:layout_above="@+id/home_screen_start_button"
-                android:layout_height="match_parent">
+        android:id="@+id/home_screen_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/home_screen_start_button"
+        android:layout_below="@id/home_screen_label_text_view" >
 
-
-        <!--should be filled dynamically with person attributes-->
+        <!-- should be filled dynamically with person attributes -->
 
     </ScrollView>
+
     <Button
-            android:id="@+id/home_screen_start_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/home_screen_start_button_string"
-            />
+        android:id="@+id/home_screen_start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/home_screen_start_button_string" />
 
 </RelativeLayout>
-
-
-
-
-
-

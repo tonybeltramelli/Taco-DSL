@@ -82,4 +82,22 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			_nextButton.setVisibility(View.INVISIBLE);
 		}
 	}
+	
+	public void prevButtonClickHandler(View view)
+	{
+		if(_currentPage <= 0) return;
+		
+		_currentPage --;
+		
+		displayPage();
+	}
+	
+	public void nextButtonClickHandler(View view)
+	{
+		if(_currentPage >= _survey.getCategories().get(_currentCategory).getPages().size()) return; 
+		
+		_currentPage ++;
+		
+		displayPage();
+	}
 }
