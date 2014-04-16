@@ -153,11 +153,11 @@ public class Survey
 		
 		Category category = new Category("Skata");
 		Page page = new Page();
-		/*page.addQuestion(q1);
+		page.addQuestion(q1);
 		page.addQuestion(q2);
 		page.addQuestion(q3);
 		page.addQuestion(q4);
-		page.addQuestion(q5);*/
+		page.addQuestion(q5);
 		page.addQuestion(q6);
 		
 		category.addPage(page);
