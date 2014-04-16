@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">AndroidTaco</string>
-    
-    <!--home screen strings-->
+
+    <!-- home screen strings -->
     <string name="home_screen_start_button_string">Start Survey</string>
     <string name="home_screen_label_string">Please fill all the information below</string>
 
-    <!--page screen strings-->
+    <!-- page screen strings -->
     <string name="page_screen_next_button_string">Next</string>
     <string name="page_screen_previous_button_string">Previous</string>
     <string name="page_screen_send_button_string">Send</string>
 
-    <!--question strings-->
+    <!-- question strings -->
     <string name="openfield_hint">Please enter your answer here</string>
-	<string name="boolean_answer_yes">Yes</string>
-	<string name="boolean_answer_no">No</string>
+    <string name="boolean_answer_yes">Yes</string>
+    <string name="boolean_answer_no">No</string>
+    <string name="handle_control">Handle control</string>
+    <string name="prev_button_control">Prev button control</string>
+    <string name="next_button_control">Next button control</string>
+    <string name="submit_button_control">Submit button control</string>
+
 </resources>

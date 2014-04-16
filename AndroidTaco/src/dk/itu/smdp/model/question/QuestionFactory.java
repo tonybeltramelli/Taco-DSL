@@ -27,8 +27,7 @@ public final class QuestionFactory
 			return new RatingQuestion(isMandatory, questionText, params[0], params[1], params[2]);
 		} else if (type.equals(Question.RANKING))
 		{
-			// TODO
-			return null;
+			return new RankingQuestion(isMandatory, questionText);
 		} else
 			throw new IllegalArgumentException("Type specified is unknown to the factory");
 	}

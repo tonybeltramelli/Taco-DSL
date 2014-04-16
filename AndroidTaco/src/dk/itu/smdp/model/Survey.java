@@ -130,6 +130,7 @@ public class Survey
 		
 		Question q1 = QuestionFactory.create(Question.YES_NO, true, "Are you bla?");
 		Question q2 = QuestionFactory.create(Question.RATING, true, "Rate dat shit", 1, 10, 1);
+		
 		Question q3 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Pick something");
 		q3.addAnswer(AnswerFactory.create(Answer.BINARY, "Black"));
 		q3.addAnswer(AnswerFactory.create(Answer.BINARY, "White"));
@@ -144,8 +145,15 @@ public class Survey
 		
 		Question q5 = QuestionFactory.create(Question.OPEN_FIELD, true, "Say something");
 		
+		Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate your favorite booze");
+		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Cocktail"));
+		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Beer"));
+		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Wine"));
+		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Liquor"));
+		
 		Category category = new Category("Skata");
 		Page page = new Page();
+		page.addQuestion(q6);
 		page.addQuestion(q1);
 		page.addQuestion(q2);
 		page.addQuestion(q3);

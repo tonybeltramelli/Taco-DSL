@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
 
     <TextView
         android:id="@+id/category_title_text_view"
@@ -9,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:textSize="@dimen/category_title_text_zie" />
+        android:textSize="@dimen/category_title_text_size" />
 
     <ScrollView
         android:id="@+id/page_screen_scroll_view"
@@ -21,9 +23,7 @@
         <LinearLayout
             android:id="@+id/questions_linearlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <!-- should be filled dynamically with all the questions -->
@@ -41,6 +41,7 @@
             android:layout_width="@dimen/page_image_button_size"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:contentDescription="@string/prev_button_control"
             android:onClick="prevButtonClickHandler"
             android:src="@drawable/ic_action_previous_item_white" />
 
@@ -49,6 +50,7 @@
             android:layout_width="@dimen/page_image_button_size"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:contentDescription="@string/submit_button_control"
             android:src="@drawable/ic_action_email"
             android:visibility="invisible" />
 
@@ -57,6 +59,7 @@
             android:layout_width="@dimen/page_image_button_size"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:contentDescription="@string/next_button_control"
             android:onClick="nextButtonClickHandler"
             android:src="@drawable/ic_action_next_item_white" />
     </RelativeLayout>
