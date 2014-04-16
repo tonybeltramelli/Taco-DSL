@@ -48,6 +48,8 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		LinearLayout parent = (LinearLayout) this.findViewById(R.id.questions_linearlayout);
 		parent.removeAllViews();
 		
+		_mandatoryQuestionsNumber = 0;
+		
 		for (Question q : page.getQuestions())
 		{
 			q.setContainer(this);
@@ -59,9 +61,27 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 				_mandatoryQuestionsNumber++;
 			}
 		}
+
+		View sendButton = findViewById(R.id.page_screen_send_button);
+		
+		if(_currentCategory == _survey.getCategories().size())
+		{
+			sendButton.setVisibility(View.VISIBLE);
+		}else{
+			sendButton.setVisibility(View.INVISIBLE);
+		}
 		
 		_nextButton = findViewById(R.id.page_screen_next_button);
 		_nextButton.setVisibility(View.INVISIBLE);
+		
+		View prevButton = findViewById(R.id.page_screen_previous_button);
+		
+		if(_currentPage == 0 && _currentCategory == 0)
+		{
+			prevButton.setVisibility(View.INVISIBLE);
+		}else{
+			prevButton.setVisibility(View.VISIBLE);
+		}
 	}
 	
 	@Override
@@ -93,7 +113,15 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	
 	public void prevButtonClickHandler(View view)
 	{
-		if(_currentPage <= 0) return;
+		if(_currentPage == 0)
+		{
+			if(_currentCategory == 0)
+			{
+				return;
+			}else{
+				_currentCategory --;
+			}
+		}
 		
 		_currentPage --;
 		
@@ -102,7 +130,15 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	
 	public void nextButtonClickHandler(View view)
 	{
-		if(_currentPage >= _survey.getCategories().get(_currentCategory).getPages().size()) return; 
+		if(_currentPage == _survey.getCategories().get(_currentCategory).getPages().size() - 1)
+		{
+			if(_currentCategory == _survey.getCategories().size() - 1)
+			{
+				return;
+			}else{
+				_currentCategory ++;
+			}
+		}
 		
 		_currentPage ++;
 		
