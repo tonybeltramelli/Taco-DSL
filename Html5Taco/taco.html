@@ -15,22 +15,23 @@
 
     <!--Survey header-->
   	<div class="page-header">
-        <h1 id="survey_title">«Survey Title» 
-            <small><span id="survey_description">«Content»</span></small>
+        <h1>
+            <span id="survey_title">«Title»</span><span id="survey_description"><small>«Descritpion»</small></span>
         </h1>
     </div>
 
     <input type="hidden" id="survey_date" value="«date»"/>
 
     <!--Progress bar-->
+    <h4><small>Progress</small></h4>
     <div class="progress progress-striped active">
-      <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-        1 Step Complet
-      </div>
+        <div class="progress-bar"  role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            0%
+        </div>
     </div>
 
     <!--Personal information-->
-    <div class="panel panel-primary">
+    <div id="person" class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Personal information:</h3>
         </div>
@@ -51,17 +52,20 @@
     </div>
 
     <!--Category header-->
-    <h3 id="category_title">«category.title»</h3> 
-    <div class="panel-header blue">
-          <div class="alert alert-info">
-            <span id="category_description"><strong>«description»</strong></span>
+    <div id="category_header">
+        <h3 id="category_title"></h3> 
+        <div class="panel-header blue">
+                <div class="alert alert-info">
+                    <strong><span id="category_description"/></strong>
+                </div>
+        </div>
     </div>
 
     <!--Questions-->
 
     <div class="category">
-        <input class="category_title" type="hidden" value="«title»"/>
-        <input class="category_description" type="hidden" value="«description»"/>
+        <input class="category_title" type="hidden" value="«Category 1»"/>
+        <input class="category_description" type="hidden" value="«Description»"/>
 
         <div class="page">
 
@@ -149,8 +153,8 @@
 
         <div class="category">
 
-            <input class="category_title" type="hidden" value="«title»"/>
-            <input class="category_description" type="hidden" value="«description»"/>
+            <input class="category_title" type="hidden" value="«Category 2»"/>
+            <input class="category_description" type="hidden" value="«Description»"/>
 
             <div class="page">
 
@@ -168,6 +172,11 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+            <!--End of page-->
+
+            <div class="page">
 
                  <!--Ranking-->
                 <div class="question mutuallyExc panel panel-default">
@@ -203,6 +212,12 @@
             <button type="button" class="btn btn-large btn-primary" id="btn_next" onClick="next()">Next»</button>
             <button type="button" class="btn btn-large btn-primary" id="btn_submit" onClick="submit()">Submit</button>
         </div>
+
+        <!--Final message-->
+        <div id="final_message" class="panel panel-default">
+            <h1 class="text-center">Survey complete! Tanks for answering.</h1>
+        </div>
+    </div>
 
 	</div>
 
