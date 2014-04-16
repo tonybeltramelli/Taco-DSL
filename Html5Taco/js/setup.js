@@ -1,11 +1,59 @@
-//------Ranking------
+//------Subquestions------------
+$(function() {
+
+	$.each($(".subquestion"),function(index,subquestion){
+	    	$(subquestion).hide();
+	});
+
+	//Radio nested subquestions
+	$("input:radio").click(function(){
+	    var subquestions = $(this).parent().siblings(".subquestion");
+	    var parent_subquestions = $(this).parent().parent().parent().find(".subquestion");
+
+	    //Hide all subquestions
+	    $.each(parent_subquestions,function(index,subquestion){
+	    	$(subquestion).hide();
+	    	cleanSubquestion($(subquestion));
+	    });
+	    //Show corresponding subquestion
+	    $.each(subquestions,function(index,subquestion){
+	    	$(subquestion).show();
+	    });
+	});
+
+	//Checkbox nested subquestions
+	$("input:checkbox").click(function(){
+	    var subquestions = $(this).parent().siblings(".subquestion");
+	    var parent_subquestions = $(this).parent().parent().parent().find(".subquestion");
+
+	    //Show corresponding subquestion
+	    $.each(subquestions,function(index,subquestion){
+	    	$(subquestion).toggle();
+	    	if($(subquestion).is(':visible')){
+	    		cleanSubquestion($(subquestion));
+	    	}
+	    });
+	});
+});
+
+//Clean subquestion content
+function cleanSubquestion(subquestion){
+	$.each(subquestion.find("input:radio,input:checkbox"),function(index,input){
+		$(input).attr('checked', false);
+	});
+	$.each(subquestion.find("input:text"),function(index,input){
+		$(input).val("");
+	});
+}
+
+//------Ranking-----------------
 
 $(function() {
     $( ".sortable" ).sortable();
     $( ".sortable" ).disableSelection();
 });
 
-//------Setup Pagination--------
+//------Pagination--------------
 
 var no_categories;
 var no_current_pages;
@@ -192,3 +240,14 @@ function updateProgress(){
 	bar.html(perc + "%");
 	bar.width(perc + "%");
 }
+
+//--------------Rating------------
+
+$(function() {
+	$(".range").change(
+		function(){
+		var range = $(this);
+	  	var box = $(range.parent().parent().parent().find(".rate-val"));
+		box.html(range.val());
+	});
+});

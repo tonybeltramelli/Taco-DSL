@@ -87,10 +87,48 @@
                         <div class="input-group">
                           <span class="input-group-addon"><input class="answer" type="checkbox" value="«Red»"></span>
                           <strong><span class="answer_text form-control">«Red»</span></strong>
+
+                             <!--Subquestion-->
+                            <!--Mutually exclusive-->
+                            <div class="subquestion mutuallyExc panel panel-default">
+                                <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
+                                
+                                <div class="panel-body">   
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer1»</span></strong>
+                                    </div>
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer2»</span></strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Subquestion-->
+
                         </div>
                         <div class="input-group">
                           <span class="input-group-addon"><input class="answer" type="checkbox" value="«Yellow»"></span>
                           <strong><span class="answer_text form-control">«Yellow»</span></strong>
+
+                            <!--Subquestion-->
+                            <!--Mutually exclusive-->
+                            <div class="subquestion mutuallyExc panel panel-default">
+                                <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
+                                
+                                <div class="panel-body">   
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer1»</span></strong>
+                                    </div>
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer2»</span></strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Subquestion-->
+
                         </div>
                         <div class="input-group">
                           <span class="input-group-addon"><input class="answer" type="checkbox" value="«Green»"></span>
@@ -105,12 +143,14 @@
 
                 <!--Rating-->
                 <div class="question openField panel panel-default">
-                    <div class="text panel-heading">«This is a rating question?»</div>
-                    
+                    <div class="text panel-heading">
+                        «This is a rating question?»
+                        <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
+                    </div>
                     <div class="panel-body">
                         <div class="input-group">
                             <span class="min input-group-addon">«0»</span>
-                            <input type="range" class="form-control" min="0" max="10">
+                            <input type="range" class="form-control range" min="0" max="10">
                             <span class="max input-group-addon">«10»</span>
                         </div>
                     </div>
@@ -125,14 +165,52 @@
                 <div class="question mutuallyExc panel panel-default">
                     <div class="text panel-heading">«This is a mutually exclusive question?» <span class="red">*</span> </div>
                     
-                    <div class="panel-body">   
+                    <div class="panel-body">
                         <div class="input-group">
-                          <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer1»"></span>
-                          <strong><span class="answer_text form-control">«answer1»</span></strong>
+                            <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer1»"></span>
+                            <strong><span class="answer_text form-control">«answer1»</span></strong>
+
+                            <!--Subquestion-->
+                            <!--Mutually exclusive-->
+                            <div class="subquestion mutuallyExc panel panel-default">
+                                <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
+                                
+                                <div class="panel-body">   
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer1»</span></strong>
+                                    </div>
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer2»</span></strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Subquestion-->
                         </div>
+
                         <div class="input-group">
                           <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer2»"></span>
                           <strong><span class="answer_text form-control">«answer2»</span></strong>
+
+                           <!--Subquestion-->
+                            <!--Mutually exclusive-->
+                            <div class="subquestion mutuallyExc panel panel-default">
+                                <div class="text panel-heading">«This is subquestion 2?» <span class="red">*</span> </div>
+                                
+                                <div class="panel-body">   
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_2" class="answer" type="radio" value="«subanswer1»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer1»</span></strong>
+                                    </div>
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><input name="sub_radio_2" class="answer" type="radio" value="«subanswer2»"></span>
+                                      <strong><span class="answer_text form-control">«subanswer2»</span></strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Subquestion-->
+
                         </div>
                         <div class="input-group">
                           <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer3»"></span>
