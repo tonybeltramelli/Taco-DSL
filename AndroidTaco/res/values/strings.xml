@@ -20,5 +20,7 @@
     <string name="prev_button_control">Prev button control</string>
     <string name="next_button_control">Next button control</string>
     <string name="submit_button_control">Submit button control</string>
+    <string name="question_label_min_max_interval">Select between {A} and {B} answers</string>
+    <string name="question_label_min_max_value">Select {A} answers</string>
 
 </resources>

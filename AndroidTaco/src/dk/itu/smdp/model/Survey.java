@@ -153,15 +153,19 @@ public class Survey
 		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "tacos"));
 		
 		Category category = new Category("Category number 1 about cool stuffs.", "Your cool information.");
-		Page page = new Page();
-		page.addQuestion(q1);
-		page.addQuestion(q2);
-		page.addQuestion(q3);
-		page.addQuestion(q4);
-		page.addQuestion(q5);
-		page.addQuestion(q6);
 		
-		category.addPage(page);
+		Page page1 = new Page();
+		page1.addQuestion(q1);
+		page1.addQuestion(q2);
+		page1.addQuestion(q3);
+		
+		Page page2 = new Page();
+		page2.addQuestion(q4);
+		page2.addQuestion(q5);
+		page2.addQuestion(q6);
+		
+		category.addPage(page1);
+		category.addPage(page2);
 		
 		this.addCategory(category);
 	}

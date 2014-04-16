@@ -5,6 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import dk.itu.smdp.R;
+import dk.itu.smdp.model.Survey;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.utils.FixedStack;
 
@@ -39,8 +42,28 @@ public class MultipleChoice extends Question
 	
 	@Override
 	public View getView(Context context, ViewGroup parent)
-	{
+	{		
 		LinearLayout layout = initQuestionLayout(context, parent);
+		
+		if (_min != 1 && _max != 1)
+		{
+			String description;
+			
+			if (_min != _max)
+			{
+				description = context.getResources().getString(R.string.question_label_min_max_interval);
+				
+				description = description.replace("{A}", String.valueOf(_min));
+				description = description.replace("{B}", String.valueOf(_max));
+			} else
+			{
+				description = context.getResources().getString(R.string.question_label_min_max_value);
+				description = description.replace("{A}", String.valueOf(_min));
+			}
+			
+			TextView descriptionView = (TextView) layout.findViewById(R.id.question_description_textview);
+			descriptionView.setText(description);
+		}
 		
 		this.populateAnswerViews(context, layout, layout, this);
 		

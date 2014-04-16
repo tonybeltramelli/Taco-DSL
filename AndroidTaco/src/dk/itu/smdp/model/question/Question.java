@@ -105,7 +105,7 @@ public abstract class Question implements Viewable, Answerable
 		
 		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
-		TextView titleView = (TextView) layout.findViewById(R.id.question_textview);
+		TextView titleView = (TextView) layout.findViewById(R.id.question_title_textview);
 		titleView.setText(_questionText);
 		
 		return layout;
