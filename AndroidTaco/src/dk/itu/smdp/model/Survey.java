@@ -23,8 +23,6 @@ public class Survey
 	
 	private ArrayList<Category> _categories;
 	
-	private Activity _context;
-	
 	private static Survey _instance;
 	
 	public static Survey getInstance()
@@ -100,16 +98,6 @@ public class Survey
 	public void addCategory(Category c)
 	{
 		_categories.add(c);
-	}
-	
-	public Activity getContext()
-	{
-		return _context;
-	}
-	
-	public void setContext(Activity context)
-	{
-		this._context = context;
 	}
 	
 	// dummy method just to test

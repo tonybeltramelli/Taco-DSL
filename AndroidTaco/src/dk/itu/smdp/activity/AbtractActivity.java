@@ -18,7 +18,6 @@ public abstract class AbtractActivity extends Activity
 		super.onCreate(savedInstanceState);
 
 		_survey = Survey.getInstance();
-        _survey.setContext(this);
 		
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 	}

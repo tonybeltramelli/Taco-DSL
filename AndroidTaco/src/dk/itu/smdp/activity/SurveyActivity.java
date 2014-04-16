@@ -46,6 +46,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 		
 		LinearLayout parent = (LinearLayout) this.findViewById(R.id.questions_linearlayout);
+		parent.removeAllViews();
 		
 		for (Question q : page.getQuestions())
 		{
