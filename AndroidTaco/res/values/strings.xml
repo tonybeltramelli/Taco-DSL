@@ -13,7 +13,7 @@
     <string name="page_screen_send_button_string">Send</string>
 
     <!-- question strings -->
-    <string name="openfield_hint">Please enter your answer here</string>
+    <string name="openfield_hint">Answer here</string>
     <string name="boolean_answer_yes">Yes</string>
     <string name="boolean_answer_no">No</string>
     <string name="handle_control">Handle control</string>

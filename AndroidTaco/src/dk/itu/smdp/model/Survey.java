@@ -146,19 +146,19 @@ public class Survey
 		Question q5 = QuestionFactory.create(Question.OPEN_FIELD, true, "Say something");
 		
 		Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate your favorite booze");
-		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Cocktail"));
-		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Beer"));
-		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Wine"));
-		q6.addAnswer(AnswerFactory.create(Answer.BINARY, "Liquor"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Cocktail"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Beer"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Wine"));
+		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "Liquor"));
 		
 		Category category = new Category("Skata");
 		Page page = new Page();
-		page.addQuestion(q6);
-		page.addQuestion(q1);
+		/*page.addQuestion(q1);
 		page.addQuestion(q2);
 		page.addQuestion(q3);
 		page.addQuestion(q4);
-		page.addQuestion(q5);
+		page.addQuestion(q5);*/
+		page.addQuestion(q6);
 		
 		category.addPage(page);
 		

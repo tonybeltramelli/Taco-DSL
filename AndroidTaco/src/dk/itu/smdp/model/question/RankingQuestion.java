@@ -50,7 +50,7 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.ranking_question, parent, false);		
+		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.ranking_question, parent, false);
 		
 		TextView titleView = (TextView) layout.findViewById(R.id.question_textview);
 		titleView.setText(_questionText);
@@ -89,7 +89,7 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 	@Override
 	public void drop(int from, int to)
 	{
