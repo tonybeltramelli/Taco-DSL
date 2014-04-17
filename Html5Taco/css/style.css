@@ -1,3 +1,16 @@
+/*
+// Taco DSL HTML5 css definition
+// Pervasive Computing (SPCT-SPRING 2014)
+// IT University of Copenhagen
+// Authors:
+//    Daniel Garcia garcia - dgac@itu.dk
+//    Dennis Sadeler Shapira - dssh@itu.dk
+// Date: 
+//    2014-04-17
+// Summary:
+//    CSS style definicion for HTML5 instance of Taco DSL 
+*/
+
 .page-header {
     padding-bottom: 9px;
     margin: 0px 0 -10px;
