@@ -15,6 +15,8 @@ public final class AnswerFactory
 			return new RankingAnswer(text);
 		else if (type.equals(Answer.USER_INPUT))
 			return new UserInputAnswer(text);
+        else if (type.equals(Answer.RATING))
+            return new RatingAnswer(text);
 		else
 			throw new IllegalArgumentException("Type specified is unknown to the answer factory");
 	}

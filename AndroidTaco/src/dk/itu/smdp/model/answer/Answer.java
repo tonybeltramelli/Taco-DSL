@@ -12,6 +12,7 @@ public abstract class Answer implements Viewable
 	public static final String USER_INPUT = "user_input";
 	public static final String OPEN_FIELD = "open_field";
 	public static final String RANKING = "ranking";
+    public static final String RATING = "rating";
 	
 	protected String _description;
 	

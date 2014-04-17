@@ -1,13 +1,12 @@
 package dk.itu.smdp.model;
 
-import java.util.ArrayList;
-import java.util.Date;
-
-import android.app.Activity;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.answer.AnswerFactory;
 import dk.itu.smdp.model.question.Question;
 import dk.itu.smdp.model.question.QuestionFactory;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by centos on 4/13/14.
@@ -123,7 +122,7 @@ public class Survey
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
 		q2.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
 		
-		Question q3 = QuestionFactory.create(Question.RATING, true, "How much do you like the canteen's coffee ?", 1, 10, 1);
+		Question q3 = QuestionFactory.create(Question.RATING, true, "How much do you like the canteen's coffee ?", 0, 100, 10);
 		
 		Question q4 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Select your favorite cat");
 		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "First option"));

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import dk.itu.smdp.model.answer.Answer;
+import dk.itu.smdp.model.answer.AnswerFactory;
 
 /**
  * Created by centos on 4/13/14.
@@ -30,6 +31,16 @@ public class RatingQuestion extends MutuallyExclusive
 		_min = min;
 		_max = max;
 		_interval = interval;
+
+        //add binary answers
+        for( int i = _min ; i <= _max ; i += _interval ){
+            Log.i("TAG" , "Rating " + String.valueOf(i));
+            super.addAnswer(AnswerFactory.create(Answer.RATING, String.valueOf(i)));
+        }
+
+        //TODO
+        //check if should be added here
+        super.onAnswerSelected(_answers.get(0));
 	}
 	
 	@Override
@@ -45,28 +56,22 @@ public class RatingQuestion extends MutuallyExclusive
 		setUpSeekBar(context);
 		
 		layout.addView(_seekBar);
-		
+
 		return layout;
 	}
 	
 	private void setUpSeekBar(Context context)
 	{
 		_seekBar = new SeekBar(context);
-		_seekBar.setMax(_max);
-		_seekBar.incrementProgressBy(_interval);
-		
-		// TODO
-		// set up proper min and max values
-		// make callbacks on change
-		// check if the first answer needs to be on the _answeredAnswers
-		// manually
-		
+        _seekBar.setProgress(0);
+		_seekBar.setMax((_max - _min) / _interval);
+
 		_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
 		{
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
 			{
-				Log.i("TAG", "value  " + progress);
+                RatingQuestion.super.onAnswerSelected(_answers.get(progress));
 			}
 			
 			@Override

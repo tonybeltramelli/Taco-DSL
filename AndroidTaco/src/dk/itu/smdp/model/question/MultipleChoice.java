@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.itu.smdp.R;
-import dk.itu.smdp.model.Survey;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.utils.FixedStack;
 
@@ -75,7 +74,9 @@ public class MultipleChoice extends Question
 	{
 		Answer popedItem = _answeredAnswers.pushAndPopExtraItem(answer);
 		if (popedItem != null) popedItem.clear();
-		
+
+		//TODO
+        //remove this for loop
 		for (int i = 0; i < _answeredAnswers.size(); i++)
 			Log.i("TAG", "A : " + _answeredAnswers.get(i).getUserAnswer());
 		
