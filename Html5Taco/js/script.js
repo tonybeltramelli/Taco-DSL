@@ -249,6 +249,7 @@ function submit(){
 	$("#btn_back").fadeOut("slow");
 	$("#btn_submit").fadeOut("slow");
 	$("#category_header").fadeOut("slow");
+	$("#required_message").fadeOut("slow");
 	$("#final_message").fadeIn("slow");
 
 	storeSurveyData();
