@@ -1,8 +1,15 @@
 Taco-DSL
 ========
 
+![Taco DSL survey generator - logo](https://raw.github.com/tonybeltramelli/Taco-DSL/master/TacoDSL/Resources/logo/logo_taco.png)
+
 The Taco domain specific language to generate surveys.  
 Model Driven Development Spring 2014 - [IT University of Copenhagen](www.itu.dk/en)
+
+####Target
+Code generation for two platforms:
+*HTML5 responsive using Bootstrap
+*Android application
 
 ####Usage
 (Instance example: dk.itu.smdp.survey.xtext/instance_example/example.taco)
