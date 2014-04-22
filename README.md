@@ -8,8 +8,8 @@ Model Driven Development Spring 2014 - [IT University of Copenhagen](www.itu.dk/
 
 ####Target
 Code generation for two platforms:
-*HTML5 responsive using Bootstrap
-*Android application
+* HTML5 responsive using Bootstrap
+* Android application
 
 ####Usage
 (Instance example: dk.itu.smdp.survey.xtext/instance_example/example.taco)
