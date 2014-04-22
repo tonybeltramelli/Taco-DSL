@@ -4,8 +4,8 @@
 package dk.itu.smdp.survey.xtext.generator
 
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
@@ -13,12 +13,10 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class TacoGenerator implements IGenerator {
-	
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+
+	override void doGenerate(Resource resource, IFileSystemAccess fsa)
+	{
+		new HTML5Generator().generate(resource, fsa);
+		new AndroidGenerator().generate(resource, fsa);
 	}
 }
