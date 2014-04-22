@@ -8,13 +8,14 @@ import SurveyModel.Ranking
 import SurveyModel.Rating
 import SurveyModel.Survey
 import SurveyModel.YesNo
-import java.io.UnsupportedEncodingException
-import java.util.Arrays
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 
 class AndroidGenerator extends SurveyGenerator {
+	private int _categoryCounter;
 	private int _pageCounter;
+	private int _questionCounter;
+	private int _personAttributeCounter;
 
 	def override generate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.toIterable.filter(typeof(Survey)).forEach [ Survey it |
@@ -57,7 +58,7 @@ class AndroidGenerator extends SurveyGenerator {
 				private Survey()
 				{
 					_categories = new ArrayList<Category>();
-					_isAnonymous = true;
+					_isAnonymous = «person == null»;
 					init();
 				}
 				
@@ -128,39 +129,38 @@ class AndroidGenerator extends SurveyGenerator {
 					this.setDescription("«description»");
 					
 					«IF person != null»
+						Person p = new Person();
+						
 						«FOR attribute : person.attribute»
-							PersonAttribute «_getIdentifier(attribute.key)» = new PersonAttribute("«attribute.key»");
+							«_incrementPersonAttribute»
+							PersonAttribute personAttribute«_personAttributeCounter» = new PersonAttribute("«attribute.key»");
+							p.addAttribute(personAttribute«_personAttributeCounter»);
 						«ENDFOR»
 						
-							Person p = new Person();
-							«FOR attribute : person.attribute»
-								p.addAttribute(«_getIdentifier(attribute.key)»);
-							«ENDFOR»
-							this.setPerson(p);
+						this.setPerson(p);
 					«ENDIF»
 					
 					«FOR category : categories»
 						
-						Category «_getIdentifier(category.title)» = new Category("«category.title»", "«category.description»");
+						«_incrementCategory()»
+						
+						Category category«_categoryCounter» = new Category("«category.title»", "«category.description»");
 						
 						«FOR page : category.pages»
-							
-							«FOR question : page.questions»
-								«compileQuestion(question)»
-							«ENDFOR»
-							
 							«_incrementPage()»
 							
 							Page page«_pageCounter» = new Page();
 							
 							«FOR question : page.questions»
-								page«_pageCounter».addQuestion(«_getIdentifier(question.questionText)»);
+								«_incrementQuestion»
+								«compileQuestion(question)»
+								page«_pageCounter».addQuestion(question«_questionCounter»);
 							«ENDFOR»
 							
-							«_getIdentifier(category.title)».addPage(page«_pageCounter»);
+							category«_categoryCounter».addPage(page«_pageCounter»);
 						«ENDFOR»
 						
-						this.addCategory(«_getIdentifier(category.title)»);
+						this.addCategory(category«_categoryCounter»);
 						
 					«ENDFOR»
 				}
@@ -171,44 +171,54 @@ class AndroidGenerator extends SurveyGenerator {
 	def override String compileQuestion(Question it) {
 		'''
 			«IF (it instanceof OpenField)»
-				Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.OPEN_FIELD, «isMandatory», "«questionText»");								            
+				Question question«_questionCounter» = QuestionFactory.create(Question.OPEN_FIELD, «isMandatory», "«questionText»");								            
 			«ENDIF»
 			
 			«IF (it instanceof Ranking)»
-				Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.RANKING, «isMandatory», "«questionText»");
+				Question question«_questionCounter» = QuestionFactory.create(Question.RANKING, «isMandatory», "«questionText»");
 				
 				«FOR answer : answers»
-					«_getIdentifier(questionText)».addAnswer(AnswerFactory.create(Answer.RANKING, "«answer.description»"));		
+					question«_questionCounter».addAnswer(AnswerFactory.create(Answer.RANKING, "«answer.description»"));		
 					«ENDFOR»
 				«ENDIF»
 				
 				«IF (it instanceof YesNo)»
-					Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.YES_NO, «isMandatory», "«questionText»");
+					Question question«_questionCounter» = QuestionFactory.create(Question.YES_NO, «isMandatory», "«questionText»");
 				«ELSEIF (it instanceof Rating)»
-					Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.RATING, «isMandatory», "«questionText»", «(it as Rating).start», «(it as Rating).end», «(it as Rating).interval»);
+					Question question«_questionCounter» = QuestionFactory.create(Question.RATING, «isMandatory», "«questionText»", «(it as Rating).start», «(it as Rating).end», «(it as Rating).interval»);
 				«ELSEIF (it instanceof MutuallyExclusive)»
-					Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, «isMandatory», "«questionText»");
+					Question question«_questionCounter» = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, «isMandatory», "«questionText»");
 					
 					«FOR answer : answers»
 						«IF !answer.isUserInputAllowed»
-							«_getIdentifier(questionText)».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
+							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
 						«ELSE»
-							«_getIdentifier(questionText)».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
+							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
 						«ENDIF»
 					«ENDFOR»
 				«ELSEIF (it instanceof MultipleChoice)»
-					Question «_getIdentifier(questionText)» = QuestionFactory.create(Question.MULTIPLE_CHOICE, «isMandatory», "«questionText»", «(it as MultipleChoice).min», «(it as MultipleChoice).max»);
+					Question question«_questionCounter» = QuestionFactory.create(Question.MULTIPLE_CHOICE, «isMandatory», "«questionText»", «(it as MultipleChoice).min», «(it as MultipleChoice).max»);
 					
 					«FOR answer : answers»
 						«IF !answer.isUserInputAllowed»
-							«_getIdentifier(questionText)».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
+							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
 						«ELSE»
-							«_getIdentifier(questionText)».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
+							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
 						«ENDIF»
 					«ENDFOR»
 				«ENDIF»
 				
 			'''
+	}
+		
+	def private void _incrementPersonAttribute()
+	{
+		_personAttributeCounter = _personAttributeCounter + 1;
+	}
+	
+	def private void _incrementCategory()
+	{
+		_categoryCounter = _categoryCounter + 1;
 	}
 	
 	def private void _incrementPage()
@@ -216,11 +226,8 @@ class AndroidGenerator extends SurveyGenerator {
 		_pageCounter = _pageCounter + 1;
 	}
 	
-	def private _getIdentifier(String it) {
-		try {
-			Arrays.toString(getBytes("UTF-8")).replaceAll("\\D+", "_");
-		} catch (UnsupportedEncodingException e) {
-			null;
-		}
+	def private void _incrementQuestion()
+	{
+		_questionCounter = _questionCounter + 1;
 	}
 }
