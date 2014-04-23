@@ -103,7 +103,7 @@ $(function() {
     		$("#btn_submit").fadeOut("slow");
     	}
     }else{
-    		$("#btn_submit").fadeOut("slow");
+    	$("#btn_submit").fadeOut("slow");
     }
 
     //Setting global variables
@@ -268,7 +268,7 @@ function setCategoryHeader(category){
 //Update progress bar
 function updateProgress(){
 	var bar = $(".progress-bar");
-	var perc = no_current_step * 100 / no_steps;
+	var perc = Math.round(no_current_step * 100 / no_steps);
 	bar.html(perc + "%");
 	bar.width(perc + "%");
 }
@@ -282,7 +282,7 @@ $(function() {
 		function(){
 		var range = $(this);
 	  	var box = $(range.parent().parent().parent().find(".rate-val"));
-		box.html(range.val());
+	  	box.html(range.val());
 	});
 });
 

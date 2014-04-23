@@ -201,7 +201,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                     <div class="input-group">
                         <span class="min input-group-addon">«(it as Rating).start»</span>
-                        <input type="range" class="form-control range" min="«(it as Rating).start»" max="«(it as Rating).end»">
+                        <input type="range" class="form-control range" min="«(it as Rating).start»" max="«(it as Rating).end»" step="«(it as Rating).interval»"/>
                         <span class="max input-group-addon">«(it as Rating).end»</span>
                     </div>
                 </div>
