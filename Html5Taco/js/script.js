@@ -277,6 +277,7 @@ function updateProgress(){
 
 //Set numerical value on top
 $(function() {
+	//On change
 	$(".range").change(
 		function(){
 		var range = $(this);
