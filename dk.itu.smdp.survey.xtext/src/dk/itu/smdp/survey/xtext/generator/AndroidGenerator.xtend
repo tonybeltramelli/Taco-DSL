@@ -14,7 +14,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class AndroidGenerator extends SurveyGenerator {
 	private int _categoryCounter;
 	private int _pageCounter;
-	private int _questionCounter;
 	private int _personAttributeCounter;
 
 	def override generate(Resource resource, IFileSystemAccess fsa) {
@@ -224,10 +223,5 @@ class AndroidGenerator extends SurveyGenerator {
 	def private void _incrementPage()
 	{
 		_pageCounter = _pageCounter + 1;
-	}
-	
-	def private void _incrementQuestion()
-	{
-		_questionCounter = _questionCounter + 1;
 	}
 }

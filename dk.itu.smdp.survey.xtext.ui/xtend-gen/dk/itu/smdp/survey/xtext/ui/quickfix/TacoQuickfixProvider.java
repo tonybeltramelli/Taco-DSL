@@ -36,4 +36,22 @@ public class TacoQuickfixProvider extends DefaultQuickfixProvider {
     };
     acceptor.accept(issue, "Max higher than min", "Set max higher than min.", null, _function);
   }
+  
+  @Fix(TacoValidator.CHECK_RATING_START_END)
+  public void setEndHigherThanStart(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IModification _function = new IModification() {
+      public void apply(final IModificationContext context) throws Exception {
+        final IXtextDocument xtextDocument = context.getXtextDocument();
+        Integer _offset = issue.getOffset();
+        Integer _length = issue.getLength();
+        String _get = xtextDocument.get((_offset).intValue(), (_length).intValue());
+        final Integer end = Integer.valueOf(_get);
+        Integer _offset_1 = issue.getOffset();
+        Integer _length_1 = issue.getLength();
+        String _valueOf = String.valueOf(((end).intValue() * 2));
+        xtextDocument.replace((_offset_1).intValue(), (_length_1).intValue(), _valueOf);
+      }
+    };
+    acceptor.accept(issue, "End higher than start", "Set end higher than start.", null, _function);
+  }
 }

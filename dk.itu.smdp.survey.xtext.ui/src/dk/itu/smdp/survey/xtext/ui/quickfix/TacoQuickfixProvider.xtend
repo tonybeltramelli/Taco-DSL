@@ -14,8 +14,8 @@ import org.eclipse.xtext.validation.Issue
  *
  * see http://www.eclipse.org/Xtext/documentation.html#quickfixes
  */
-class TacoQuickfixProvider extends DefaultQuickfixProvider {
-
+class TacoQuickfixProvider extends DefaultQuickfixProvider
+{
 	@Fix(TacoValidator::CHECK_MULTIPLE_CHOICE_MAX_MIN)
 	def setMaxHigherThanMin(Issue issue, IssueResolutionAcceptor acceptor)
 	{
@@ -26,14 +26,15 @@ class TacoQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, issue.length, String.valueOf(max * 2))
 		]
 	}
-
-//	@Fix(MyDslValidator::INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	
+	@Fix(TacoValidator::CHECK_RATING_START_END)
+	def setEndHigherThanStart(Issue issue, IssueResolutionAcceptor acceptor)
+	{
+		acceptor.accept(issue, "End higher than start", "Set end higher than start.", null) [
+			context |
+			val xtextDocument = context.xtextDocument
+			val end = Integer.valueOf(xtextDocument.get(issue.offset, issue.length))
+			xtextDocument.replace(issue.offset, issue.length, String.valueOf(end * 2))
+		]
+	}
 }

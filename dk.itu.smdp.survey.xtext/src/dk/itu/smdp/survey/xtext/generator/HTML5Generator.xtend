@@ -8,6 +8,7 @@ import SurveyModel.Ranking
 import SurveyModel.Rating
 import SurveyModel.Survey
 import SurveyModel.YesNo
+import java.io.File
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 
@@ -32,6 +33,8 @@ class HTML5Generator extends SurveyGenerator
 			    <!--Style-->
 			    <link href="css/bootstrap.min.css" rel="stylesheet">
 			    <link href="css/style.css" rel="stylesheet">
+			    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+			    <link rel="icon" href="favicon.ico" type="image/x-icon">
 			    <title>«title»</title>
 			
 			</head>
@@ -91,6 +94,8 @@ class HTML5Generator extends SurveyGenerator
 					        <div class="page">
 					
 					            «FOR question : page.questions»
+					            
+					            	«_incrementQuestion»
 					            
 					            	«compileQuestion(question)»
 					            	
@@ -178,10 +183,10 @@ class HTML5Generator extends SurveyGenerator
                 
                 <div class="panel-body">   
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="yes"></span>
+                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="yes"></span>
                       <strong><span class="answer_text form-control">Yes</span></strong>
 
-                      <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="no"></span>
+                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="no"></span>
                       <strong><span class="answer_text form-control">No</span></strong>
                     </div>
                 </div>
@@ -209,7 +214,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                 	«FOR answer : answers»
 	                    <div class="input-group">
-	                        <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer.description»"></span>
+	                        <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="«answer.description»"></span>
 	                        
 	                        «IF !answer.isUserInputAllowed»
 	                        	<strong><span class="answer_text form-control">«answer.description»</span></strong>              

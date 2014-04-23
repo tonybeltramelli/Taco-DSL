@@ -3,7 +3,6 @@
  */
 package dk.itu.smdp.survey.xtext.validation
 
-import SurveyModel.Answer
 import SurveyModel.MultipleChoice
 import SurveyModel.Ranking
 import SurveyModel.Rating
@@ -87,15 +86,4 @@ class TacoValidator extends AbstractTacoValidator {
 			);
 		}
 	}
-	
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MyDslPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
 }

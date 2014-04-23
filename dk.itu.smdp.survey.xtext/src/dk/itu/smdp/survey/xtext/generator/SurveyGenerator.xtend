@@ -7,7 +7,14 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 
 abstract class SurveyGenerator
 {
+	protected int _questionCounter;
+	
 	abstract def void generate(Resource resource, IFileSystemAccess fsa)
 	abstract def String compile(Survey it)
 	abstract def String compileQuestion(Question it)
+	
+	def protected void _incrementQuestion()
+	{
+		_questionCounter = _questionCounter + 1;
+	}
 }

@@ -12,8 +12,8 @@ import org.eclipse.xtext.generator.IGenerator
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
-class TacoGenerator implements IGenerator {
-
+class TacoGenerator implements IGenerator
+{	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa)
 	{
 		new HTML5Generator().generate(resource, fsa);
