@@ -1,9 +1,6 @@
 package dk.itu.smdp.model.question;
 
-import java.util.ArrayList;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -14,6 +11,9 @@ import dk.itu.smdp.R;
 import dk.itu.smdp.Viewable;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.utils.FixedStack;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  * Created by centos on 4/13/14.
@@ -69,6 +69,16 @@ public abstract class Question implements Viewable, Answerable
 			_container.updateQuestionAnswer(this);
 		}
 	}
+
+    public ArrayList<Answer> getUserAnswers(){
+        ArrayList<Answer> userAnswers = new ArrayList<Answer>();
+
+        ListIterator<Answer> iterator = _answeredAnswers.listIterator();
+        while( iterator.hasNext() )
+            userAnswers.add(iterator.next());
+
+        return userAnswers;
+    }
 	
 	public boolean isMandatory()
 	{

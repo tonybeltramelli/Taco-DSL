@@ -27,4 +27,11 @@ public class FixedStack<T> extends Stack<T>
 		
 		return popedItem;
 	}
+
+
+    public void moveFromTo(int from , int to){
+
+        T object = this.remove(from);
+        this.add(to, object);
+    }
 }

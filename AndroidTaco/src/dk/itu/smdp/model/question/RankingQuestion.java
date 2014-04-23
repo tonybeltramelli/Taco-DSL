@@ -11,6 +11,7 @@ import com.mobeta.android.dslv.DragSortListView;
 import dk.itu.smdp.Answerable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.answer.Answer;
+import dk.itu.smdp.utils.FixedStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +51,33 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 		_dragSortListView.setDropListener(this);
 		
 		this.populateAnswerViews(context, layout, layout, this);
-		
+        //set height manually due to unknown bug
+        setLayoutHeight(context , layout);
+        //after all answers has been inserted
+        setUpAnsweredAnswers();
+
 		return layout;
 	}
-	
-	@Override
+
+    private void setUpAnsweredAnswers() {
+        //all the answers get into the answered answers
+        _answeredAnswers = new FixedStack<Answer>(_answers.size());
+
+        //insert them in the opposite order. The first answer should be on the
+        //top of the stack
+        for( int i = 0 ; i < _answers.size() ; i++ ) {
+            _answeredAnswers.push(_answers.get(i));
+        }
+    }
+
+    private void setLayoutHeight(Context context , LinearLayout layout) {
+        int itemSize = (int) context.getResources().getDimension(R.dimen.item_height);
+        final float scale = context.getResources().getDisplayMetrics().density;
+        int pixels = (int) (itemSize * scale + 0.5f);
+        layout.getLayoutParams().height = pixels * _answers.size();
+    }
+
+    @Override
 	protected void populateAnswerViews(Context context, ViewGroup parent, ViewGroup container, Answerable answerable)
 	{
 		List<String> optionList = new ArrayList<String>();
@@ -82,6 +105,9 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 			String item = _adapter.getItem(from);
 			_adapter.remove(item);
 			_adapter.insert(item, to);
-		}
+
+            //update the answeredAnswers
+            _answeredAnswers.moveFromTo(from , to);
+        }
 	}
 }
