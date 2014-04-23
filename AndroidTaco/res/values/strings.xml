@@ -5,7 +5,7 @@
 
     <!-- home screen strings -->
     <string name="home_screen_start_button_string">Start Survey</string>
-    <string name="home_screen_label_string">Please fill the information below</string>
+    <string name="home_screen_label_string">Questions marked with * are required</string>
 
     <!-- page screen strings -->
     <string name="page_screen_next_button_string">Next</string>

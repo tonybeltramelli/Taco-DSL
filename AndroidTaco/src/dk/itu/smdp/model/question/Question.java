@@ -40,7 +40,7 @@ public abstract class Question implements Viewable, Answerable
 	public Question(boolean isMandatory, String questionText)
 	{
 		this._isMandatory = isMandatory;
-		this._questionText = questionText;
+		this._questionText = questionText + (_isMandatory ? " *" : "");
 		_answers = new ArrayList<Answer>();
 	}
 	
@@ -73,11 +73,6 @@ public abstract class Question implements Viewable, Answerable
 	public boolean isMandatory()
 	{
 		return _isMandatory;
-	}
-	
-	public String getQuestionText()
-	{
-		return _questionText;
 	}
 	
 	public ArrayList<Answer> getAnswers()
