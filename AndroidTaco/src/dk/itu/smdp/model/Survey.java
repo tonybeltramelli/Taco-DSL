@@ -144,23 +144,16 @@ public class Survey
 		Page page1 = new Page();
 		page1.addQuestion(q1);
 		page1.addQuestion(q2);
+		page1.addQuestion(q3);
+		page1.addQuestion(q4);
 		
 		Page page2 = new Page();
-		page2.addQuestion(q3);
-		page2.addQuestion(q4);
+		page2.addQuestion(q5);
+		page2.addQuestion(q6);
 		
-		Page page3 = new Page();
-		page3.addQuestion(q5);
-		page3.addQuestion(q6);
-
 		category.addPage(page1);
 		category.addPage(page2);
 		
-		Category category2 = new Category("Category number 2 about even cooler stuffs.", "Yep.");
-		
-		category2.addPage(page3);
-		
 		this.addCategory(category);
-		this.addCategory(category2);
 	}
 }

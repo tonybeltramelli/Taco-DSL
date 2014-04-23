@@ -94,8 +94,6 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			}
 		}
 		
-		Log.wtf("------> ", answeredQuestions + " / " + _mandatoryQuestionsNumber);
-		
 		if (answeredQuestions == _mandatoryQuestionsNumber)
 		{
 			if(_currentPage == _survey.getCategories().get(_currentCategory).getPages().size() - 1
