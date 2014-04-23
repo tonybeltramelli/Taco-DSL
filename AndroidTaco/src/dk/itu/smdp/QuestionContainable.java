@@ -7,5 +7,5 @@ import dk.itu.smdp.model.question.Question;
  */
 public interface QuestionContainable
 {
-	public void updateQuestionAnswer(Question question);
+	public void updateQuestionAnswer();
 }

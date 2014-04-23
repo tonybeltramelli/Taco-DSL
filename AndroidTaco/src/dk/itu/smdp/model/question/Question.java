@@ -66,7 +66,7 @@ public abstract class Question implements Viewable, Answerable
 	{
 		if (_container != null)
 		{
-			_container.updateQuestionAnswer(this);
+			_container.updateQuestionAnswer();
 		}
 	}
 
