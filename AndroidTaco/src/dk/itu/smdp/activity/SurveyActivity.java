@@ -1,14 +1,24 @@
 package dk.itu.smdp.activity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
+import dk.itu.smdp.model.Category;
 import dk.itu.smdp.model.Page;
+import dk.itu.smdp.model.PersonAttribute;
+import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.question.Question;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
@@ -145,4 +155,58 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 		
 		_displayPage();
 	}
+
+
+    public void sendButtonClickHandler(View v) {
+
+        final String SURVEY_SD_CARD_FILE = Environment.getExternalStoragePublicDirectory("") + "/Survey.taco";
+
+        File file = new File(SURVEY_SD_CARD_FILE);
+
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(file));
+
+            writer.write("Survey : " + _survey.getTitle() + "\n");
+            writer.write("Date : " + _survey.getDate() + "\n");
+            writer.write("Description : " + _survey.getDescription() + "\n");
+            writer.write("\n");
+            if( !_survey.isAnonymous() ){
+                writer.write("Person attributes\n");
+                for(PersonAttribute attr : _survey.getPerson().getAttributes())
+                    writer.write(attr.getKey() + " : " + attr.getValue() + "\n");
+
+                writer.write("\n");
+            }
+
+
+            ArrayList<Category> categories = _survey.getCategories();
+
+            for (Category category : categories) {
+                writer.write("-----Category : " + category.getTitle() + "-----\n");
+                writer.write("Description : " + category.getDescription() + "\n");
+                writer.write("\n");
+                for (Page page : category.getPages()) {
+                    writer.write("--Page--\n\n");
+
+                    for( Question question : page.getQuestions() ){
+                        writer.write("  Q : " + question.getQuestionText() + "\n");
+
+                        for(Answer answer : question.getUserAnswers()){
+                            writer.write("      A : " + answer.getUserAnswer() + "\n");
+                        }
+                    }
+                    writer.write("\n");
+                }
+                writer.write("\n");
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }

@@ -18,7 +18,7 @@ public class RankingAnswer extends Answer
 	@Override
 	public String getUserAnswer()
 	{
-		return null;
+		return _description;
 	}
 	
 	@Override

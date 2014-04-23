@@ -79,6 +79,10 @@ public abstract class Question implements Viewable, Answerable
 
         return userAnswers;
     }
+
+    public String getQuestionText(){
+        return _questionText;
+    }
 	
 	public boolean isMandatory()
 	{

@@ -61,6 +61,7 @@
             android:id="@+id/page_screen_send_button"
             android:layout_width="@dimen/page_image_button_size"
             android:layout_height="wrap_content"
+            android:onClick="sendButtonClickHandler"
             android:layout_centerHorizontal="true"
             android:contentDescription="@string/submit_button_control"
             android:src="@drawable/ic_action_email"
