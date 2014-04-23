@@ -1,25 +1,19 @@
 package dk.itu.smdp.model.question;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import com.mobeta.android.dslv.DragSortController;
 import com.mobeta.android.dslv.DragSortListView;
-
 import dk.itu.smdp.Answerable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.answer.Answer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Tony Beltramelli www.tonybeltramelli.com
@@ -77,8 +71,7 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 	@Override
 	public boolean isQuestionAnswered()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	@Override

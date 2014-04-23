@@ -1,7 +1,6 @@
 package dk.itu.smdp.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -9,8 +8,6 @@ import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.Page;
 import dk.itu.smdp.model.question.Question;
-import dk.itu.smdp.model.question.RankingQuestion;
-import dk.itu.smdp.model.question.RatingQuestion;
 
 /**
  * Created by centos on 4/13/14.
@@ -56,7 +53,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			View questionView = q.getView(this, parent);
 			parent.addView(questionView);
 			
-			if (q.isMandatory() && !(q instanceof RatingQuestion) && !(q instanceof RankingQuestion))
+			if (q.isMandatory())
 			{
 				_mandatoryQuestionsNumber++;
 			}
