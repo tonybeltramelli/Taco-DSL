@@ -112,11 +112,32 @@ public class Survey
 		p.addAttribute(name);
 		p.addAttribute(age);
 		this.setPerson(p);
+
+        Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate those stuffs by preference order");
+        q6.addAnswer(AnswerFactory.create(Answer.RANKING, "french fries"));
+        q6.addAnswer(AnswerFactory.create(Answer.RANKING, "smorebrod"));
+        q6.addAnswer(AnswerFactory.create(Answer.RANKING, "mousaka"));
+        q6.addAnswer(AnswerFactory.create(Answer.RANKING, "hamburger"));
+        q6.addAnswer(AnswerFactory.create(Answer.RANKING, "tacos"));
+
+
+        Question q4 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Select your favorite cat");
+        Answer aa = AnswerFactory.create(Answer.BINARY, "First option");
+        aa.addSubQuestion(q6);
+        q4.addAnswer(aa);
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Second option"));
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Third option"));
+        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Fourth option"));
 		
 		Question q1 = QuestionFactory.create(Question.OPEN_FIELD, false, "What is your point of view ?");
-		
+        Question q5 = QuestionFactory.create(Question.YES_NO, true, "Are you married ?");
+
 		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, false, "What is your favorite color ?", 2, 3);
-		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "RED"));
+        Answer a = AnswerFactory.create(Answer.BINARY, "RED");
+        a.addSubQuestion(q1);
+        a.addSubQuestion(q4);
+        q2.addAnswer(a);
+//		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "RED"));
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
@@ -124,31 +145,22 @@ public class Survey
 		
 		Question q3 = QuestionFactory.create(Question.RATING, true, "How much do you like the canteen's coffee ?", 0, 100, 10);
 		
-		Question q4 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Select your favorite cat");
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "First option"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Second option"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Third option"));
-		q4.addAnswer(AnswerFactory.create(Answer.BINARY, "Fourth option"));
 
-		Question q5 = QuestionFactory.create(Question.YES_NO, true, "Are you married ?");
-		
-		Question q6 = QuestionFactory.create(Question.RANKING, true, "Rate those stuffs by preference order");
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "french fries"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "smorebrod"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "mousaka"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "hamburger"));
-		q6.addAnswer(AnswerFactory.create(Answer.RANKING, "tacos"));
+
+
+
+
 		
 		Category category = new Category("Category number 1 about cool stuffs.", "Your cool information.");
 		
 		Page page1 = new Page();
-		page1.addQuestion(q1);
+//		page1.addQuestion(q1);
 		page1.addQuestion(q2);
-		page1.addQuestion(q3);
-		page1.addQuestion(q4);
+//		page1.addQuestion(q3);
+//		page1.addQuestion(q4);
 		
 		Page page2 = new Page();
-		page2.addQuestion(q5);
+//		page2.addQuestion(q5);
 		page2.addQuestion(q6);
 		
 		category.addPage(page1);

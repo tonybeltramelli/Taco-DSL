@@ -26,6 +26,8 @@ public abstract class Question implements Viewable, Answerable
 	public static final String RATING = "rating";
 	public static final String OPEN_FIELD = "open_field";
 	public static final String RANKING = "ranking";
+
+    protected LinearLayout _questionView;
 	
 	protected boolean _isMandatory;
 	
@@ -112,12 +114,12 @@ public abstract class Question implements Viewable, Answerable
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
+		_questionView = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
-		TextView titleView = (TextView) layout.findViewById(R.id.question_title_textview);
+		TextView titleView = (TextView) _questionView.findViewById(R.id.question_title_textview);
 		titleView.setText(_questionText);
 		
-		return layout;
+		return _questionView;
 	}
 	
 	public abstract boolean isQuestionAnswered();
@@ -126,4 +128,10 @@ public abstract class Question implements Viewable, Answerable
 	{
 		_container = container;
 	}
+
+    public void setVisibility(int visibility){
+        _questionView.setVisibility(visibility);
+    }
+
+
 }
