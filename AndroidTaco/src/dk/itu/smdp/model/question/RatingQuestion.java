@@ -19,6 +19,8 @@ public class RatingQuestion extends MutuallyExclusive
 	private int _interval;
 	
 	private SeekBar _seekBar;
+
+    private Context _context;
 	
 	public RatingQuestion(boolean isMandatory, String questionText)
 	{
@@ -38,8 +40,8 @@ public class RatingQuestion extends MutuallyExclusive
             super.addAnswer(AnswerFactory.create(Answer.RATING, String.valueOf(i)));
         }
 
-        //TODO
-        //check if should be added here
+//        //TODO
+//        //check if should be added here
         super.onAnswerSelected(_answers.get(0));
 	}
 	
@@ -47,22 +49,31 @@ public class RatingQuestion extends MutuallyExclusive
 	public void addAnswer(Answer a)
 	{
 	}
-	
-	@Override
+
+    @Override
+    protected void initQuestion() {
+        super.initQuestion();
+        setUpSeekBar();
+        super.onAnswerSelected(_answers.get(0));
+    }
+
+    @Override
 	public View getView(Context context, ViewGroup parent)
 	{
+        _context = context;
+
 		LinearLayout layout = initQuestionLayout(context, parent);
-		
-		setUpSeekBar(context);
-		
+
+        initQuestion();
+
 		layout.addView(_seekBar);
 
 		return layout;
 	}
 	
-	private void setUpSeekBar(Context context)
+	private void setUpSeekBar()
 	{
-		_seekBar = new SeekBar(context);
+		_seekBar = new SeekBar(_context);
         _seekBar.setProgress(0);
 		_seekBar.setMax((_max - _min) / _interval);
 

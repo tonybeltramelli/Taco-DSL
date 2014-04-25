@@ -37,8 +37,14 @@ public class MultipleChoice extends Question
 	{
 		return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max;
 	}
-	
-	@Override
+
+    @Override
+    protected void initQuestion() {
+        // create a stack for the maximum answers
+        _answeredAnswers = new FixedStack<Answer>(_max);
+    }
+
+    @Override
 	public View getView(Context context, ViewGroup parent)
 	{		
 		LinearLayout layout = initQuestionLayout(context, parent);
@@ -64,6 +70,8 @@ public class MultipleChoice extends Question
 		}
 		
 		this.populateAnswerViews(context, layout, layout, this);
+
+        initQuestion();
 		
 		return layout;
 	}

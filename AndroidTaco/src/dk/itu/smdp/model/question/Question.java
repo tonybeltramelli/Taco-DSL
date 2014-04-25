@@ -111,7 +111,7 @@ public abstract class Question implements Viewable, Answerable
 	protected LinearLayout initQuestionLayout(Context context, ViewGroup parent)
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
+
 		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
 		TextView titleView = (TextView) layout.findViewById(R.id.question_title_textview);
@@ -126,4 +126,8 @@ public abstract class Question implements Viewable, Answerable
 	{
 		_container = container;
 	}
+
+
+    //added to place code needed in order to restart a question
+    protected abstract void initQuestion();
 }
