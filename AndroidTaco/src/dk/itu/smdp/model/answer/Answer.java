@@ -31,6 +31,9 @@ public abstract class Answer implements Viewable
 
     protected ArrayList<Question> _subQuestions;
 
+
+    protected boolean isExpanded;
+
 	public abstract String getUserAnswer();
 
     //defaule for every answer is not to have subs.
@@ -54,4 +57,13 @@ public abstract class Answer implements Viewable
 	public abstract void clear();
 	
 	public abstract void setUpListener(final Answerable answerable);
+
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean isExpanded) {
+        this.isExpanded = isExpanded;
+    }
 }

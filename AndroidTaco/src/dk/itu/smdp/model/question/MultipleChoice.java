@@ -18,6 +18,8 @@ public class MultipleChoice extends Question
 {
 	private int _min;
 	private int _max;
+
+    private Context _context;
 	
 	public MultipleChoice(boolean isMandatory, String questionText)
 	{
@@ -37,7 +39,7 @@ public class MultipleChoice extends Question
 	@Override
 	public boolean isQuestionAnswered()
 	{
-		return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max;
+		return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max && subQuestionsAreAnswered(this);
 	}
 
     @Override
@@ -47,10 +49,28 @@ public class MultipleChoice extends Question
     }
 
 
+    //recursion
+    private boolean subQuestionsAreAnswered(Question q){
+        boolean flag = true;
+        for( Answer a : q._answers ){
+            if( a.hasSubQuestions() && a.isExpanded() )
+                for( Question innerQ : a.getSubQuestions() ) {
+                    subQuestionsAreAnswered(innerQ);
+                    if( flag == true )
+                        flag = innerQ.isQuestionAnswered();
+                }
+        }
+
+        return flag;
+    }
+
+
     @Override
     public View getView(Context context, ViewGroup parent) {
         LinearLayout layout = initQuestionLayout(context, parent);
         _questionView = layout;
+
+        _context = context;
 
         if (_min != 1 && _max != 1) {
             String description;
@@ -84,9 +104,11 @@ public class MultipleChoice extends Question
         if (popedItem != null) popedItem.clear();
 
         //activate subQuestions
-        if( answer.hasSubQuestions() )
+        if( answer.hasSubQuestions() && !answer.isExpanded() )
             for( Question q : answer.getSubQuestions() )
                 q.setVisibility(View.VISIBLE);
+
+        answer.setExpanded(true);
 
         super.onAnswerSelected(answer);
     }
@@ -95,9 +117,11 @@ public class MultipleChoice extends Question
     public void onAnswerDeselected(Answer answer) {
         _answeredAnswers.remove(answer);
         //deactivate subQuestions
-        if( answer.hasSubQuestions() )
+        if( answer.hasSubQuestions() && answer.isExpanded() )
             for( Question q : answer.getSubQuestions() )
                 q.setVisibility(View.GONE);
+
+        answer.setExpanded(false);
         super.onAnswerDeselected(answer);
     }
 
@@ -106,6 +130,7 @@ public class MultipleChoice extends Question
 
         for (Answer a : _answers) {
             if (a.hasSubQuestions())
+                a.setExpanded(false);
                 for (Question q : a.getSubQuestions() ){
                     View qV = q.getView(context , parent);
                     qV.setVisibility(View.GONE);

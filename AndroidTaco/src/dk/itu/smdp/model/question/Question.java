@@ -1,6 +1,7 @@
 package dk.itu.smdp.model.question;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -125,10 +126,21 @@ public abstract class Question implements Viewable, Answerable
 	}
 	
 	public abstract boolean isQuestionAnswered();
-	
+
+    //recursion
 	public void setContainer(QuestionContainable container)
 	{
-		_container = container;
+		this._container = container;
+
+        for( Answer a : this._answers ){
+            if( a.hasSubQuestions() )
+                for( Question innerQ : a.getSubQuestions() ) {
+                    innerQ.setContainer(container);
+                    Log.i("TAG" , "sub sub");
+                }
+        }
+
+
 	}
 
     public void setVisibility(int visibility){
