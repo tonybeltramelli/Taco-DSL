@@ -132,7 +132,7 @@ public class Survey
 		Question q1 = QuestionFactory.create(Question.OPEN_FIELD, false, "What is your point of view ?");
         Question q5 = QuestionFactory.create(Question.YES_NO, true, "Are you married ?");
 
-		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, false, "What is your favorite color ?", 2, 3);
+		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
         Answer a = AnswerFactory.create(Answer.BINARY, "RED");
         a.addSubQuestion(q1);
         a.addSubQuestion(q4);

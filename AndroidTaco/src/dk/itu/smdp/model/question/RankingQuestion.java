@@ -53,22 +53,11 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 		this.populateAnswerViews(context, layout, layout, this);
         //set height manually due to unknown bug
         setLayoutHeight(context , layout);
-        //after all answers has been inserted
-        setUpAnsweredAnswers();
+        //after all answers have been inserted
+        initQuestion();
 
 		return layout;
 	}
-
-    private void setUpAnsweredAnswers() {
-        //all the answers get into the answered answers
-        _answeredAnswers = new FixedStack<Answer>(_answers.size());
-
-        //insert them in the opposite order. The first answer should be on the
-        //top of the stack
-        for( int i = 0 ; i < _answers.size() ; i++ ) {
-            _answeredAnswers.push(_answers.get(i));
-        }
-    }
 
     private void setLayoutHeight(Context context , LinearLayout layout) {
         int itemSize = (int) context.getResources().getDimension(R.dimen.item_height);
@@ -96,8 +85,20 @@ public class RankingQuestion extends Question implements DragSortListView.DropLi
 	{
 		return true;
 	}
-	
-	@Override
+
+    @Override
+    protected void initQuestion() {
+        //all the answers get into the answered answers
+        _answeredAnswers = new FixedStack<Answer>(_answers.size());
+
+        //insert them in the opposite order. The first answer should be on the
+        //top of the stack
+        for( int i = 0 ; i < _answers.size() ; i++ ) {
+            _answeredAnswers.push(_answers.get(i));
+        }
+    }
+
+    @Override
 	public void drop(int from, int to)
 	{
 		if (from != to)

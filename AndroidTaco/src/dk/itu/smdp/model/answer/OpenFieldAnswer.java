@@ -48,7 +48,11 @@ public class OpenFieldAnswer extends Answer
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count)
 			{
-				answerable.onAnswerUpdated(OpenFieldAnswer.this);
+                //update the question if it is answered or not
+                if( s.toString().isEmpty() )
+                    answerable.onAnswerDeselected(OpenFieldAnswer.this);
+                else
+                    answerable.onAnswerSelected(OpenFieldAnswer.this);
 			}
 			
 			@Override

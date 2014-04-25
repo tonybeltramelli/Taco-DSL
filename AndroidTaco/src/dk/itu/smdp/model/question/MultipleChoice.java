@@ -13,27 +13,39 @@ import dk.itu.smdp.utils.FixedStack;
 /**
  * Created by centos on 4/14/14.
  */
-public class MultipleChoice extends Question {
-    private int _min;
-    private int _max;
 
-    public MultipleChoice(boolean isMandatory, String questionText) {
-        this(isMandatory, questionText, 1, 1);
-    }
+public class MultipleChoice extends Question
+{
+	private int _min;
+	private int _max;
+	
+	public MultipleChoice(boolean isMandatory, String questionText)
+	{
+		this(isMandatory, questionText, 1, 1);
+	}
+	
+	public MultipleChoice(boolean isMandatory, String questionText, int min, int max)
+	{
+		super(isMandatory, questionText);
+		_min = min;
+		_max = max;
+		
+		// create a stack for the maximum answers
+		_answeredAnswers = new FixedStack<Answer>(_max);
+	}
+	
+	@Override
+	public boolean isQuestionAnswered()
+	{
+		return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max;
+	}
 
-    public MultipleChoice(boolean isMandatory, String questionText, int min, int max) {
-        super(isMandatory, questionText);
-        _min = min;
-        _max = max;
-
+    @Override
+    protected void initQuestion() {
         // create a stack for the maximum answers
         _answeredAnswers = new FixedStack<Answer>(_max);
     }
 
-    @Override
-    public boolean isQuestionAnswered() {
-        return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max;
-    }
 
     @Override
     public View getView(Context context, ViewGroup parent) {
@@ -60,6 +72,8 @@ public class MultipleChoice extends Question {
         this.populateAnswerViews(context, layout, layout, this);
 
         this.populateSubQuestions(context, layout, layout, this);
+
+	    initQuestion();
 
         return layout;
     }
