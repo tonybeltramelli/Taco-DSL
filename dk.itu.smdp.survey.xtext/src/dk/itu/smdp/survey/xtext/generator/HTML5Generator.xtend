@@ -43,6 +43,9 @@ class HTML5Generator extends SurveyGenerator
 			    <!--Survey header-->
 			  	<div class="page-header">
 			        <h1><span id="survey_title">«title»</span><span id="survey_description"><small>«description»</small></span></h1>
+			        <div class="input-group">
+						<span class="key input-group-addon">email (for demonstration purpose)</span><input id="email" type="text" class="value form-control">
+					</div>
 			    </div>
 			
 			    <input type="hidden" id="survey_date" value="«date»"/>
@@ -152,7 +155,7 @@ class HTML5Generator extends SurveyGenerator
 				<div class="text panel-heading">«questionText» «IF isMandatory»<span class="red">*</span> «ENDIF» </div>
 								                
 				<div class="panel-body">
-					<textarea class="answer form-control" rows="3"></textarea>
+					<textarea class="answer openFieldAnswer form-control" rows="3"></textarea>
 				</div>
 			</div>					            
 		«ENDIF»
@@ -166,7 +169,7 @@ class HTML5Generator extends SurveyGenerator
                     <ul class="list-group sortable">
                         
                         «FOR answer : answers»
-                        	<li class="list-group-item">
+                        	<li class="list-group-item rankingAnswer answer">
                             	<span>&#x21C5;</span>«answer.description»
                         	</li>
                         «ENDFOR»
@@ -183,10 +186,10 @@ class HTML5Generator extends SurveyGenerator
                 
                 <div class="panel-body">   
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="yes"></span>
+                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="yes"></span>
                       <strong><span class="answer_text form-control">Yes</span></strong>
 
-                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="no"></span>
+                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="no"></span>
                       <strong><span class="answer_text form-control">No</span></strong>
                     </div>
                 </div>
@@ -201,7 +204,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                     <div class="input-group">
                         <span class="min input-group-addon">«(it as Rating).start»</span>
-                        <input type="range" class="form-control range" min="«(it as Rating).start»" max="«(it as Rating).end»" step="«(it as Rating).interval»"/>
+                        <input type="range" class="form-control ratingAnswer range" min="«(it as Rating).start»" max="«(it as Rating).end»" step="«(it as Rating).interval»"/>
                         <span class="max input-group-addon">«(it as Rating).end»</span>
                     </div>
                 </div>
@@ -214,7 +217,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                 	«FOR answer : answers»
 	                    <div class="input-group">
-	                        <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer" type="radio" value="«answer.description»"></span>
+	                        <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="«answer.description»"></span>
 	                        
 	                        «IF !answer.isUserInputAllowed»
 	                        	<strong><span class="answer_text form-control">«answer.description»</span></strong>              
@@ -250,7 +253,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                 	«FOR answer : answers»
 	                    <div class="input-group">
-	                        <span class="input-group-addon"><input class="answer" type="checkbox" value="«answer.description»"></span>
+	                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«answer.description»"></span>
 	                        
 	                        «IF !answer.isUserInputAllowed»
 	                        	<strong><span class="answer_text form-control">«answer.description»</span></strong>
