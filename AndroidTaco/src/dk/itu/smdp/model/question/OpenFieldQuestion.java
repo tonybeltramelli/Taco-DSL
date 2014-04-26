@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.answer.AnswerFactory;
-import dk.itu.smdp.model.answer.OpenFieldAnswer;
 
 /**
  * Created by centos on 4/13/14.
@@ -19,20 +18,13 @@ public class OpenFieldQuestion extends MultipleChoice
 		
 		Answer a = AnswerFactory.create(Answer.OPEN_FIELD, "");
 		super.addAnswer(a);
-		// add it immediately because there are no listeners for open field
-		_answeredAnswers.add(a);
 	}
 	
 	@Override
 	public void addAnswer(Answer a)
 	{
 	}
-	
-	@Override
-	public boolean isQuestionAnswered()
-	{
-		return !((OpenFieldAnswer) _answers.get(0)).getUserAnswer().isEmpty();
-	}
+
 	
 	@Override
 	public View getView(Context context, ViewGroup parent)
@@ -40,7 +32,24 @@ public class OpenFieldQuestion extends MultipleChoice
 		LinearLayout layout = initQuestionLayout(context, parent);
 		
 		populateAnswerViews(context, layout, layout, this);
+
+        initQuestion();
 		
 		return layout;
 	}
+
+
+    @Override
+    public void onAnswerSelected(Answer answer) {
+        //dont call super because it clears the answer and text will be gone
+        _answeredAnswers.pushAndPopExtraItem(answer);
+        this.onAnswerUpdated(answer);
+    }
+
+    @Override
+    public void onAnswerDeselected(Answer answer) {
+        //dont call super
+        _answeredAnswers.pop();
+        this.onAnswerUpdated(answer);
+    }
 }

@@ -113,9 +113,9 @@ public class Survey
 		p.addAttribute(age);
 		this.setPerson(p);
 		
-		Question q1 = QuestionFactory.create(Question.OPEN_FIELD, true, "What is your point of view ?");
+		Question q1 = QuestionFactory.create(Question.OPEN_FIELD, false, "What is your point of view ?");
 		
-		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
+		Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, false, "What is your favorite color ?", 2, 3);
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "RED"));
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
 		q2.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
@@ -145,9 +145,9 @@ public class Survey
 		page1.addQuestion(q1);
 		page1.addQuestion(q2);
 		page1.addQuestion(q3);
+		page1.addQuestion(q4);
 		
 		Page page2 = new Page();
-		page2.addQuestion(q4);
 		page2.addQuestion(q5);
 		page2.addQuestion(q6);
 		

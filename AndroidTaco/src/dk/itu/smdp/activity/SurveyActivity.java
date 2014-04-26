@@ -1,13 +1,24 @@
 package dk.itu.smdp.activity;
 
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
+import dk.itu.smdp.model.Category;
 import dk.itu.smdp.model.Page;
+import dk.itu.smdp.model.PersonAttribute;
+import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.question.Question;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
@@ -18,6 +29,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	private int _currentPage = 0;
 	private int _mandatoryQuestionsNumber = 0;
 	private View _nextButton;
+	private View _sendButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -42,6 +54,21 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	{
 		Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 		
+		_sendButton = findViewById(R.id.page_screen_send_button);
+		_sendButton.setVisibility(View.INVISIBLE);
+		
+		_nextButton = findViewById(R.id.page_screen_next_button);
+		_nextButton.setVisibility(View.INVISIBLE);
+		
+		View prevButton = findViewById(R.id.page_screen_previous_button);
+		
+		if(_currentPage == 0 && _currentCategory == 0)
+		{
+			prevButton.setVisibility(View.INVISIBLE);
+		}else{
+			prevButton.setVisibility(View.VISIBLE);
+		}
+		
 		LinearLayout parent = (LinearLayout) this.findViewById(R.id.questions_linearlayout);
 		parent.removeAllViews();
 		
@@ -56,54 +83,39 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			if (q.isMandatory())
 			{
 				_mandatoryQuestionsNumber++;
-			}
-		}
-
-		View sendButton = findViewById(R.id.page_screen_send_button);
-		
-		if(_currentCategory == _survey.getCategories().size())
-		{
-			sendButton.setVisibility(View.VISIBLE);
-		}else{
-			sendButton.setVisibility(View.INVISIBLE);
+			}			
 		}
 		
-		_nextButton = findViewById(R.id.page_screen_next_button);
-		_nextButton.setVisibility(View.INVISIBLE);
-		
-		View prevButton = findViewById(R.id.page_screen_previous_button);
-		
-		if(_currentPage == 0 && _currentCategory == 0)
-		{
-			prevButton.setVisibility(View.INVISIBLE);
-		}else{
-			prevButton.setVisibility(View.VISIBLE);
-		}
+		updateQuestionAnswer();
 	}
 	
 	@Override
-	public void updateQuestionAnswer(Question question)
-	{
+	public void updateQuestionAnswer()
+	{	
 		int answeredQuestions = 0;
 		
-		if (question.isMandatory() && question.isQuestionAnswered())
-		{
-			Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
+		Page page = _survey.getCategories().get(_currentCategory).getPages().get(_currentPage);
 			
-			for (Question q : page.getQuestions())
+		for (Question q : page.getQuestions())
+		{
+			if (q.isMandatory() && q.isQuestionAnswered())
 			{
-				if (q.isMandatory() && q.isQuestionAnswered())
-				{
-					answeredQuestions++;
-				}
-			}	
+				answeredQuestions++;
+			}
 		}
 		
 		if (answeredQuestions == _mandatoryQuestionsNumber)
 		{
-			_nextButton.setVisibility(View.VISIBLE);
+			if(_currentPage == _survey.getCategories().get(_currentCategory).getPages().size() - 1
+					&& _currentCategory == _survey.getCategories().size() - 1)
+			{
+				_sendButton.setVisibility(View.VISIBLE);
+			}else{
+				_nextButton.setVisibility(View.VISIBLE);
+			}
 		} else
 		{
+			_sendButton.setVisibility(View.INVISIBLE);
 			_nextButton.setVisibility(View.INVISIBLE);
 		}
 	}
@@ -117,10 +129,11 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 				return;
 			}else{
 				_currentCategory --;
+				_currentPage = _survey.getCategories().get(_currentCategory).getPages().size() - 1;
 			}
+		}else{
+			_currentPage --;
 		}
-		
-		_currentPage --;
 		
 		_displayPage();
 	}
@@ -133,12 +146,67 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 			{
 				return;
 			}else{
+				_currentPage = 0;
 				_currentCategory ++;
 			}
-		}
-		
-		_currentPage ++;
+		}else{
+			_currentPage ++;
+		}		
 		
 		_displayPage();
 	}
+
+
+    public void sendButtonClickHandler(View v) {
+
+        final String SURVEY_SD_CARD_FILE = Environment.getExternalStoragePublicDirectory("") + "/Survey.taco";
+
+        File file = new File(SURVEY_SD_CARD_FILE);
+
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(file));
+
+            writer.write("Survey : " + _survey.getTitle() + "\n");
+            writer.write("Date : " + _survey.getDate() + "\n");
+            writer.write("Description : " + _survey.getDescription() + "\n");
+            writer.write("\n");
+            if( !_survey.isAnonymous() ){
+                writer.write("Person attributes\n");
+                for(PersonAttribute attr : _survey.getPerson().getAttributes())
+                    writer.write(attr.getKey() + " : " + attr.getValue() + "\n");
+
+                writer.write("\n");
+            }
+
+
+            ArrayList<Category> categories = _survey.getCategories();
+
+            for (Category category : categories) {
+                writer.write("-----Category : " + category.getTitle() + "-----\n");
+                writer.write("Description : " + category.getDescription() + "\n");
+                writer.write("\n");
+                for (Page page : category.getPages()) {
+                    writer.write("--Page--\n\n");
+
+                    for( Question question : page.getQuestions() ){
+                        writer.write("  Q : " + question.getQuestionText() + "\n");
+
+                        for(Answer answer : question.getUserAnswers()){
+                            writer.write("      A : " + answer.getUserAnswer() + "\n");
+                        }
+                    }
+                    writer.write("\n");
+                }
+                writer.write("\n");
+            }
+
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 }

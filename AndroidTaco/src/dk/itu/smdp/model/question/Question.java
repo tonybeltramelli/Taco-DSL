@@ -1,9 +1,6 @@
 package dk.itu.smdp.model.question;
 
-import java.util.ArrayList;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -14,6 +11,9 @@ import dk.itu.smdp.R;
 import dk.itu.smdp.Viewable;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.utils.FixedStack;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  * Created by centos on 4/13/14.
@@ -40,7 +40,7 @@ public abstract class Question implements Viewable, Answerable
 	public Question(boolean isMandatory, String questionText)
 	{
 		this._isMandatory = isMandatory;
-		this._questionText = questionText;
+		this._questionText = questionText + (_isMandatory ? " *" : "");
 		_answers = new ArrayList<Answer>();
 	}
 	
@@ -66,18 +66,27 @@ public abstract class Question implements Viewable, Answerable
 	{
 		if (_container != null)
 		{
-			_container.updateQuestionAnswer(this);
+			_container.updateQuestionAnswer();
 		}
 	}
+
+    public ArrayList<Answer> getUserAnswers(){
+        ArrayList<Answer> userAnswers = new ArrayList<Answer>();
+
+        ListIterator<Answer> iterator = _answeredAnswers.listIterator();
+        while( iterator.hasNext() )
+            userAnswers.add(iterator.next());
+
+        return userAnswers;
+    }
+
+    public String getQuestionText(){
+        return _questionText;
+    }
 	
 	public boolean isMandatory()
 	{
 		return _isMandatory;
-	}
-	
-	public String getQuestionText()
-	{
-		return _questionText;
 	}
 	
 	public ArrayList<Answer> getAnswers()
@@ -102,7 +111,7 @@ public abstract class Question implements Viewable, Answerable
 	protected LinearLayout initQuestionLayout(Context context, ViewGroup parent)
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
+
 		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
 		TextView titleView = (TextView) layout.findViewById(R.id.question_title_textview);
@@ -117,4 +126,8 @@ public abstract class Question implements Viewable, Answerable
 	{
 		_container = container;
 	}
+
+
+    //added to place code needed in order to restart a question
+    protected abstract void initQuestion();
 }
