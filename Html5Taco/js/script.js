@@ -252,7 +252,7 @@ function submit(){
 	$("#required_message").fadeOut("slow");
 	$("#final_message").fadeIn("slow");
 
-	storeSurveyData();
+	submitForm($('.question'))
 }
 
 //*Pagination misc
@@ -396,9 +396,4 @@ function validateInputAswer(answer){
 	return is_valid;
 }
 
-//--------Save survey results---------
-
-function storeSurveyData(){
-	//TODO
-}
 

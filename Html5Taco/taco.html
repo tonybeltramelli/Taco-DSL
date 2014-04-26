@@ -3,12 +3,12 @@
 // Pervasive Computing (SPCT-SPRING 2014)
 // IT University of Copenhagen
 // Authors:
-//    Daniel Garcia garcia - dgac@itu.dk
-//    Dennis Sadeler Shapira - dssh@itu.dk
-// Date: 
-//    2014-04-17
+// Daniel Garcia garcia - dgac@itu.dk
+// Dennis Sadeler Shapira - dssh@itu.dk
+// Date:
+// 2014-04-17
 // Summary:
-//    HTML5 template document to implement Taco DSL 
+// HTML5 template document to implement Taco DSL
 -->
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 <body>
 
     <!--Survey header-->
-  	<div class="page-header">
+   <div class="page-header">
         <h1><span id="survey_title">«Title»</span><span id="survey_description"><small>«Descritpion»</small></span></h1>
     </div>
 
@@ -38,7 +38,7 @@
     <!--Progress bar-->
     <h4><small>Progress</small></h4>
     <div class="progress progress-striped active">
-        <div class="progress-bar"  role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
     </div>
 
     <!--Personal information-->
@@ -54,7 +54,7 @@
             </tr>
                 <td>
                     <div class="input-group">
-                        <span class="key input-group-addon">«Age»</span><input type="text" class="value form-control">
+                        <span class="key input-group-addon">«Email»</span><input type="email" class="value form-control" id="Email">
                     </div>
                 </td>
         </table>
@@ -64,7 +64,7 @@
 
     <!--Category header-->
     <div id="category_header">
-        <h3 id="category_title"></h3> 
+        <h3 id="category_title"></h3>
         <div class="panel-header blue">
                 <div class="alert alert-info"><strong><span id="category_description"/></strong></div>
         </div>
@@ -83,7 +83,7 @@
                 <div class="text panel-heading">«This is an open field question?» <span class="red">*</span> </div>
                 
                 <div class="panel-body">
-                    <textarea class="answer form-control" rows="3"></textarea>
+                    <textarea class="answer openFieldAnswer form-control" rows="3"></textarea>
                 </div>
             </div>
 
@@ -92,9 +92,9 @@
                 <div class="text panel-heading">«This is a multiple choice question?» <span class="red">*</span> </div>
                 <div class="panel-footer">Select <span class="min">2</span> to <span class="max">3</span> options. </div>
                 
-                <div class="panel-body">   
+                <div class="panel-body">
                     <div class="input-group">
-                        <span class="input-group-addon"><input class="answer" type="checkbox" value="«Red»"></span>
+                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Red»"></span>
                         <strong><span class="answer_text form-control">«Red»</span></strong>
 
                         <!--Subquestion-->
@@ -104,13 +104,13 @@
                             <div class="question mutuallyExc panel panel-default">
                                 <div class="text panel-heading">«This is subquestion?»</span> </div>
                                 
-                                <div class="panel-body">   
+                                <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
                                         <strong><span class="answer_text form-control">«subanswer1»</span></strong>
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
                                         <strong><span class="answer_text form-control">«subanswer2»</span></strong>
                                     </div>
                                 </div>
@@ -120,23 +120,23 @@
 
                     </div>
                     <div class="input-group">
-                      <span class="input-group-addon"><input class="answer" type="checkbox" value="«Yellow»"></span>
+                      <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Yellow»"></span>
                       <strong><span class="answer_text form-control">«Yellow»</span></strong>
 
                         <!--Subquestion-->
                         <div class="subquestions">
 
                             <!--Mutually exclusive-->
-                            <div class="question required mutuallyExc panel panel-default">
+                            <div class="question mutuallyExc required panel panel-default">
                                 <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
                                 
-                                <div class="panel-body">   
+                                <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
                                         <strong><span class="answer_text form-control">«subanswer1»</span></strong>
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
                                         <strong><span class="answer_text form-control">«subanswer2»</span></strong>
                                     </div>
                                 </div>
@@ -146,11 +146,11 @@
 
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><input class="answer" type="checkbox" value="«Green»"></span>
+                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Green»"></span>
                         <strong><span class="answer_text form-control">«Green»</span></strong>
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><input class="answer" type="checkbox" value="«Other»"></span>
+                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Other"></span>
                         <input type="text" class="answer_text form-control" placeholder="«Other»*"/>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                 <div class="panel-body">
                     <div class="input-group">
                         <span class="min input-group-addon">«0»</span>
-                        <input type="range" class="form-control range" min="0" max="10" step="2">
+                        <input type="range" class="answer ratingAnswer form-control range" min="0" max="10" step="2">
                         <span class="max input-group-addon">«10»</span>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                 
                 <div class="panel-body">
                     <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer1»"></span>
+                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer1»"></span>
                         <strong><span class="answer_text form-control">«answer1»</span></strong>
 
                         <!--Subquestion-->
@@ -191,13 +191,13 @@
                             <div class="question mutuallyExc required panel panel-default">
                                 <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
                                 
-                                <div class="panel-body">   
+                                <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer1»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_3" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
                                         <strong><span class="answer_text form-control">«subanswer1»</span></strong>
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer" type="radio" value="«subanswer2»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_3" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
                                         <strong><span class="answer_text form-control">«subanswer2»</span></strong>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                     </div>
 
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer2»"></span>
+                      <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer2»"></span>
                       <strong><span class="answer_text form-control">«answer2»</span></strong>
 
                        <!--Subquestion-->
@@ -218,13 +218,13 @@
                             <div class="question mutuallyExc panel panel-default">
                                 <div class="text panel-heading">«This is subquestion 2?» </div>
                                 
-                                <div class="panel-body">   
+                                <div class="panel-body">
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer" type="radio" value="«subanswer1»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_4" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
                                         <strong><span class="answer_text form-control">«subanswer1»</span></strong>
                                     </div>
                                     <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer" type="radio" value="«subanswer2»"></span>
+                                        <span class="input-group-addon"><input name="sub_radio_4" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
                                         <strong><span class="answer_text form-control">«subanswer2»</span></strong>
                                     </div>
                                 </div>
@@ -234,11 +234,11 @@
 
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«answer3»"></span>
+                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer3»"></span>
                         <strong><span class="answer_text form-control">«answer3»</span></strong>
                     </div>
                     <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer" type="radio" value="«Other»"></span>
+                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="Other"></span>
                         <input type="text" class="answer_text form-control" placeholder="«Other»*"/>
                     </div>
                 </div>
@@ -258,12 +258,12 @@
             <div class="question yesno required panel panel-default">
                 <div class="text panel-heading">«This is a yes/no question?»<span class="red">*</span></div>
                 
-                <div class="panel-body">   
+                <div class="panel-body">
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="yes"></span>
+                      <span class="input-group-addon"><input name="radio_2" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
                       <strong><span class="answer_text form-control">Yes</span></strong>
 
-                      <span class="input-group-addon"><input name="radio_2" class="answer" type="radio" value="no"></span>
+                      <span class="input-group-addon"><input name="radio_2" class="answer mutuallyExcAnswer" type="radio" value="no"></span>
                       <strong><span class="answer_text form-control">No</span></strong>
                     </div>
                 </div>
@@ -279,16 +279,16 @@
                 
                 <div class="panel-body">
                     <ul class="list-group sortable">
-                        <li class="list-group-item">
+                        <li class="list-group-item rankingAnswer answer">
                             <span>&#x21C5;</span>Item 1
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item rankingAnswer answer">
                             <span>&#x21C5;</span>Item 2
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item rankingAnswer answer">
                             <span>&#x21C5;</span>Item 3
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item rankingAnswer answer">
                             <span>&#x21C5;</span>Item 4
                         </li>
                     </ul>
@@ -304,7 +304,7 @@
         <span>Please fill the required fields before continue! (*)</span>
     </div>
 
-    <!--Action buttons-->    
+    <!--Action buttons-->
     <div class="centered">
         <button type="button" class="btn btn-large btn-primary" id="btn_back" onClick="back()">«Back</button>
         <button type="button" class="btn btn-large btn-primary" id="btn_next" onClick="next()">Next»</button>
@@ -319,13 +319,14 @@
     <!--JavaScript-->
 
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/submitter.js"></script>
     <script src="js/script.js"></script>
 
   </body>
