@@ -186,7 +186,8 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 
 
     }
-
+    
+//recursion
     private void printQuestion(BufferedWriter writer, Question question, String delimiter) {
 
         try {
