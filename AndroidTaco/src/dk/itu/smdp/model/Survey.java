@@ -15,7 +15,8 @@ public class Survey
 {	
 	private String _title;
 	private String _description;
-	private Date _date;
+	private String _date;
+	private String _email;
 	private boolean _isAnonymous;
 	
 	private Person _person;
@@ -35,6 +36,8 @@ public class Survey
 	{
 		_categories = new ArrayList<Category>();
 		_isAnonymous = true;
+		_date = "";
+		_email = "";
 		init();
 	}
 	
@@ -58,14 +61,14 @@ public class Survey
 		this._description = description;
 	}
 	
-	public Date getDate()
+	public String getDate()
 	{
 		return _date;
 	}
 	
-	public void setDate(Date date)
+	public String getEmail()
 	{
-		this._date = date;
+		return _email;
 	}
 	
 	public void setPerson(Person person)
