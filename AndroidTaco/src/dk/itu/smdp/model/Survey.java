@@ -8,11 +8,8 @@ import dk.itu.smdp.model.question.QuestionFactory;
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * Created by centos on 4/13/14.
- */
 public class Survey
-{	
+{
 	private String _title;
 	private String _description;
 	private String _date;
@@ -35,9 +32,6 @@ public class Survey
 	private Survey()
 	{
 		_categories = new ArrayList<Category>();
-		_isAnonymous = true;
-		_date = "";
-		_email = "";
 		init();
 	}
 	
@@ -102,109 +96,122 @@ public class Survey
 		_categories.add(c);
 	}
 	
-	// dummy method just to test
 	private void init()
 	{
-		this.setTitle("Survey");
-		this.setDescription("Survey example instance.");
-		
-		PersonAttribute name = new PersonAttribute("Name");
-		PersonAttribute age = new PersonAttribute("Age");
+		_title = "Survey";
+		_description = "Survey example instance.";
+		_isAnonymous = false;
+		_date = "01/01/2014";
+		_email = "deebay@jubii.dk";
 		
 		Person p = new Person();
-		p.addAttribute(name);
-		p.addAttribute(age);
+		
+		PersonAttribute personAttribute1 = new PersonAttribute("name");
+		p.addAttribute(personAttribute1);
+		PersonAttribute personAttribute2 = new PersonAttribute("age");
+		p.addAttribute(personAttribute2);
+		
 		this.setPerson(p);
-
-
-        Question q1 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-        Answer a = AnswerFactory.create(Answer.BINARY, "RED");
-        q1.addAnswer(a);
-        q1.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q1.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q1.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q1.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-
-
-        Question q2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-        Answer b = AnswerFactory.create(Answer.BINARY, "RED");
-        q2.addAnswer(b);
-        b.addSubQuestion(q1);
-        q2.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q2.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q2.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q2.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-
-        Question q3 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-        Answer c = AnswerFactory.create(Answer.BINARY, "RED");
-        q3.addAnswer(c);
-//        c.addSubQuestion(q2);
-        q3.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q3.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q3.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q3.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-        Question q4 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-        Answer d = AnswerFactory.create(Answer.BINARY, "RED");
-        q4.addAnswer(d);
-        d.addSubQuestion(q3);
-        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q4.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q4.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-        Question q5 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-
-        Answer e = AnswerFactory.create(Answer.BINARY, "RED");
-        q5.addAnswer(e);
-        e.addSubQuestion(q4);
-        e.addSubQuestion(q2);
-        q5.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q5.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q5.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q5.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-
-        Page page = new Page();
-        page.addQuestion(q5);
-        Category category = new Category("skata");
-        category.addPage(page);
-        this.addCategory(category);
-
-
-        Page page2 = new Page();
-
-        Question q6 = QuestionFactory.create(Question.YES_NO , true , "sadfasdf");
-
-         Question q7 = QuestionFactory.create(Question.OPEN_FIELD , true , "sadfasdf");
-
-        Question q8 = QuestionFactory.create(Question.MULTIPLE_CHOICE, true, "What is your favorite color ?", 2, 3);
-        Answer aa = AnswerFactory.create(Answer.BINARY, "RED");
-        aa.addSubQuestion(q6);
-        aa.addSubQuestion(q7);
-        q8.addAnswer(aa);
-        q8.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
-        q8.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
-        q8.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
-        q8.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
-
-
-        Question q9 = QuestionFactory.create(Question.RATING , true , "adf" , 0,10,1);
-
-        page2.addQuestion(q8);
-        page2.addQuestion(q9);
-
-        category.addPage(page2);
-
-        Question q10 = QuestionFactory.create(Question.YES_NO , true , "asdf");
-        Page page3 = new Page();
-
-        page3.addQuestion(q10);
-
-        Category category2 = new Category("asdf");
-        category2.addPage(page3);
-        this.addCategory(category2);
+		
+		Category category1 = new Category("Category number 1 about cool stuffs.", "Your cool information.");
+		
+		Page page1 = new Page();
+		
+		Question question1 = QuestionFactory.create(Question.OPEN_FIELD, false, "What is your point of view ?");
+		
+		page1.addQuestion(question1);
+		
+		Question question2 = QuestionFactory.create(Question.MULTIPLE_CHOICE, false, "What is your favorite color ?", 2, 3);
+		
+		question2.addAnswer(AnswerFactory.create(Answer.BINARY, "RED"));
+		question2.addAnswer(AnswerFactory.create(Answer.BINARY, "YELLOW"));
+		question2.addAnswer(AnswerFactory.create(Answer.BINARY, "BLUE"));
+		question2.addAnswer(AnswerFactory.create(Answer.BINARY, "GREEN"));
+		question2.addAnswer(AnswerFactory.create(Answer.USER_INPUT, "OTHER"));
+		page1.addQuestion(question2);
+		
+		Question question3 = QuestionFactory.create(Question.RATING, true, "How much do you like the canteen's coffee ?", 1, 10, 1);
+		page1.addQuestion(question3);
+		
+		category1.addPage(page1);
+		
+		Page page2 = new Page();
+		
+		Question question4 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, true, "Select your favorite cat");
+		
+		Answer answer0 = AnswerFactory.create(Answer.BINARY, "First option");
+		question4.addAnswer(answer0);
+		
+		Question question4_0 = QuestionFactory.create(Question.OPEN_FIELD, false, "Why?");
+		
+		answer0.addSubQuestion(question4_0);
+		Answer answer1 = AnswerFactory.create(Answer.BINARY, "Second option");
+		question4.addAnswer(answer1);
+		
+		Question question4_1 = QuestionFactory.create(Question.MULTIPLE_CHOICE, false, "What?", 2, 2);
+		
+		Answer answer2 = AnswerFactory.create(Answer.BINARY, "Option 1");
+		question4_1.addAnswer(answer2);
+		
+		Question question4_1_2 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, false, "Select a letter?");
+		
+		question4_1_2.addAnswer(AnswerFactory.create(Answer.BINARY, "A"));
+		question4_1_2.addAnswer(AnswerFactory.create(Answer.BINARY, "B"));
+		Answer answer3 = AnswerFactory.create(Answer.BINARY, "C");
+		question4_1_2.addAnswer(answer3);
+		
+		Question question4_1_2_3 = QuestionFactory.create(Question.OPEN_FIELD, false, "How?");
+		
+		answer3.addSubQuestion(question4_1_2_3);
+		question4_1_2.addAnswer(AnswerFactory.create(Answer.BINARY, "D"));
+		question4_1_2.addAnswer(AnswerFactory.create(Answer.BINARY, "E"));
+		answer2.addSubQuestion(question4_1_2);
+		question4_1.addAnswer(AnswerFactory.create(Answer.BINARY, "Option 2"));
+		answer1.addSubQuestion(question4_1);
+		question4.addAnswer(AnswerFactory.create(Answer.BINARY, "Third option"));
+		question4.addAnswer(AnswerFactory.create(Answer.BINARY, "Fourth option"));
+		page2.addQuestion(question4);
+		
+		Question question5 = QuestionFactory.create(Question.YES_NO, false, "Are you married ?");
+		page2.addQuestion(question5);
+		
+		category1.addPage(page2);
+		
+		this.addCategory(category1);
+		
+		Category category2 = new Category("Professioanl information?", "Your professioanl information");
+		
+		Page page3 = new Page();
+		
+		Question question6 = QuestionFactory.create(Question.RANKING, false, "Rate those stuffs by preference order");
+		
+		question6.addAnswer(AnswerFactory.create(Answer.RANKING, "french fries"));
+		question6.addAnswer(AnswerFactory.create(Answer.RANKING, "smorebrod"));
+		question6.addAnswer(AnswerFactory.create(Answer.RANKING, "mousaka"));
+		question6.addAnswer(AnswerFactory.create(Answer.RANKING, "hamburger"));
+		question6.addAnswer(AnswerFactory.create(Answer.RANKING, "tacos"));
+		
+		page3.addQuestion(question6);
+		
+		Question question7 = QuestionFactory.create(Question.RATING, true, "How much do you like this language ?", 1, 10, 1);
+		page3.addQuestion(question7);
+		Question question8 = QuestionFactory.create(Question.OPEN_FIELD, false, "What is your favorite identifier ?");
+		
+		page3.addQuestion(question8);
+		
+		Question question9 = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, false, "How often do you use this language ?");
+		
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every second"));
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every hour"));
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every day"));
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every week"));
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every month"));
+		question9.addAnswer(AnswerFactory.create(Answer.BINARY, "every year"));
+		page3.addQuestion(question9);
+		
+		category2.addPage(page3);
+		
+		this.addCategory(category2);
+		
 	}
 }
