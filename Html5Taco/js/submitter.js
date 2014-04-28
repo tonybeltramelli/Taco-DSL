@@ -1,8 +1,10 @@
 var formData = new FormData();
 var questionDict = {};
-var message;
+var message ="";
+var surveyResultsDiv = document.createElement("div")
 
 function submitForm(element) {
+
 	for(w=0 ; w < element.length ; w++) {	
 	
 		if(element[w].parentNode.className == "subquestions")continue;
@@ -17,28 +19,32 @@ function submitForm(element) {
 		getData(questionText, answerInnerElements);
 	}	
 	
+	getSurveyInfo()
+	getPersonInfo()
+	
 	//Render results on final page
-	//var targetDiv = document.getElementById("surveyResults")
-	var surveyResultsDiv = document.createElement("div")
+	//var targetDiv = document.getElementById("surveyResults")	
 	var targetDiv = document.getElementById("final_message")
-	surveyResultsDiv.innerHTML += "<h3 id='testt'>Survey Results</h3><br />"
+	surveyResultsDiv.innerHTML += "<br /><h4>Survey Results</h4>"
 	for(var propName in questionDict) {
 		var propValue = questionDict[propName];
 		surveyResultsDiv.innerHTML += "<div>Q: "+propName+"  A: "+propValue+ "</div><br />";
-		message += "Q: "+propName+"  A: "+propValue+" \n";
+		message += " \nQ: "+propName+"  A: "+propValue;
 	}
 	targetDiv.appendChild(surveyResultsDiv)
-	
+
 	//Send email
 	var	companyEmail = document.getElementById("Email").value
 	var email = encodeURIComponent(companyEmail)
 	var subject = "Taco Surveys* Your survey results"
 	var from = "Taco Surveys Inc."
-		
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "http://projectdee.com/EmailController.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
-	xhr.send();
-	alert("The survey has been submitted to "+companyEmail);
+	
+	if(email){
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET", "http://projectdee.com/EmailController.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
+		xhr.send();	
+		alert("The survey has been submitted to "+companyEmail);
+	}
 }
 	
     
@@ -112,8 +118,6 @@ function getData(questionText, answerInnerElements) {
 
 
 function checkForSubQuestion(element, sourceAnswer) {
-
-	//var elementsToCheck = element.parentNode.parentNode.getElementsByClassName("subquestion")
 	var elementsToCheck = element.parentNode.parentNode.getElementsByClassName("subquestions")	
 	if(elementsToCheck.length == 0){return;}
 	elementsToCheck = elementsToCheck[0].getElementsByClassName("question")
@@ -128,3 +132,28 @@ function checkForSubQuestion(element, sourceAnswer) {
 		return[subQuestionText, subAnswerInnerElements]
 	}
 }
+
+function getSurveyInfo() {
+	var surveyTitle = document.getElementById("survey_title")
+	var surveyDescription = document.getElementById("survey_description")
+	
+	surveyResultsDiv.innerHTML += "<h3>"+surveyTitle.innerHTML+"</h3><span>Description: "+surveyDescription.innerHTML+"</span><br /><br />"
+	message += surveyTitle.innerHTML+"\nDescripition: "+surveyDescription.childNodes[0].innerHTML+" \n\n"
+}
+
+function getPersonInfo() {
+	var personDiv = document.getElementById("person")
+	if(!personDiv)return;
+	var personAttributeElements = personDiv.getElementsByClassName("input-group")
+
+	surveyResultsDiv.innerHTML += "<span><strong>Respondent Details:</strong></span><br />"
+	message += "Respondent Details: \n"
+	
+	for(i=0; i<personAttributeElements.length; i++) {
+		var attributeKey = personAttributeElements[i].childNodes[1].childNodes[0].nodeValue;
+		var attributeValue =personAttributeElements[i].childNodes[2].value
+		surveyResultsDiv.innerHTML += attributeKey+": "+attributeValue+"<br />";
+		message += attributeKey+": "+attributeValue+" \n"
+	}
+}
+
