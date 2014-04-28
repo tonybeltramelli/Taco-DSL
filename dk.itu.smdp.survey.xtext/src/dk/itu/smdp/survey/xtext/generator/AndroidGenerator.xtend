@@ -10,11 +10,13 @@ import SurveyModel.Survey
 import SurveyModel.YesNo
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
+import SurveyModel.Answer
 
 class AndroidGenerator extends SurveyGenerator {
 	private int _categoryCounter;
 	private int _pageCounter;
 	private int _personAttributeCounter;
+	private int _answerCounter;
 
 	def override generate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.toIterable.filter(typeof(Survey)).forEach [ Survey it |
@@ -38,7 +40,8 @@ class AndroidGenerator extends SurveyGenerator {
 			{	
 				private String _title;
 				private String _description;
-				private Date _date;
+				private String _date;
+				private String _email;
 				private boolean _isAnonymous;
 				
 				private Person _person;
@@ -57,7 +60,6 @@ class AndroidGenerator extends SurveyGenerator {
 				private Survey()
 				{
 					_categories = new ArrayList<Category>();
-					_isAnonymous = «person == null»;
 					init();
 				}
 				
@@ -81,14 +83,14 @@ class AndroidGenerator extends SurveyGenerator {
 					this._description = description;
 				}
 				
-				public Date getDate()
+				public String getDate()
 				{
 					return _date;
 				}
 				
-				public void setDate(Date date)
+				public String getEmail()
 				{
-					this._date = date;
+					return _email;
 				}
 				
 				public void setPerson(Person person)
@@ -124,8 +126,11 @@ class AndroidGenerator extends SurveyGenerator {
 				
 				private void init()
 				{
-					this.setTitle("«title»");
-					this.setDescription("«description»");
+					_title = "«title»";
+					_description = "«description»";
+					_isAnonymous = «person == null»;
+					_date = "«date»";
+					_email = "«email»";
 					
 					«IF person != null»
 						Person p = new Person();
@@ -152,7 +157,7 @@ class AndroidGenerator extends SurveyGenerator {
 							
 							«FOR question : page.questions»
 								«_incrementQuestion»
-								«compileQuestion(question)»
+								«compileQuestion(question, String.valueOf(_questionCounter))»
 								page«_pageCounter».addQuestion(question«_questionCounter»);
 							«ENDFOR»
 							
@@ -167,61 +172,78 @@ class AndroidGenerator extends SurveyGenerator {
 		'''
 	}
 
-	def override String compileQuestion(Question it) {
+	def override String compileQuestion(Question it, String id) {
 		'''
 			«IF (it instanceof OpenField)»
-				Question question«_questionCounter» = QuestionFactory.create(Question.OPEN_FIELD, «isMandatory», "«questionText»");								            
+				Question question«id» = QuestionFactory.create(Question.OPEN_FIELD, «isMandatory», "«questionText»");								            
 			«ENDIF»
 			
 			«IF (it instanceof Ranking)»
-				Question question«_questionCounter» = QuestionFactory.create(Question.RANKING, «isMandatory», "«questionText»");
+				Question question«id» = QuestionFactory.create(Question.RANKING, «isMandatory», "«questionText»");
 				
 				«FOR answer : answers»
-					question«_questionCounter».addAnswer(AnswerFactory.create(Answer.RANKING, "«answer.description»"));		
-					«ENDFOR»
-				«ENDIF»
+					question«id».addAnswer(AnswerFactory.create(Answer.RANKING, "«answer.description»"));		
+				«ENDFOR»
+			«ENDIF»
 				
-				«IF (it instanceof YesNo)»
-					Question question«_questionCounter» = QuestionFactory.create(Question.YES_NO, «isMandatory», "«questionText»");
-				«ELSEIF (it instanceof Rating)»
-					Question question«_questionCounter» = QuestionFactory.create(Question.RATING, «isMandatory», "«questionText»", «(it as Rating).start», «(it as Rating).end», «(it as Rating).interval»);
-				«ELSEIF (it instanceof MutuallyExclusive)»
-					Question question«_questionCounter» = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, «isMandatory», "«questionText»");
+			«IF (it instanceof YesNo)»
+				Question question«id» = QuestionFactory.create(Question.YES_NO, «isMandatory», "«questionText»");
+			«ELSEIF (it instanceof Rating)»
+				Question question«id» = QuestionFactory.create(Question.RATING, «isMandatory», "«questionText»", «(it as Rating).start», «(it as Rating).end», «(it as Rating).interval»);
+			«ELSEIF (it instanceof MutuallyExclusive)»
+				Question question«id» = QuestionFactory.create(Question.MUTUALLY_EXCLUSIVE, «isMandatory», "«questionText»");
 					
-					«FOR answer : answers»
-						«IF !answer.isUserInputAllowed»
-							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
-						«ELSE»
-							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
-						«ENDIF»
-					«ENDFOR»
-				«ELSEIF (it instanceof MultipleChoice)»
-					Question question«_questionCounter» = QuestionFactory.create(Question.MULTIPLE_CHOICE, «isMandatory», "«questionText»", «(it as MultipleChoice).min», «(it as MultipleChoice).max»);
+				«FOR answer : answers»
+					«compileAnswer(answer, String.valueOf(id), String.valueOf(_answerCounter))»
+				«ENDFOR»
+			«ELSEIF (it instanceof MultipleChoice)»
+				Question question«id» = QuestionFactory.create(Question.MULTIPLE_CHOICE, «isMandatory», "«questionText»", «(it as MultipleChoice).min», «(it as MultipleChoice).max»);
 					
-					«FOR answer : answers»
-						«IF !answer.isUserInputAllowed»
-							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.BINARY, "«answer.description»"));	
-						«ELSE»
-							question«_questionCounter».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«answer.description»"));
-						«ENDIF»
-					«ENDFOR»
-				«ENDIF»
-				
-			'''
+				«FOR answer : answers»
+					«compileAnswer(answer, String.valueOf(id), String.valueOf(_answerCounter))»
+				«ENDFOR»
+			«ENDIF»	
+		'''
 	}
-		
-	def private void _incrementPersonAttribute()
-	{
+
+	def String compileAnswer(Answer it, String parentQuestion, String id) {
+		'''			
+			«IF subquestion.length == 0»
+				«IF !isUserInputAllowed»
+					question«parentQuestion».addAnswer(AnswerFactory.create(Answer.BINARY, "«description»"));
+				«ELSE»
+					question«parentQuestion».addAnswer(AnswerFactory.create(Answer.USER_INPUT, "«description»"));
+				«ENDIF»
+			«ELSE»
+				«_incrementAnswer»
+				«IF !isUserInputAllowed»
+					Answer answer«id» = AnswerFactory.create(Answer.BINARY, "«description»");
+				«ELSE»
+					Answer answer«id» = AnswerFactory.create(Answer.USER_INPUT, "«description»");
+				«ENDIF»
+				question«parentQuestion».addAnswer(answer«id»);
+				
+				«FOR subq : subquestion»
+					«compileQuestion(subq, parentQuestion + "_" + id)»
+					answer«id».addSubQuestion(question«parentQuestion + "_" + id»);
+				«ENDFOR»
+			«ENDIF»	
+		'''
+	}
+
+	def private void _incrementPersonAttribute() {
 		_personAttributeCounter = _personAttributeCounter + 1;
 	}
-	
-	def private void _incrementCategory()
-	{
+
+	def private void _incrementCategory() {
 		_categoryCounter = _categoryCounter + 1;
 	}
-	
-	def private void _incrementPage()
-	{
+
+	def private void _incrementPage() {
 		_pageCounter = _pageCounter + 1;
 	}
+
+	def private void _incrementAnswer() {
+		_answerCounter = _answerCounter + 1;
+	}	
 }

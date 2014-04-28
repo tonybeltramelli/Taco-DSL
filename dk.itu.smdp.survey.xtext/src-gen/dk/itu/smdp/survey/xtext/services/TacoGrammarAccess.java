@@ -32,20 +32,24 @@ public class TacoGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDescriptionKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cDescriptionAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cDescriptionEStringParserRuleCall_3_1_0 = (RuleCall)cDescriptionAssignment_3_1.eContents().get(0);
-		private final Assignment cPersonAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPersonPersonParserRuleCall_4_0 = (RuleCall)cPersonAssignment_4.eContents().get(0);
-		private final Assignment cCategoriesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cCategoriesCategoryParserRuleCall_5_0 = (RuleCall)cCategoriesAssignment_5.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cEmailKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cEmailAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cEmailEStringParserRuleCall_4_1_0 = (RuleCall)cEmailAssignment_4_1.eContents().get(0);
+		private final Assignment cPersonAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cPersonPersonParserRuleCall_5_0 = (RuleCall)cPersonAssignment_5.eContents().get(0);
 		private final Assignment cCategoriesAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cCategoriesCategoryParserRuleCall_6_0 = (RuleCall)cCategoriesAssignment_6.eContents().get(0);
+		private final Assignment cCategoriesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cCategoriesCategoryParserRuleCall_7_0 = (RuleCall)cCategoriesAssignment_7.eContents().get(0);
 		
 		//Survey:
-		//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
-		//	categories+=Category*;
+		//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? ("email" email=EString)?
+		//	person=Person? categories+=Category categories+=Category*;
 		public ParserRule getRule() { return rule; }
 
-		//"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
-		//categories+=Category*
+		//"survey" title=EString ("date" date=EString)? ("description" description=EString)? ("email" email=EString)?
+		//person=Person? categories+=Category categories+=Category*
 		public Group getGroup() { return cGroup; }
 
 		//"survey"
@@ -81,23 +85,35 @@ public class TacoGrammarAccess extends AbstractGrammarElementFinder {
 		//EString
 		public RuleCall getDescriptionEStringParserRuleCall_3_1_0() { return cDescriptionEStringParserRuleCall_3_1_0; }
 
+		//("email" email=EString)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//"email"
+		public Keyword getEmailKeyword_4_0() { return cEmailKeyword_4_0; }
+
+		//email=EString
+		public Assignment getEmailAssignment_4_1() { return cEmailAssignment_4_1; }
+
+		//EString
+		public RuleCall getEmailEStringParserRuleCall_4_1_0() { return cEmailEStringParserRuleCall_4_1_0; }
+
 		//person=Person?
-		public Assignment getPersonAssignment_4() { return cPersonAssignment_4; }
+		public Assignment getPersonAssignment_5() { return cPersonAssignment_5; }
 
 		//Person
-		public RuleCall getPersonPersonParserRuleCall_4_0() { return cPersonPersonParserRuleCall_4_0; }
+		public RuleCall getPersonPersonParserRuleCall_5_0() { return cPersonPersonParserRuleCall_5_0; }
 
 		//categories+=Category
-		public Assignment getCategoriesAssignment_5() { return cCategoriesAssignment_5; }
-
-		//Category
-		public RuleCall getCategoriesCategoryParserRuleCall_5_0() { return cCategoriesCategoryParserRuleCall_5_0; }
-
-		//categories+=Category*
 		public Assignment getCategoriesAssignment_6() { return cCategoriesAssignment_6; }
 
 		//Category
 		public RuleCall getCategoriesCategoryParserRuleCall_6_0() { return cCategoriesCategoryParserRuleCall_6_0; }
+
+		//categories+=Category*
+		public Assignment getCategoriesAssignment_7() { return cCategoriesAssignment_7; }
+
+		//Category
+		public RuleCall getCategoriesCategoryParserRuleCall_7_0() { return cCategoriesCategoryParserRuleCall_7_0; }
 	}
 
 	public class QuestionElements extends AbstractParserRuleElementFinder {
@@ -807,8 +823,8 @@ public class TacoGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Survey:
-	//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? person=Person? categories+=Category
-	//	categories+=Category*;
+	//	"survey" title=EString ("date" date=EString)? ("description" description=EString)? ("email" email=EString)?
+	//	person=Person? categories+=Category categories+=Category*;
 	public SurveyElements getSurveyAccess() {
 		return (pSurvey != null) ? pSurvey : (pSurvey = new SurveyElements());
 	}

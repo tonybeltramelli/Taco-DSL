@@ -11,7 +11,7 @@ abstract class SurveyGenerator
 	
 	abstract def void generate(Resource resource, IFileSystemAccess fsa)
 	abstract def String compile(Survey it)
-	abstract def String compileQuestion(Question it)
+	abstract def String compileQuestion(Question it, String id)
 	
 	def protected void _incrementQuestion()
 	{

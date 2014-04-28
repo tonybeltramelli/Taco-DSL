@@ -43,6 +43,7 @@ public class TacoParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSurveyAccess().getGroup(), "rule__Survey__Group__0");
 					put(grammarAccess.getSurveyAccess().getGroup_2(), "rule__Survey__Group_2__0");
 					put(grammarAccess.getSurveyAccess().getGroup_3(), "rule__Survey__Group_3__0");
+					put(grammarAccess.getSurveyAccess().getGroup_4(), "rule__Survey__Group_4__0");
 					put(grammarAccess.getCategoryAccess().getGroup(), "rule__Category__Group__0");
 					put(grammarAccess.getCategoryAccess().getGroup_2(), "rule__Category__Group_2__0");
 					put(grammarAccess.getPersonAccess().getGroup(), "rule__Person__Group__0");
@@ -61,9 +62,10 @@ public class TacoParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSurveyAccess().getTitleAssignment_1(), "rule__Survey__TitleAssignment_1");
 					put(grammarAccess.getSurveyAccess().getDateAssignment_2_1(), "rule__Survey__DateAssignment_2_1");
 					put(grammarAccess.getSurveyAccess().getDescriptionAssignment_3_1(), "rule__Survey__DescriptionAssignment_3_1");
-					put(grammarAccess.getSurveyAccess().getPersonAssignment_4(), "rule__Survey__PersonAssignment_4");
-					put(grammarAccess.getSurveyAccess().getCategoriesAssignment_5(), "rule__Survey__CategoriesAssignment_5");
+					put(grammarAccess.getSurveyAccess().getEmailAssignment_4_1(), "rule__Survey__EmailAssignment_4_1");
+					put(grammarAccess.getSurveyAccess().getPersonAssignment_5(), "rule__Survey__PersonAssignment_5");
 					put(grammarAccess.getSurveyAccess().getCategoriesAssignment_6(), "rule__Survey__CategoriesAssignment_6");
+					put(grammarAccess.getSurveyAccess().getCategoriesAssignment_7(), "rule__Survey__CategoriesAssignment_7");
 					put(grammarAccess.getCategoryAccess().getTitleAssignment_1(), "rule__Category__TitleAssignment_1");
 					put(grammarAccess.getCategoryAccess().getDescriptionAssignment_2_1(), "rule__Category__DescriptionAssignment_2_1");
 					put(grammarAccess.getCategoryAccess().getPagesAssignment_3(), "rule__Category__PagesAssignment_3");

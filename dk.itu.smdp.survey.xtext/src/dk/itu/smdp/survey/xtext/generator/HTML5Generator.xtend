@@ -43,12 +43,10 @@ class HTML5Generator extends SurveyGenerator
 			    <!--Survey header-->
 			  	<div class="page-header">
 			        <h1><span id="survey_title">«title»</span><span id="survey_description"><small>«description»</small></span></h1>
-			        <div class="input-group">
-						<span class="key input-group-addon">email (for demonstration purpose)</span><input id="email" type="text" class="value form-control">
-					</div>
 			    </div>
 			
 			    <input type="hidden" id="survey_date" value="«date»"/>
+			    <input type="hidden" id="email" value="«email»"/>
 			
 			    <!--Progress bar-->
 			    <h4><small>Progress</small></h4>
@@ -100,7 +98,7 @@ class HTML5Generator extends SurveyGenerator
 					            
 					            	«_incrementQuestion»
 					            
-					            	«compileQuestion(question)»
+					            	«compileQuestion(question, String.valueOf(_questionCounter))»
 					            	
 					            «ENDFOR»
 					
@@ -146,7 +144,7 @@ class HTML5Generator extends SurveyGenerator
 		''' 
 	}
 	
-	def override String compileQuestion(Question it)
+	def override String compileQuestion(Question it, String id)
 	{
 		'''
 		«IF (it instanceof OpenField)»
@@ -230,7 +228,7 @@ class HTML5Generator extends SurveyGenerator
 		                        <div class="subquestions">
 		                        
 		                        «FOR subquestion : answer.subquestion»	
-		                        	«compileQuestion(subquestion)»
+		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter))»
 		                        «ENDFOR»
 		                        	
 		                        </div><!--End Subquestion-->
@@ -266,7 +264,7 @@ class HTML5Generator extends SurveyGenerator
 		                        <div class="subquestions">
 		                        
 		                        «FOR subquestion : answer.subquestion»	
-		                        	«compileQuestion(subquestion)»
+		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter))»
 		                        «ENDFOR»
 		                        	
 		                        </div><!--End Subquestion-->

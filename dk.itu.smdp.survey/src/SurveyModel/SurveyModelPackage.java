@@ -743,13 +743,22 @@ public interface SurveyModelPackage extends EPackage {
 	int SURVEY__DESCRIPTION = 4;
 
 	/**
+	 * The feature id for the '<em><b>Email</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__EMAIL = 5;
+
+	/**
 	 * The number of structural features of the '<em>Survey</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SURVEY_FEATURE_COUNT = 5;
+	int SURVEY_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Survey</em>' class.
@@ -1156,6 +1165,17 @@ public interface SurveyModelPackage extends EPackage {
 	EAttribute getSurvey_Description();
 
 	/**
+	 * Returns the meta object for the attribute '{@link SurveyModel.Survey#getEmail <em>Email</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Email</em>'.
+	 * @see SurveyModel.Survey#getEmail()
+	 * @see #getSurvey()
+	 * @generated
+	 */
+	EAttribute getSurvey_Email();
+
+	/**
 	 * Returns the meta object for class '{@link SurveyModel.MutuallyExclusive <em>Mutually Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1489,6 +1509,14 @@ public interface SurveyModelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SURVEY__DESCRIPTION = eINSTANCE.getSurvey_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Email</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SURVEY__EMAIL = eINSTANCE.getSurvey_Email();
 
 		/**
 		 * The meta object literal for the '{@link SurveyModel.impl.MutuallyExclusiveImpl <em>Mutually Exclusive</em>}' class.

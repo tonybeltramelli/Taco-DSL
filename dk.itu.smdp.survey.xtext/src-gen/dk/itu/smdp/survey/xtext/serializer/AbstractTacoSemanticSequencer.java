@@ -228,6 +228,7 @@ public abstract class AbstractTacoSemanticSequencer extends AbstractDelegatingSe
 	 *         title=EString 
 	 *         date=EString? 
 	 *         description=EString? 
+	 *         email=EString? 
 	 *         person=Person? 
 	 *         categories+=Category 
 	 *         categories+=Category*

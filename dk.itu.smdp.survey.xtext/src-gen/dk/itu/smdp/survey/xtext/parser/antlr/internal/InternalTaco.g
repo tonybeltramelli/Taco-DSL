@@ -143,19 +143,41 @@ ruleSurvey returns [EObject current=null]
 	    }
 
 )
+))?(	otherlv_6='email' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getSurveyAccess().getEmailKeyword_4_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getSurveyAccess().getEmailEStringParserRuleCall_4_1_0()); 
+	    }
+		lv_email_7_0=ruleEString		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getSurveyRule());
+	        }
+       		set(
+       			$current, 
+       			"email",
+        		lv_email_7_0, 
+        		"EString");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 ))?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSurveyAccess().getPersonPersonParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getSurveyAccess().getPersonPersonParserRuleCall_5_0()); 
 	    }
-		lv_person_6_0=rulePerson		{
+		lv_person_8_0=rulePerson		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSurveyRule());
 	        }
        		set(
        			$current, 
        			"person",
-        		lv_person_6_0, 
+        		lv_person_8_0, 
         		"Person");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -164,16 +186,16 @@ ruleSurvey returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSurveyAccess().getCategoriesCategoryParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getSurveyAccess().getCategoriesCategoryParserRuleCall_6_0()); 
 	    }
-		lv_categories_7_0=ruleCategory		{
+		lv_categories_9_0=ruleCategory		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSurveyRule());
 	        }
        		add(
        			$current, 
        			"categories",
-        		lv_categories_7_0, 
+        		lv_categories_9_0, 
         		"Category");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -182,16 +204,16 @@ ruleSurvey returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getSurveyAccess().getCategoriesCategoryParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getSurveyAccess().getCategoriesCategoryParserRuleCall_7_0()); 
 	    }
-		lv_categories_8_0=ruleCategory		{
+		lv_categories_10_0=ruleCategory		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getSurveyRule());
 	        }
        		add(
        			$current, 
        			"categories",
-        		lv_categories_8_0, 
+        		lv_categories_10_0, 
         		"Category");
 	        afterParserOrEnumRuleCall();
 	    }

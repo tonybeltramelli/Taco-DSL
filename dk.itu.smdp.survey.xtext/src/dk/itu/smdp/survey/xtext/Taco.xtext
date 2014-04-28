@@ -8,6 +8,7 @@ Survey returns Survey:
 		'survey' title=EString
 		('date' date=EString)?
 		('description' description=EString)?
+		('email' email=EString)?
 		(person=Person)?
 		categories+=Category (categories+=Category)*
 	;
@@ -95,3 +96,4 @@ EInt returns ecore::EInt:
 PersonAttribute returns PersonAttribute:
 		key=EString
 	;
+	

@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link SurveyModel.impl.SurveyImpl#getDate <em>Date</em>}</li>
  *   <li>{@link SurveyModel.impl.SurveyImpl#getPerson <em>Person</em>}</li>
  *   <li>{@link SurveyModel.impl.SurveyImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link SurveyModel.impl.SurveyImpl#getEmail <em>Email</em>}</li>
  * </ul>
  * </p>
  *
@@ -120,6 +121,26 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * @ordered
 	 */
 	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEmail()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String EMAIL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getEmail() <em>Email</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEmail()
+	 * @generated
+	 * @ordered
+	 */
+	protected String email = EMAIL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -263,6 +284,27 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEmail(String newEmail) {
+		String oldEmail = email;
+		email = newEmail;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SurveyModelPackage.SURVEY__EMAIL, oldEmail, email));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -292,6 +334,8 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 				return getPerson();
 			case SurveyModelPackage.SURVEY__DESCRIPTION:
 				return getDescription();
+			case SurveyModelPackage.SURVEY__EMAIL:
+				return getEmail();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -321,6 +365,9 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 			case SurveyModelPackage.SURVEY__DESCRIPTION:
 				setDescription((String)newValue);
 				return;
+			case SurveyModelPackage.SURVEY__EMAIL:
+				setEmail((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -348,6 +395,9 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 			case SurveyModelPackage.SURVEY__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
+			case SurveyModelPackage.SURVEY__EMAIL:
+				setEmail(EMAIL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -370,6 +420,8 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 				return person != null;
 			case SurveyModelPackage.SURVEY__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+			case SurveyModelPackage.SURVEY__EMAIL:
+				return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT.equals(email);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -390,6 +442,8 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 		result.append(date);
 		result.append(", description: ");
 		result.append(description);
+		result.append(", email: ");
+		result.append(email);
 		result.append(')');
 		return result.toString();
 	}

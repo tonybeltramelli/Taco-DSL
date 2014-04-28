@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link SurveyModel.Survey#getDate <em>Date</em>}</li>
  *   <li>{@link SurveyModel.Survey#getPerson <em>Person</em>}</li>
  *   <li>{@link SurveyModel.Survey#getDescription <em>Description</em>}</li>
+ *   <li>{@link SurveyModel.Survey#getEmail <em>Email</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,5 +147,31 @@ public interface Survey extends EObject {
 	 * @generated
 	 */
 	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Email</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Email</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Email</em>' attribute.
+	 * @see #setEmail(String)
+	 * @see SurveyModel.SurveyModelPackage#getSurvey_Email()
+	 * @model
+	 * @generated
+	 */
+	String getEmail();
+
+	/**
+	 * Sets the value of the '{@link SurveyModel.Survey#getEmail <em>Email</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Email</em>' attribute.
+	 * @see #getEmail()
+	 * @generated
+	 */
+	void setEmail(String value);
 
 } // Survey

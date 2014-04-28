@@ -42,6 +42,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Survey/date"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SurveyModel.ecore#//Survey/person"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Survey/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SurveyModel.ecore#//Survey/email"/>
     </genClasses>
     <genClasses ecoreClass="SurveyModel.ecore#//MutuallyExclusive"/>
     <genClasses ecoreClass="SurveyModel.ecore#//Person">

@@ -459,6 +459,15 @@ public class SurveyModelPackageImpl extends EPackageImpl implements SurveyModelP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSurvey_Email() {
+		return (EAttribute)surveyEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMutuallyExclusive() {
 		return mutuallyExclusiveEClass;
 	}
@@ -566,6 +575,7 @@ public class SurveyModelPackageImpl extends EPackageImpl implements SurveyModelP
 		createEAttribute(surveyEClass, SURVEY__DATE);
 		createEReference(surveyEClass, SURVEY__PERSON);
 		createEAttribute(surveyEClass, SURVEY__DESCRIPTION);
+		createEAttribute(surveyEClass, SURVEY__EMAIL);
 
 		mutuallyExclusiveEClass = createEClass(MUTUALLY_EXCLUSIVE);
 
@@ -651,6 +661,7 @@ public class SurveyModelPackageImpl extends EPackageImpl implements SurveyModelP
 		initEAttribute(getSurvey_Date(), ecorePackage.getEString(), "date", null, 0, 1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSurvey_Person(), this.getPerson(), null, "person", null, 0, 1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSurvey_Description(), ecorePackage.getEString(), "description", null, 0, 1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSurvey_Email(), ecorePackage.getEString(), "email", null, 0, 1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mutuallyExclusiveEClass, MutuallyExclusive.class, "MutuallyExclusive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

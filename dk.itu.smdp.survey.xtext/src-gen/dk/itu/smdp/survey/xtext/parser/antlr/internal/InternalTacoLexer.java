@@ -13,6 +13,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalTacoLexer extends Lexer {
     public static final int RULE_ID=5;
+    public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
     public static final int T__26=26;
@@ -120,10 +121,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:14:7: ( 'category' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:14:9: 'category'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:14:7: ( 'email' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:14:9: 'email'
             {
-            match("category"); 
+            match("email"); 
 
 
             }
@@ -141,10 +142,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:15:7: ( 'person' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:15:9: 'person'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:15:7: ( 'category' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:15:9: 'category'
             {
-            match("person"); 
+            match("category"); 
 
 
             }
@@ -162,10 +163,11 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:16:7: ( ',' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:16:9: ','
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:16:7: ( 'person' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:16:9: 'person'
             {
-            match(','); 
+            match("person"); 
+
 
             }
 
@@ -182,11 +184,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:17:7: ( 'page' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:17:9: 'page'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:17:7: ( ',' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:17:9: ','
             {
-            match("page"); 
-
+            match(','); 
 
             }
 
@@ -203,10 +204,11 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:18:7: ( 'A' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:18:9: 'A'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:18:7: ( 'page' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:18:9: 'page'
             {
-            match('A'); 
+            match("page"); 
+
 
             }
 
@@ -223,10 +225,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:19:7: ( '[' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:19:9: '['
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:19:7: ( 'A' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:19:9: 'A'
             {
-            match('['); 
+            match('A'); 
 
             }
 
@@ -243,11 +245,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:20:7: ( 'input' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:20:9: 'input'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:20:7: ( '[' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:20:9: '['
             {
-            match("input"); 
-
+            match('['); 
 
             }
 
@@ -264,10 +265,11 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:21:7: ( ']' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:21:9: ']'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:21:7: ( 'input' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:21:9: 'input'
             {
-            match(']'); 
+            match("input"); 
+
 
             }
 
@@ -284,11 +286,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:22:7: ( 'sub' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:22:9: 'sub'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:22:7: ( ']' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:22:9: ']'
             {
-            match("sub"); 
-
+            match(']'); 
 
             }
 
@@ -305,10 +306,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:23:7: ( 'end' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:23:9: 'end'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:23:7: ( 'sub' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:23:9: 'sub'
             {
-            match("end"); 
+            match("sub"); 
 
 
             }
@@ -326,10 +327,11 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:24:7: ( 'Q' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:24:9: 'Q'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:24:7: ( 'end' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:24:9: 'end'
             {
-            match('Q'); 
+            match("end"); 
+
 
             }
 
@@ -346,10 +348,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:25:7: ( '*' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:25:9: '*'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:25:7: ( 'Q' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:25:9: 'Q'
             {
-            match('*'); 
+            match('Q'); 
 
             }
 
@@ -366,10 +368,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:26:7: ( '-' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:26:9: '-'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:26:7: ( '*' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:26:9: '*'
             {
-            match('-'); 
+            match('*'); 
 
             }
 
@@ -386,11 +388,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:27:7: ( 'rank' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:27:9: 'rank'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:27:7: ( '-' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:27:9: '-'
             {
-            match("rank"); 
-
+            match('-'); 
 
             }
 
@@ -407,10 +408,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:28:7: ( 'y/n' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:28:9: 'y/n'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:28:7: ( 'rank' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:28:9: 'rank'
             {
-            match("y/n"); 
+            match("rank"); 
 
 
             }
@@ -423,15 +424,36 @@ public class InternalTacoLexer extends Lexer {
     }
     // $ANTLR end "T__28"
 
+    // $ANTLR start "T__29"
+    public final void mT__29() throws RecognitionException {
+        try {
+            int _type = T__29;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:29:7: ( 'y/n' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:29:9: 'y/n'
+            {
+            match("y/n"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__29"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1339:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1339:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1361:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1361:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1339:11: ( '^' )?
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1361:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -440,7 +462,7 @@ public class InternalTacoLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1339:11: '^'
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1361:11: '^'
                     {
                     match('^'); 
 
@@ -458,7 +480,7 @@ public class InternalTacoLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1339:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1361:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -507,10 +529,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1341:10: ( ( '0' .. '9' )+ )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1341:12: ( '0' .. '9' )+
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1363:10: ( ( '0' .. '9' )+ )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1363:12: ( '0' .. '9' )+
             {
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1341:12: ( '0' .. '9' )+
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1363:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -524,7 +546,7 @@ public class InternalTacoLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1341:13: '0' .. '9'
+            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1363:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -556,10 +578,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -577,10 +599,10 @@ public class InternalTacoLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -596,7 +618,7 @@ public class InternalTacoLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -612,7 +634,7 @@ public class InternalTacoLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -637,10 +659,10 @@ public class InternalTacoLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -656,7 +678,7 @@ public class InternalTacoLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -672,7 +694,7 @@ public class InternalTacoLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1343:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1365:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -715,12 +737,12 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1345:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1345:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1367:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1367:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1345:24: ( options {greedy=false; } : . )*
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1367:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -745,7 +767,7 @@ public class InternalTacoLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1345:52: .
+            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1367:52: .
             	    {
             	    matchAny(); 
 
@@ -775,12 +797,12 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -793,7 +815,7 @@ public class InternalTacoLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -813,7 +835,7 @@ public class InternalTacoLexer extends Lexer {
                 }
             } while (true);
 
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:40: ( ( '\\r' )? '\\n' )?
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -822,9 +844,9 @@ public class InternalTacoLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:41: ( '\\r' )? '\\n'
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:41: ( '\\r' )? '\\n'
                     {
-                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:41: ( '\\r' )?
+                    // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -833,7 +855,7 @@ public class InternalTacoLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1347:41: '\\r'
+                            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1369:41: '\\r'
                             {
                             match('\r'); 
 
@@ -865,10 +887,10 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1349:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1349:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1371:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1371:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1349:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1371:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -922,8 +944,8 @@ public class InternalTacoLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1351:16: ( . )
-            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1351:18: .
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1373:16: ( . )
+            // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1373:18: .
             {
             matchAny(); 
 
@@ -938,8 +960,8 @@ public class InternalTacoLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=25;
+        // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=26;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -1069,49 +1091,56 @@ public class InternalTacoLexer extends Lexer {
                 }
                 break;
             case 19 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:118: RULE_ID
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:118: T__29
+                {
+                mT__29(); 
+
+                }
+                break;
+            case 20 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:124: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 20 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:126: RULE_INT
+            case 21 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:132: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 21 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:135: RULE_STRING
+            case 22 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:141: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 22 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:147: RULE_ML_COMMENT
+            case 23 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:153: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 23 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:163: RULE_SL_COMMENT
+            case 24 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:169: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 24 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:179: RULE_WS
+            case 25 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:185: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 25 :
-                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:187: RULE_ANY_OTHER
+            case 26 :
+                // ../dk.itu.smdp.survey.xtext/src-gen/dk/itu/smdp/survey/xtext/parser/antlr/internal/InternalTaco.g:1:193: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1125,133 +1154,140 @@ public class InternalTacoLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\4\31\1\uffff\1\40\1\uffff\1\31\1\uffff\1\31\1\45\2\uffff"+
-        "\2\31\1\27\2\uffff\3\27\2\uffff\1\31\1\uffff\5\31\3\uffff\1\31\1"+
-        "\uffff\1\31\3\uffff\1\31\6\uffff\1\31\1\72\6\31\1\101\2\31\1\uffff"+
-        "\1\104\3\31\1\110\1\31\1\uffff\1\112\1\31\1\uffff\3\31\1\uffff\1"+
-        "\117\1\uffff\1\120\2\31\1\123\2\uffff\2\31\1\uffff\1\31\1\127\1"+
-        "\31\1\uffff\1\31\1\132\1\uffff";
+        "\1\uffff\5\31\1\uffff\1\42\1\uffff\1\31\1\uffff\1\46\2\uffff\2\31"+
+        "\1\27\2\uffff\3\27\2\uffff\1\31\1\uffff\7\31\3\uffff\1\31\4\uffff"+
+        "\1\31\6\uffff\1\31\1\74\3\31\1\100\6\31\1\uffff\1\107\2\31\1\uffff"+
+        "\2\31\1\114\1\31\1\116\1\31\1\uffff\1\31\1\121\2\31\1\uffff\1\124"+
+        "\1\uffff\1\125\1\31\1\uffff\1\31\1\130\2\uffff\2\31\1\uffff\1\31"+
+        "\1\134\1\31\1\uffff\1\31\1\137\1\uffff";
     static final String DFA12_eofS =
-        "\133\uffff";
+        "\140\uffff";
     static final String DFA12_minS =
-        "\1\0\1\165\3\141\1\uffff\1\60\1\uffff\1\156\1\uffff\1\156\1\60\2"+
-        "\uffff\1\141\1\57\1\101\2\uffff\2\0\1\52\2\uffff\1\142\1\uffff\1"+
-        "\164\1\163\1\164\1\162\1\147\3\uffff\1\160\1\uffff\1\144\3\uffff"+
-        "\1\156\6\uffff\1\166\1\60\1\145\1\143\1\145\1\163\1\145\1\165\1"+
-        "\60\1\153\1\145\1\uffff\1\60\1\162\1\147\1\157\1\60\1\164\1\uffff"+
-        "\1\60\1\171\1\uffff\1\151\1\157\1\156\1\uffff\1\60\1\uffff\1\60"+
-        "\1\160\1\162\1\60\2\uffff\1\164\1\171\1\uffff\1\151\1\60\1\157\1"+
-        "\uffff\1\156\1\60\1\uffff";
+        "\1\0\1\165\1\141\1\155\2\141\1\uffff\1\60\1\uffff\1\156\1\uffff"+
+        "\1\60\2\uffff\1\141\1\57\1\101\2\uffff\2\0\1\52\2\uffff\1\142\1"+
+        "\uffff\1\164\1\163\1\141\1\144\1\164\1\162\1\147\3\uffff\1\160\4"+
+        "\uffff\1\156\6\uffff\1\166\1\60\1\145\1\143\1\151\1\60\1\145\1\163"+
+        "\1\145\1\165\1\153\1\145\1\uffff\1\60\1\162\1\154\1\uffff\1\147"+
+        "\1\157\1\60\1\164\1\60\1\171\1\uffff\1\151\1\60\1\157\1\156\1\uffff"+
+        "\1\60\1\uffff\1\60\1\160\1\uffff\1\162\1\60\2\uffff\1\164\1\171"+
+        "\1\uffff\1\151\1\60\1\157\1\uffff\1\156\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\165\1\145\1\141\1\145\1\uffff\1\172\1\uffff\1\156\1\uffff"+
-        "\1\156\1\172\2\uffff\1\141\1\57\1\172\2\uffff\2\uffff\1\57\2\uffff"+
-        "\1\162\1\uffff\1\164\1\163\1\164\1\162\1\147\3\uffff\1\160\1\uffff"+
-        "\1\144\3\uffff\1\156\6\uffff\1\166\1\172\1\145\1\143\1\145\1\163"+
-        "\1\145\1\165\1\172\1\153\1\145\1\uffff\1\172\1\162\1\147\1\157\1"+
-        "\172\1\164\1\uffff\1\172\1\171\1\uffff\1\151\1\157\1\156\1\uffff"+
-        "\1\172\1\uffff\1\172\1\160\1\162\1\172\2\uffff\1\164\1\171\1\uffff"+
-        "\1\151\1\172\1\157\1\uffff\1\156\1\172\1\uffff";
+        "\1\uffff\1\165\1\145\1\156\1\141\1\145\1\uffff\1\172\1\uffff\1\156"+
+        "\1\uffff\1\172\2\uffff\1\141\1\57\1\172\2\uffff\2\uffff\1\57\2\uffff"+
+        "\1\162\1\uffff\1\164\1\163\1\141\1\144\1\164\1\162\1\147\3\uffff"+
+        "\1\160\4\uffff\1\156\6\uffff\1\166\1\172\1\145\1\143\1\151\1\172"+
+        "\1\145\1\163\1\145\1\165\1\153\1\145\1\uffff\1\172\1\162\1\154\1"+
+        "\uffff\1\147\1\157\1\172\1\164\1\172\1\171\1\uffff\1\151\1\172\1"+
+        "\157\1\156\1\uffff\1\172\1\uffff\1\172\1\160\1\uffff\1\162\1\172"+
+        "\2\uffff\1\164\1\171\1\uffff\1\151\1\172\1\157\1\uffff\1\156\1\172"+
+        "\1\uffff";
     static final String DFA12_acceptS =
-        "\5\uffff\1\6\1\uffff\1\11\1\uffff\1\13\2\uffff\1\17\1\20\3\uffff"+
-        "\1\23\1\24\3\uffff\1\30\1\31\1\uffff\1\23\5\uffff\1\6\1\10\1\11"+
-        "\1\uffff\1\13\1\uffff\1\16\1\17\1\20\1\uffff\1\22\1\24\1\25\1\26"+
-        "\1\27\1\30\13\uffff\1\14\6\uffff\1\15\2\uffff\1\2\3\uffff\1\7\1"+
-        "\uffff\1\21\4\uffff\1\12\1\1\2\uffff\1\5\3\uffff\1\4\2\uffff\1\3";
+        "\6\uffff\1\7\1\uffff\1\12\1\uffff\1\14\1\uffff\1\20\1\21\3\uffff"+
+        "\1\24\1\25\3\uffff\1\31\1\32\1\uffff\1\24\7\uffff\1\7\1\11\1\12"+
+        "\1\uffff\1\14\1\17\1\20\1\21\1\uffff\1\23\1\25\1\26\1\27\1\30\1"+
+        "\31\14\uffff\1\15\3\uffff\1\16\6\uffff\1\2\4\uffff\1\10\1\uffff"+
+        "\1\22\2\uffff\1\4\2\uffff\1\13\1\1\2\uffff\1\6\3\uffff\1\5\2\uffff"+
+        "\1\3";
     static final String DFA12_specialS =
-        "\1\1\22\uffff\1\0\1\2\106\uffff}>";
+        "\1\1\22\uffff\1\2\1\0\113\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\27\2\26\2\27\1\26\22\27\1\26\1\27\1\23\4\27\1\24\2\27\1"+
-            "\14\1\27\1\5\1\15\1\27\1\25\12\22\7\27\1\6\17\21\1\13\11\21"+
-            "\1\7\1\27\1\11\1\20\1\21\1\27\2\21\1\3\1\2\1\12\3\21\1\10\6"+
-            "\21\1\4\1\21\1\16\1\1\5\21\1\17\1\21\uff85\27",
+            "\14\1\27\1\6\1\15\1\27\1\25\12\22\7\27\1\7\17\21\1\13\11\21"+
+            "\1\10\1\27\1\12\1\20\1\21\1\27\2\21\1\4\1\2\1\3\3\21\1\11\6"+
+            "\21\1\5\1\21\1\16\1\1\5\21\1\17\1\21\uff85\27",
             "\1\30",
             "\1\32\3\uffff\1\33",
-            "\1\34",
-            "\1\36\3\uffff\1\35",
+            "\1\34\1\35",
+            "\1\36",
+            "\1\40\3\uffff\1\37",
             "",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
-            "",
-            "\1\42",
             "",
             "\1\44",
+            "",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             "",
             "",
-            "\1\50",
             "\1\51",
+            "\1\52",
             "\32\31\4\uffff\1\31\1\uffff\32\31",
             "",
             "",
-            "\0\53",
-            "\0\53",
-            "\1\54\4\uffff\1\55",
+            "\0\54",
+            "\0\54",
+            "\1\55\4\uffff\1\56",
             "",
             "",
-            "\1\60\17\uffff\1\57",
+            "\1\61\17\uffff\1\60",
             "",
-            "\1\61",
             "\1\62",
             "\1\63",
             "\1\64",
             "\1\65",
-            "",
-            "",
-            "",
             "\1\66",
-            "",
             "\1\67",
-            "",
-            "",
-            "",
             "\1\70",
             "",
             "",
             "",
-            "",
-            "",
-            "",
             "\1\71",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "",
+            "",
+            "",
+            "",
+            "\1\72",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\73",
-            "\1\74",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             "\1\75",
             "\1\76",
             "\1\77",
-            "\1\100",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\101",
             "\1\102",
             "\1\103",
-            "",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\104",
             "\1\105",
             "\1\106",
-            "\1\107",
+            "",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\110",
             "\1\111",
             "",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\112",
             "\1\113",
-            "",
-            "\1\114",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             "\1\115",
-            "\1\116",
-            "",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\117",
             "",
+            "\1\120",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
-            "\1\121",
             "\1\122",
+            "\1\123",
+            "",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             "",
-            "",
-            "\1\124",
-            "\1\125",
-            "",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             "\1\126",
+            "",
+            "\1\127",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
-            "\1\130",
+            "",
             "",
             "\1\131",
+            "\1\132",
+            "",
+            "\1\133",
+            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\135",
+            "",
+            "\1\136",
             "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
             ""
     };
@@ -1286,17 +1322,17 @@ public class InternalTacoLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_19 = input.LA(1);
+                        int LA12_20 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 43;}
+                        if ( ((LA12_20>='\u0000' && LA12_20<='\uFFFF')) ) {s = 44;}
 
                         else s = 23;
 
@@ -1310,21 +1346,21 @@ public class InternalTacoLexer extends Lexer {
 
                         else if ( (LA12_0=='d') ) {s = 2;}
 
-                        else if ( (LA12_0=='c') ) {s = 3;}
+                        else if ( (LA12_0=='e') ) {s = 3;}
 
-                        else if ( (LA12_0=='p') ) {s = 4;}
+                        else if ( (LA12_0=='c') ) {s = 4;}
 
-                        else if ( (LA12_0==',') ) {s = 5;}
+                        else if ( (LA12_0=='p') ) {s = 5;}
 
-                        else if ( (LA12_0=='A') ) {s = 6;}
+                        else if ( (LA12_0==',') ) {s = 6;}
 
-                        else if ( (LA12_0=='[') ) {s = 7;}
+                        else if ( (LA12_0=='A') ) {s = 7;}
 
-                        else if ( (LA12_0=='i') ) {s = 8;}
+                        else if ( (LA12_0=='[') ) {s = 8;}
 
-                        else if ( (LA12_0==']') ) {s = 9;}
+                        else if ( (LA12_0=='i') ) {s = 9;}
 
-                        else if ( (LA12_0=='e') ) {s = 10;}
+                        else if ( (LA12_0==']') ) {s = 10;}
 
                         else if ( (LA12_0=='Q') ) {s = 11;}
 
@@ -1355,10 +1391,10 @@ public class InternalTacoLexer extends Lexer {
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_20 = input.LA(1);
+                        int LA12_19 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_20>='\u0000' && LA12_20<='\uFFFF')) ) {s = 43;}
+                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 44;}
 
                         else s = 23;
 
