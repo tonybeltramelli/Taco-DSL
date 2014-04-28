@@ -39,7 +39,7 @@ public class MultipleChoice extends Question
 	@Override
 	public boolean isQuestionAnswered()
 	{
-		return _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max && subQuestionsAreAnswered(this);
+		return !isMandatory() ? true : _answeredAnswers.size() >= _min && _answeredAnswers.size() <= _max && subQuestionsAreAnswered(this);
 	}
 
     @Override
@@ -101,28 +101,39 @@ public class MultipleChoice extends Question
     @Override
     public void onAnswerSelected(Answer answer) {
         Answer popedItem = _answeredAnswers.pushAndPopExtraItem(answer);
-        if (popedItem != null) popedItem.clear();
+        if (popedItem != null){
+            popedItem.clear();
+            toggleAnswerState(popedItem, false);
+        }
 
         //activate subQuestions
-        if( answer.hasSubQuestions() && !answer.isExpanded() )
-            for( Question q : answer.getSubQuestions() )
-                q.setVisibility(View.VISIBLE);
-
-        answer.setExpanded(true);
+        toggleAnswerState(answer , true);
 
         super.onAnswerSelected(answer);
     }
+
+
 
     @Override
     public void onAnswerDeselected(Answer answer) {
         _answeredAnswers.remove(answer);
         //deactivate subQuestions
-        if( answer.hasSubQuestions() && answer.isExpanded() )
-            for( Question q : answer.getSubQuestions() )
-                q.setVisibility(View.GONE);
+        toggleAnswerState(answer , false);
 
-        answer.setExpanded(false);
         super.onAnswerDeselected(answer);
+    }
+
+
+    private void toggleAnswerState(Answer answer , boolean expanded){
+        if( answer.hasSubQuestions() )
+            for( Question q : answer.getSubQuestions() ) {
+                if (expanded)
+                    q.setVisibility(View.VISIBLE);
+                else
+                    q.setVisibility(View.GONE);
+            }
+
+        answer.setExpanded(expanded);
     }
 
 
