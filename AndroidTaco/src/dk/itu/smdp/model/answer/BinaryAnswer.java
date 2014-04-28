@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import dk.itu.smdp.Answerable;
 import dk.itu.smdp.R;
+import dk.itu.smdp.model.question.Question;
+
+import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
@@ -14,13 +17,19 @@ import dk.itu.smdp.R;
 public class BinaryAnswer extends Answer
 {
 	protected RadioButton _radio;
-	
+
 	public BinaryAnswer(String description)
 	{
 		super(description);
+        _subQuestions = new ArrayList<Question>();
 	}
-	
-	@Override
+
+    @Override
+    public boolean hasSubQuestions() {
+        return true;
+    }
+
+    @Override
 	public String getUserAnswer()
 	{
 		return _description;

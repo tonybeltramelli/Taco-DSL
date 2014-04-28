@@ -1,6 +1,7 @@
 package dk.itu.smdp.model.question;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -26,6 +27,8 @@ public abstract class Question implements Viewable, Answerable
 	public static final String RATING = "rating";
 	public static final String OPEN_FIELD = "open_field";
 	public static final String RANKING = "ranking";
+
+    protected LinearLayout _questionView;
 	
 	protected boolean _isMandatory;
 	
@@ -112,20 +115,37 @@ public abstract class Question implements Viewable, Answerable
 	{
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+		_questionView = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
+
 		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.question, parent, false);
 		
-		TextView titleView = (TextView) layout.findViewById(R.id.question_title_textview);
+		TextView titleView = (TextView) _questionView.findViewById(R.id.question_title_textview);
 		titleView.setText(_questionText);
 		
-		return layout;
+		return _questionView;
 	}
 	
 	public abstract boolean isQuestionAnswered();
-	
+
+    //recursion
 	public void setContainer(QuestionContainable container)
 	{
-		_container = container;
+		this._container = container;
+
+        for( Answer a : this._answers ){
+            if( a.hasSubQuestions() )
+                for( Question innerQ : a.getSubQuestions() ) {
+                    innerQ.setContainer(container);
+                    Log.i("TAG" , "sub sub");
+                }
+        }
+
+
 	}
+
+    public void setVisibility(int visibility){
+        _questionView.setVisibility(visibility);
+    }
 
 
     //added to place code needed in order to restart a question
