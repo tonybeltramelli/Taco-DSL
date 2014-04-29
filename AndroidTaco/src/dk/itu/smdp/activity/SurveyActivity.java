@@ -10,8 +10,11 @@ import dk.itu.smdp.R;
 import dk.itu.smdp.model.Category;
 import dk.itu.smdp.model.Page;
 import dk.itu.smdp.model.PersonAttribute;
+import dk.itu.smdp.model.Survey;
 import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.question.Question;
+import dk.itu.smdp.request.HTTPRequestTask;
+import dk.itu.smdp.request.RequestDelegate;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -22,7 +25,7 @@ import java.util.ArrayList;
 /**
  * Created by centos on 4/13/14.
  */
-public class SurveyActivity extends AbtractActivity implements QuestionContainable {
+public class SurveyActivity extends AbtractActivity implements QuestionContainable, RequestDelegate {
     private int _currentCategory = 0;
     private int _currentPage = 0;
     private int _mandatoryQuestionsNumber = 0;
@@ -184,7 +187,8 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
             e.printStackTrace();
         }
 
-
+        HTTPRequestTask httpRequestTask = new HTTPRequestTask(this);
+        httpRequestTask.execute("", Survey.getInstance().getEmail());
     }
     
 //recursion
@@ -208,4 +212,9 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 
 
     }
+
+	@Override
+	public void onRequestSuccess()
+	{
+	}
 }
