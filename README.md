@@ -14,8 +14,8 @@ Code generation for two platforms:
 ####Workflow
 After creating a .taco file and typing a valid instance in the Eclipse IDE, two files will be generated inside the folder src-gen at the project root. Those files then need to be moved to the relevant platform folder in order to work.
 
-*src-gen/android/Survey.java -> AndroidTaco/src/dk/itu/smdp/model/Survey.java*  
-*src-gen/html5/taco.html -> Taco-DSL/Html5Taco/taco.html*
+**src-gen/android/Survey.java -> AndroidTaco/src/dk/itu/smdp/model/Survey.java**  
+**src-gen/html5/taco.html -> Taco-DSL/Html5Taco/taco.html**
 
 ####Usage
 (Instance example: dk.itu.smdp.survey.xtext/instance_example/example.taco)
