@@ -10,33 +10,29 @@ import dk.itu.smdp.model.answer.AnswerFactory;
 /**
  * Created by centos on 4/13/14.
  */
-public class OpenFieldQuestion extends MultipleChoice
-{
-	public OpenFieldQuestion(boolean isMandatory, String questionText)
-	{
-		super(isMandatory, questionText, 1, 1);
-		
-		Answer a = AnswerFactory.create(Answer.OPEN_FIELD, "");
-		super.addAnswer(a);
-	}
-	
-	@Override
-	public void addAnswer(Answer a)
-	{
-	}
+public class OpenFieldQuestion extends MultipleChoice {
+    public OpenFieldQuestion(boolean isMandatory, String questionText) {
+        super(isMandatory, questionText, 1, 1);
 
-	
-	@Override
-	public View getView(Context context, ViewGroup parent)
-	{	
-		LinearLayout layout = initQuestionLayout(context, parent);
-		
-		populateAnswerViews(context, layout, layout, this);
+        Answer a = AnswerFactory.create(Answer.OPEN_FIELD, "");
+        super.addAnswer(a);
+    }
+
+    @Override
+    public void addAnswer(Answer a) {
+    }
+
+
+    @Override
+    public View getView(Context context, ViewGroup parent) {
+        LinearLayout layout = initQuestionLayout(context, parent);
+
+        populateAnswerViews(context, layout, layout, this);
 
         initQuestion();
-		
-		return layout;
-	}
+
+        return layout;
+    }
 
 
     @Override
@@ -49,7 +45,8 @@ public class OpenFieldQuestion extends MultipleChoice
     @Override
     public void onAnswerDeselected(Answer answer) {
         //dont call super
-        _answeredAnswers.pop();
+        if (_answeredAnswers.size() > 0)
+            _answeredAnswers.pop();
         this.onAnswerUpdated(answer);
     }
 }
