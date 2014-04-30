@@ -186,9 +186,11 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        String data = "sendTo="+Survey.getInstance().getEmail()+"&subject="+getResources().getString(R.string.subject)+"&message="+"blabla"+"&from="+getResources().getString(R.string.from);
 
         HTTPRequestTask httpRequestTask = new HTTPRequestTask(this);
-        httpRequestTask.execute("", Survey.getInstance().getEmail());
+        httpRequestTask.execute(getResources().getString(R.string.server_address), data);
     }
     
 //recursion

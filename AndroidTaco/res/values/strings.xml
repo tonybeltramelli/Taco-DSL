@@ -23,4 +23,9 @@
     <string name="question_label_min_max_interval">Select between {A} and {B} answers</string>
     <string name="question_label_min_max_value">Select {A} answers</string>
 
+    <!-- sending emails -->
+    <string name="server_address">http://google.com/send.php</string>
+    <string name="subject">Taco Surveys* Your survey results</string>
+    <string name="from">Taco Surveys</string>
+
 </resources>

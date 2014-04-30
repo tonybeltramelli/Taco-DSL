@@ -23,7 +23,7 @@ public class HTTPRequestTask extends AsyncTask<String, Integer, Void>
 	
 	protected Void doInBackground(String... types)
 	{
-		_sendData(types[0], types[1]);
+		_performPostRequest(types[0], types[1]);
 		
 		return null;
 	}
@@ -36,38 +36,6 @@ public class HTTPRequestTask extends AsyncTask<String, Integer, Void>
 	protected void onPostExecute()
 	{
 		_delegate.onRequestSuccess();
-	}
-	
-	private Void _sendData(String url, String data)
-	{
-		_performPostRequest(url, data);
-		
-		return null;
-	}
-	
-	private BufferedReader _performGetRequest(String urlAddress)
-	{
-		BufferedReader reader = null;
-		
-		try
-		{
-			URL url = new URL(urlAddress);
-			Log.wtf("_performGetRequest", "Sending GET request to URL : " + urlAddress);
-			
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setRequestMethod("GET");
-			
-			int responseCode = connection.getResponseCode();
-			Log.wtf("_performGetRequest", "Response Code : " + responseCode);
-			
-			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-			
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		return reader;
 	}
 	
 	private void _performPostRequest(String urlAddress, String data)
