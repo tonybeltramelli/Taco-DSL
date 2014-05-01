@@ -53,23 +53,26 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         checkPage_1();
 
         goToNextPage();
-//
-//        goToPreviousPage();
-//
-//        checkPage_1();
-//
-//        goToNextPage();
 
-//        checkPage_2();
-        solo.clickOnText("Fourth option");
+        goToPreviousPage();
 
+        checkPage_1();
 
         goToNextPage();
-//        goToPreviousPage();
-//        goToPreviousPage();
-//        checkPage_1();
-//        goToNextPage();
-//        checkPage_2();
+
+        checkPage_2();
+
+        goToNextPage();
+
+        goToPreviousPage();
+
+        goToPreviousPage();
+
+        checkPage_1();
+
+        goToNextPage();
+
+        checkPage_2();
 
         checkPage_3();
 
