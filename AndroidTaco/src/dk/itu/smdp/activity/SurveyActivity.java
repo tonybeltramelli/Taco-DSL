@@ -26,6 +26,9 @@ import java.util.ArrayList;
  * Created by centos on 4/13/14.
  */
 public class SurveyActivity extends AbtractActivity implements QuestionContainable, RequestDelegate {
+
+    public static final String SURVEY_SD_CARD_FILE = Environment.getExternalStoragePublicDirectory("") + "/Survey.taco";
+
     private int _currentCategory = 0;
     private int _currentPage = 0;
     private int _mandatoryQuestionsNumber = 0;
@@ -142,7 +145,7 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 
     public void sendButtonClickHandler(View v) {
 
-        final String SURVEY_SD_CARD_FILE = Environment.getExternalStoragePublicDirectory("") + "/Survey.taco";
+
 
         File file = new File(SURVEY_SD_CARD_FILE);
 
