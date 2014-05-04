@@ -21,21 +21,25 @@ public class HTTPRequestTask extends AsyncTask<String, Integer, Void>
 		_delegate = delegate;
 	}
 	
-	protected Void doInBackground(String... types)
+	@Override
+	protected Void doInBackground(String... params)
 	{
-		_performPostRequest(types[0], types[1]);
-		
+		_performPostRequest(params[0], params[1]);
 		return null;
 	}
 	
-	protected void onProgressUpdate(Integer progress)
+	@Override
+	protected void onProgressUpdate(Integer... values)
 	{
-		Log.wtf("onProgressUpdate", String.valueOf(progress));
+		Log.wtf("onProgressUpdate", String.valueOf(values));
+		super.onProgressUpdate(values);
 	}
 	
-	protected void onPostExecute()
+	@Override
+	protected void onPostExecute(Void result)
 	{
 		_delegate.onRequestSuccess();
+		super.onPostExecute(result);
 	}
 	
 	private void _performPostRequest(String urlAddress, String data)

@@ -124,7 +124,7 @@ class HTML5Generator extends SurveyGenerator
 			
 			    <!--Final message-->
 			    <div id="final_message" class="panel panel-default">
-			        <h1 class="text-center">Survey complete! Tanks for answering.</h1>
+			        <h1 class="text-center">Survey complete! Thanks for answering.</h1>
 			    </div>
 			
 			    <!--JavaScript-->
@@ -137,6 +137,7 @@ class HTML5Generator extends SurveyGenerator
 			    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 			    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 			    <script src="js/bootstrap.min.js"></script>
+			    <script src="js/submitter.js"></script>
 			    <script src="js/script.js"></script>
 			
 			  </body>
@@ -184,10 +185,10 @@ class HTML5Generator extends SurveyGenerator
                 
                 <div class="panel-body">   
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="yes"></span>
+                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnwser" type="radio" value="yes"></span>
                       <strong><span class="answer_text form-control">Yes</span></strong>
 
-                      <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="no"></span>
+                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnwser" type="radio" value="no"></span>
                       <strong><span class="answer_text form-control">No</span></strong>
                     </div>
                 </div>
@@ -215,7 +216,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                 	«FOR answer : answers»
 	                    <div class="input-group">
-	                        <span class="input-group-addon"><input name="radio_«_questionCounter»" class="answer mutuallyExcAnwser" type="radio" value="«answer.description»"></span>
+	                        <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnwser" type="radio" value="«answer.description»"></span>
 	                        
 	                        «IF !answer.isUserInputAllowed»
 	                        	<strong><span class="answer_text form-control">«answer.description»</span></strong>              
@@ -228,7 +229,8 @@ class HTML5Generator extends SurveyGenerator
 		                        <div class="subquestions">
 		                        
 		                        «FOR subquestion : answer.subquestion»	
-		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter))»
+		                        	«_incrementQuestion»
+		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter) + "_" + id)»
 		                        «ENDFOR»
 		                        	
 		                        </div><!--End Subquestion-->
@@ -264,7 +266,8 @@ class HTML5Generator extends SurveyGenerator
 		                        <div class="subquestions">
 		                        
 		                        «FOR subquestion : answer.subquestion»	
-		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter))»
+		                        	«_incrementQuestion»
+		                        	«compileQuestion(subquestion, String.valueOf(_questionCounter) + "_" + id)»
 		                        «ENDFOR»
 		                        	
 		                        </div><!--End Subquestion-->

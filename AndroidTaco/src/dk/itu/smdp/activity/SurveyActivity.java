@@ -1,10 +1,19 @@
 package dk.itu.smdp.activity;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import dk.itu.smdp.QuestionContainable;
 import dk.itu.smdp.R;
 import dk.itu.smdp.model.Category;
@@ -15,12 +24,6 @@ import dk.itu.smdp.model.answer.Answer;
 import dk.itu.smdp.model.question.Question;
 import dk.itu.smdp.request.HTTPRequestTask;
 import dk.itu.smdp.request.RequestDelegate;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * Created by centos on 4/13/14.
@@ -190,8 +193,25 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
             e.printStackTrace();
         }
         
-        String data = "sendTo="+Survey.getInstance().getEmail()+"&subject="+getResources().getString(R.string.subject)+"&message="+"blabla"+"&from="+getResources().getString(R.string.from);
-
+        file = new File(SURVEY_SD_CARD_FILE);
+        Scanner scanner;
+        StringBuilder stringBuilder = new StringBuilder();
+		try
+		{
+			scanner = new Scanner(file);
+			
+			while (scanner.hasNextLine())
+			{
+				stringBuilder.append("\n");
+				stringBuilder.append(scanner.nextLine());
+			}
+		} catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+        
+        String data = "sendTo="+Survey.getInstance().getEmail()+"&subject="+getResources().getString(R.string.subject)+"&message="+stringBuilder+"&from="+getResources().getString(R.string.from);
+        
         HTTPRequestTask httpRequestTask = new HTTPRequestTask(this);
         httpRequestTask.execute(getResources().getString(R.string.server_address), data);
     }
@@ -221,5 +241,6 @@ public class SurveyActivity extends AbtractActivity implements QuestionContainab
 	@Override
 	public void onRequestSuccess()
 	{
+		Toast.makeText(this, getResources().getString(R.string.send_success), Toast.LENGTH_LONG).show();
 	}
 }
