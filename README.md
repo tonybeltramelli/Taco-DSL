@@ -44,8 +44,7 @@ category "Category number 1 about cool stuffs."
 			A "First option"
 				sub Q "Why?" end
 			A "Second option"
-			A "Third option"
-			A "Fourth option"
+				sub Q "Do you have one yourself ?" [y/n] end
 
 		Q "Are you a student ?" [y/n]
 
@@ -62,12 +61,9 @@ category "Random information?"
 			A "tacos"
 
 		Q "How often do you use this language ?"
-			A "every second"
-			A "every hour"
 			A "every day"
 			A "every week"
 			A "every month"
-			A "every year"
 
 ```
 
