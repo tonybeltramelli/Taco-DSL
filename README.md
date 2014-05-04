@@ -36,7 +36,7 @@ category "Category number 1 about cool stuffs."
 			A "GREEN"
 			A "OTHER" [input]
 			
-		Q* "How much do you like the canteen's coffee ?" [1-10,1]
+		Q* "How much do you like this language ?" [1-10,1]
 	
 	page
 	
@@ -44,30 +44,22 @@ category "Category number 1 about cool stuffs."
 			A "First option"
 				sub Q "Why?" end
 			A "Second option"
-				sub Q "What?" [2-2]
-					A "Option 1"
-					A "Option 2"
-				end
 			A "Third option"
 			A "Fourth option"
 
-		Q "Are you married ?" [y/n]
+		Q "Are you a student ?" [y/n]
 
-category "Professioanl information?" 
-	description "Your professioanl information"
+category "Random information?" 
+	description "Some random questions"
 		
 	page
 		
-		Q "Rate those stuffs by preference order" [rank]
+		Q "Rate those food by preference order" [rank]
 			A "french fries"
 			A "smorebrod"
 			A "mousaka"
 			A "hamburger"
 			A "tacos"
-
-		Q* "How much do you like this language ?" [1-10,1] 
-		
-		Q "What is your favorite identifier ?"
 
 		Q "How often do you use this language ?"
 			A "every second"
