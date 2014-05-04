@@ -22,8 +22,8 @@ description "Survey example instance."
 
 person "name", "age"
 
-category "Random information?" 
-	description "Some random questions"
+category "Category number 1 about cool stuffs."
+	description "Your cool information."
 	
 	page
 
@@ -37,7 +37,9 @@ category "Random information?"
 			A "OTHER" [input]
 			
 		Q* "How much do you like this language ?" [1-10,1]
-
+	
+	page
+	
 		Q* "Select your favorite cat"
 			A "First option"
 				sub Q "Why?" end
@@ -45,7 +47,10 @@ category "Random information?"
 				sub Q "Do you have one yourself ?" [y/n] end
 
 		Q "Are you a student ?" [y/n]
-			
+
+category "Random information?" 
+	description "Some random questions"
+		
 	page
 		
 		Q "Rate those food by preference order" [rank]
@@ -56,9 +61,12 @@ category "Random information?"
 			A "tacos"
 
 		Q "How often do you use this language ?"
+			A "every second"
+			A "every hour"
 			A "every day"
 			A "every week"
 			A "every month"
+			A "every year"
 
 ```
 
