@@ -34,14 +34,14 @@ function submitForm(element) {
 	targetDiv.appendChild(surveyResultsDiv)
 
 	//Send email
-	var	companyEmail = document.getElementById("Email").value
+	var	companyEmail = document.getElementById("email").value
 	var email = encodeURIComponent(companyEmail)
 	var subject = "Taco Surveys* Your survey results"
 	var from = "Taco Surveys Inc."
 	
 	if(email){
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://projectdee.com/EmailController.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
+		xhr.open("POST", "http://projectdee.com/EmailController.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
 		xhr.send();	
 		alert("The survey has been submitted to "+companyEmail);
 	}
