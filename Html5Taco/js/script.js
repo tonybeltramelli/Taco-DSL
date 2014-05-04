@@ -121,7 +121,7 @@ $(function() {
 //Go next page
 function next(){
 	var category = $($(".category")[current_category]);
-	var questions_in_step = $(category.children(".page")[current_page]).children(".question.required");
+	var questions_in_step = $(category.children(".page")[current_page]).children(".question");
 
 	//Validate current step
 	if(validate(questions_in_step)){
@@ -306,7 +306,7 @@ function validate(questions){
 	$.each(questions,function(index,question){
 
 		//openField questions
-		if($(question).hasClass("openField")){
+		if($(question).hasClass("openField") && $(question).hasClass("required")){
 			$.each($(question).find(".answer"),function(index,textarea){
 				if($(textarea).val() == ""){
 					is_valid = false;
@@ -319,6 +319,8 @@ function validate(questions){
 		else if($(question).hasClass("multipleChoice")){
 			var max = $($(question).find(".max")).html();
 			var min = $($(question).find(".min")).html();
+			var is_valid_sub = true;
+			is_valid_input = true;
 			var count = 0;
 
 			var answers = getChoiceAnswers(this);
@@ -326,7 +328,6 @@ function validate(questions){
 			$.each(answers,function(index,answer){
 				if($(answer).is(":checked")){
 					count = count + 1;
-
 					//Validate subquestions and input answers
 					is_valid_sub = validateSubQuestions(answer);
 					is_valid_input = validateInputAswer(answer);
@@ -337,31 +338,34 @@ function validate(questions){
 				}
 			});
 
-			if((!(count <= max && count >= min)) || !is_valid_sub || !is_valid_input){
-				is_valid = false;
-				return false;
+			if( (count > 0 && !(count <= max && count >= min)) || 
+				($(question).hasClass("required") && !(count <= max && count >= min)) || 
+				!is_valid_sub || 
+				!is_valid_input){
+					is_valid = false;
+					return false;
 			}
 		}
 
 		//mutuallyExc questions
 		else if($(question).is(".mutuallyExc, .yesno")){
-			var checked = false;
 			var answers = getChoiceAnswers(this);
+			var checked = false;
+			var error = false;
 
-			$.each(answers,function(index,answer){
+			$.each(answers,function(index,answer){	
+				//Validate checked options
 				if($(answer).is(":checked")){
-
 					//Validate subquestions and input answers
-					if(validateInputAswer(answer) && validateSubQuestions(answer)){
-						checked = true;
-					}else{
-						checked = false;
+					checked = true;
+					if(!validateInputAswer(answer) || !validateSubQuestions(answer)){
+						error = true;
 					}
 					return false;
 				}
 			});
 			
-			if(!checked){
+			if(error || (!checked && $(question).hasClass("required"))){
 				is_valid = false;
 				return false;
 			}
@@ -379,7 +383,7 @@ function getChoiceAnswers(question){
 function validateSubQuestions(answer){
 	var span = $(answer).parent();
 	var div = $(span).siblings(".subquestions");
-	var subquestions = $(div).children(".question.required");
+	var subquestions = $(div).children(".question");
 	return validate(subquestions);
 }
 
