@@ -7,16 +7,18 @@ function submitForm(element) {
 
 	for(w=0 ; w < element.length ; w++) {	
 	
-		if(element[w].parentNode.className == "subquestions")continue;
+		if(element[w].parentNode.className == "page"){
 	
 		var questionInnerElements = element[w].getElementsByClassName("text");	
 		var questionText = questionInnerElements[0].childNodes[0].data;
 		var answerInnerElements = element[w].getElementsByClassName("answer");
+		element[w].classList.add("checked")
 		if(element[w].parentNode.parentNode.parentNode.className == "subquestions" || 
 		   element[w].parentNode.parentNode.parentNode.parentNode.className == "subquestions" ||
 		   element[w].parentNode.parentNode.parentNode.parentNode.parentNode.className == "subquestions")continue;
 		
-		getData(questionText, answerInnerElements);
+		getData(questionText, answerInnerElements, true);
+		}
 	}	
 	
 	getSurveyInfo()
@@ -41,7 +43,7 @@ function submitForm(element) {
 	
 	if(email){
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", "http://projectdee.com/EmailController.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
+		xhr.open("GET", "http://projectdee.com/EmailController2.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
 		xhr.send();	
 		alert("The survey has been submitted to "+companyEmail);
 	}
@@ -49,7 +51,7 @@ function submitForm(element) {
 	
     
 
-function getData(questionText, answerInnerElements) {
+function getData(questionText, answerInnerElements, isRoot) {
 	
 	var answerClassname = answerInnerElements[0].className.split(' ')[1]
 	
@@ -70,13 +72,17 @@ function getData(questionText, answerInnerElements) {
 		var answersChecked = [];
 		for(x=0 ; x < answerInnerElements.length ; x++) {
 			if(answerInnerElements[x].checked){
-				if(answerInnerElements[x].value === "Other"){
+				if(answerInnerElements[x].value === "Other" ){
 					var answer = answerInnerElements[x].parentNode.parentNode.childNodes[3].value
-					answersChecked.push(answer);	
+					if(answerInnerElements[x].parentNode.parentNode.parentNode.parentNode.classList.contains("checked")){							
+						answersChecked.push(answer);
+					}	
 					questionDict[questionText] = [answersChecked];
 				}else{
-					var answer = answerInnerElements[x].value								
-					answersChecked.push(answer);
+					var answer = answerInnerElements[x].value
+					if(answerInnerElements[x].parentNode.parentNode.parentNode.parentNode.classList.contains("checked")){							
+						answersChecked.push(answer);
+					}
 					questionDict[questionText] = [answersChecked];
 					var subQuestionObj = checkForSubQuestion(answerInnerElements[x], answer)
 					if(subQuestionObj){
@@ -118,11 +124,16 @@ function getData(questionText, answerInnerElements) {
 
 
 function checkForSubQuestion(element, sourceAnswer) {
-	var elementsToCheck = element.parentNode.parentNode.getElementsByClassName("subquestions")	
-	if(elementsToCheck.length == 0){return;}
-	elementsToCheck = elementsToCheck[0].getElementsByClassName("question")
+	var subquestionsElements = element.parentNode.parentNode.getElementsByClassName("subquestions")	
+	if(subquestionsElements.length == 0){return;}
+	var elementsToCheck = subquestionsElements[0].getElementsByClassName("question")
+	subquestionsElements[0].classList.add("cheked")
+	
+	
 	//alert("elementsToCheck: "+elementsToCheck[0].innerHTML)
 	for(i=0 ; i < elementsToCheck.length ; i++) {
+		if(elementsToCheck[i].parentNode.className == "cheked")continue;
+		
 		var subQuestionInnerElements = elementsToCheck[i].getElementsByClassName("text");	
 		var subQuestionText = "SubQ for "+sourceAnswer+": "+subQuestionInnerElements[0].childNodes[0].data					
 		var subAnswerInnerElements = elementsToCheck[i].getElementsByClassName("answer");

@@ -185,10 +185,10 @@ class HTML5Generator extends SurveyGenerator
                 
                 <div class="panel-body">   
                     <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnwser" type="radio" value="yes"></span>
+                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
                       <strong><span class="answer_text form-control">Yes</span></strong>
 
-                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnwser" type="radio" value="no"></span>
+                      <span class="input-group-addon"><input name="radio_«id»" class="answer mutuallyExcAnswer" type="radio" value="no"></span>
                       <strong><span class="answer_text form-control">No</span></strong>
                     </div>
                 </div>
@@ -203,7 +203,7 @@ class HTML5Generator extends SurveyGenerator
                 <div class="panel-body">
                     <div class="input-group">
                         <span class="min input-group-addon">«(it as Rating).start»</span>
-                        <input type="range" class="form-control ratingAnswer range" min="«(it as Rating).start»" max="«(it as Rating).end»" step="«(it as Rating).interval»"/>
+                        <input type="range" class="form-control ratingAnswer answer range" min="«(it as Rating).start»" max="«(it as Rating).end»" step="«(it as Rating).interval»"/>
                         <span class="max input-group-addon">«(it as Rating).end»</span>
                     </div>
                 </div>

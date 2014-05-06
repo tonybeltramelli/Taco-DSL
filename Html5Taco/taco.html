@@ -1,313 +1,459 @@
-<!--
-// Taco DSL HTML5 template
-// Pervasive Computing (SPCT-SPRING 2014)
-// IT University of Copenhagen
-// Authors:
-// Daniel Garcia garcia - dgac@itu.dk
-// Dennis Sadeler Shapira - dssh@itu.dk
-// Date:
-// 2014-04-17
-// Summary:
-// HTML5 template document to implement Taco DSL
--->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="«description»">
+    <meta name="description" content="That's cool">
     <!--Style-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>«Survey Title»</title>
+    <title>Woooooaaaahh</title>
 
 </head>
 <body>
 
     <!--Survey header-->
-   <div class="page-header">
-        <h1><span id="survey_title">«Title»</span><span id="survey_description"><small>«Descritpion»</small></span></h1>
+  	<div class="page-header">
+        <h1><span id="survey_title">Woooooaaaahh</span><span id="survey_description"><small>That's cool</small></span></h1>
     </div>
 
-    <input type="hidden" id="survey_date" value="«date»"/>
+    <input type="hidden" id="survey_date" value="02/05/2014"/>
+    <input type="hidden" id="email" value="deebay@jubii.dk"/>
 
     <!--Progress bar-->
     <h4><small>Progress</small></h4>
     <div class="progress progress-striped active">
-        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
+        <div class="progress-bar"  role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0%</div>
     </div>
-
-    <!--Personal information-->
-    <div id="person" class="panel panel-primary">
-        <div class="panel-heading"><h3 class="panel-title">Personal information:</h3></div>
-        <table class="table">
-            <tr>
-                <td>
-                    <div class="input-group">
-                        <span class="key input-group-addon">«Name»</span><input type="text" class="value form-control">
-                    </div>
-                </td>
-            </tr>
-                <td>
-                    <div class="input-group">
-                        <span class="key input-group-addon">«Email»</span><input type="email" class="value form-control">
-                    </div>
-                </td>
-        </table>
-    </div>
+    
+<!--Personal information-->
+<div id="person" class="panel panel-primary">
+    <div class="panel-heading"><h3 class="panel-title">Personal information:</h3></div>
+    <table class="table">
+<tr>
+    <td>
+        <div class="input-group">
+            <span class="key input-group-addon">name</span><input type="text" class="value form-control">
+        </div>
+    </td>
+</tr>
+    </table>
+</div>
 
     <span id="required_message" class="red small">Questions marked with * are required</span>
-
-    <!--Category header-->
-    <div id="category_header">
-        <h3 id="category_title"></h3>
-        <div class="panel-header blue">
-                <div class="alert alert-info"><strong><span id="category_description"/></strong></div>
-        </div>
-    </div>
-
-    <!--Questions-->
-
-    <div class="category">
-        <input class="category_title" type="hidden" value="«Category 1»"/>
-        <input class="category_description" type="hidden" value="«Description»"/>
-
-        <div class="page">
-
-            <!--Open field-->
-            <div class="question openField required panel panel-default">
-                <div class="text panel-heading">«This is an open field question?» <span class="red">*</span> </div>
-                
-                <div class="panel-body">
-                    <textarea class="answer openFieldAnswer form-control" rows="3"></textarea>
-                </div>
-            </div>
-
-            <!--Multiple choice-->
-            <div class="question multipleChoice required panel panel-default">
-                <div class="text panel-heading">«This is a multiple choice question?» <span class="red">*</span> </div>
-                <div class="panel-footer">Select <span class="min">2</span> to <span class="max">3</span> options. </div>
-                
-                <div class="panel-body">
-                    <div class="input-group">
-                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Red»"></span>
-                        <strong><span class="answer_text form-control">«Red»</span></strong>
-
-                        <!--Subquestion-->
-                        <div class="subquestions">
-                        
-                            <!--Mutually exclusive-->
-                            <div class="question mutuallyExc panel panel-default">
-                                <div class="text panel-heading">«This is subquestion?»</span> </div>
-                                
-                                <div class="panel-body">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer1»</span></strong>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_1" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer2»</span></strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!--End Subquestion-->
-
-                    </div>
-                    <div class="input-group">
-                      <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Yellow»"></span>
-                      <strong><span class="answer_text form-control">«Yellow»</span></strong>
-
-                        <!--Subquestion-->
-                        <div class="subquestions">
-
-                            <!--Mutually exclusive-->
-                            <div class="question mutuallyExc required panel panel-default">
-                                <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
-                                
-                                <div class="panel-body">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer1»</span></strong>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_2" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer2»</span></strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!--End Subquestion-->
-
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="«Green»"></span>
-                        <strong><span class="answer_text form-control">«Green»</span></strong>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Other"></span>
-                        <input type="text" class="answer_text form-control" placeholder="«Other»*"/>
-                    </div>
-                </div>
-            </div>
-
-            <!--Rating-->
-            <div class="question rating panel panel-default">
-                <div class="text panel-heading">
-                    «This is a rating question?»
-                    <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
-                </div>
-                <div class="panel-body">
-                    <div class="input-group">
-                        <span class="min input-group-addon">«0»</span>
-                        <input type="range" class="answer ratingAnswer form-control range" min="0" max="10" step="2">
-                        <span class="max input-group-addon">«10»</span>
-                    </div>
-                </div>
-            </div>
-
-        </div><!--End of page-->
-
-        <div class="page">
-
-            <!--Mutually exclusive-->
-            <div class="question mutuallyExc required panel panel-default">
-                <div class="text panel-heading">«This is a mutually exclusive question?» <span class="red">*</span> </div>
-                
-                <div class="panel-body">
-                    <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer1»"></span>
-                        <strong><span class="answer_text form-control">«answer1»</span></strong>
-
-                        <!--Subquestion-->
-                        <div class="subquestions">
-
-                            <!--Mutually exclusive-->
-                            <div class="question mutuallyExc required panel panel-default">
-                                <div class="text panel-heading">«This is subquestion?» <span class="red">*</span> </div>
-                                
-                                <div class="panel-body">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_3" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer1»</span></strong>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_3" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer2»</span></strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!--End Subquestion-->
-
-                    </div>
-
-                    <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer2»"></span>
-                      <strong><span class="answer_text form-control">«answer2»</span></strong>
-
-                       <!--Subquestion-->
-                       <div class="subquestions">
-
-                            <!--Mutually exclusive-->
-                            <div class="question mutuallyExc panel panel-default">
-                                <div class="text panel-heading">«This is subquestion 2?» </div>
-                                
-                                <div class="panel-body">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_4" class="answer mutuallyExcAnswer" type="radio" value="«subanswer1»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer1»</span></strong>
-                                    </div>
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><input name="sub_radio_4" class="answer mutuallyExcAnswer" type="radio" value="«subanswer2»"></span>
-                                        <strong><span class="answer_text form-control">«subanswer2»</span></strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!--End Subquestion-->
-
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="«answer3»"></span>
-                        <strong><span class="answer_text form-control">«answer3»</span></strong>
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon"><input name="radio_1" class="answer mutuallyExcAnswer" type="radio" value="Other"></span>
-                        <input type="text" class="answer_text form-control" placeholder="«Other»*"/>
-                    </div>
-                </div>
-            </div>
-
-        </div><!--End of page-->
-
-    </div><!--End of category-->
+	
+	<!--Category header-->
+	<div id="category_header">
+		<h3 id="category_title"></h3> 
+		<div class="panel-header blue">
+	    	<div class="alert alert-info"><strong><span id="category_description"/></strong></div>
+	    </div>
+	</div>
+	
+	<!--Questions-->
+	    
 
     <div class="category">
-        <input class="category_title" type="hidden" value="«Category 2»"/>
-        <input class="category_description" type="hidden" value="«Description»"/>
+        <input class="category_title" type="hidden" value="what's up"/>
+        <input class="category_description" type="hidden" value=""/>
 
+	
         <div class="page">
 
-            <!--Yes/No-->
-            <div class="question yesno required panel panel-default">
-                <div class="text panel-heading">«This is a yes/no question?»<span class="red">*</span></div>
-                
-                <div class="panel-body">
-                    <div class="input-group">
-                      <span class="input-group-addon"><input name="radio_2" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
-                      <strong><span class="answer_text form-control">Yes</span></strong>
-
-                      <span class="input-group-addon"><input name="radio_2" class="answer mutuallyExcAnswer" type="radio" value="no"></span>
-                      <strong><span class="answer_text form-control">No</span></strong>
-                    </div>
-                </div>
-            </div>
+            
+            
+            	
+            	<!--Ranking-->
+            	            <div class="question ranking required panel panel-default">
+            	                <div class="text panel-heading">Rank your hangover state today <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	                    <ul class="list-group sortable">
+            	                        
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>soooo bad
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>comme si, comme ca
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>just need another beer
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>just get me a coffe
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>did I really brought that girl home
+            	                        </li>
+            	                        
+            	                    </ul>
+            	                </div>
+            	            </div>
+            	
+            	
+            	
+            
+            
+            	
+            	
+            	<!--Rating-->
+            	            <div class="question rating  panel panel-default">
+            	                <div class="text panel-heading">
+            	                    <div class="text panel-heading">Rate how much you want to swim today  </div>
+            	                    <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
+            	                </div>
+            	                <div class="panel-body">
+            	                    <div class="input-group">
+            	                        <span class="min input-group-addon">0</span>
+            	                        <input type="range" class="form-control ratingAnswer answer range" min="0" max="1000" step="100"/>
+            	                        <span class="max input-group-addon">1000</span>
+            	                    </div>
+            	                </div>
+            	            </div>
+            	
+            	
 
         </div><!--End of page-->
-
+        
+	
         <div class="page">
 
-            <!--Ranking-->
-            <div class="question ranking required panel panel-default">
-                <div class="text panel-heading">«This is a ranking question»<span class="red">*</span></div>
-                
-                <div class="panel-body">
-                    <ul class="list-group sortable">
-                        <li class="list-group-item rankingAnswer answer">
-                            <span>&#x21C5;</span>Item 1
-                        </li>
-                        <li class="list-group-item rankingAnswer answer">
-                            <span>&#x21C5;</span>Item 2
-                        </li>
-                        <li class="list-group-item rankingAnswer answer">
-                            <span>&#x21C5;</span>Item 3
-                        </li>
-                        <li class="list-group-item rankingAnswer answer">
-                            <span>&#x21C5;</span>Item 4
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
+            
+            	<!--Open field-->
+            	<div class="question openField  panel panel-default">
+            		<div class="text panel-heading">What's up ?  </div>
+            						                
+            		<div class="panel-body">
+            			<textarea class="answer openFieldAnswer form-control" rows="3"></textarea>
+            		</div>
+            	</div>					            
+            	
+            	
+            	
+            	
+            
+            
+            	
+            	
+            	<!--Multiple choice-->
+            	            <div class="question multipleChoice  panel panel-default">
+            	                <div class="text panel-heading">What would you like to drink ?  </div>
+            	                
+            	                <div class="panel-footer">Select <span class="min">3</span> to <span class="max">5</span> options. </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="beer"></span>
+            	    
+            	    <strong><span class="answer_text form-control">beer</span></strong>
+            	    
+            	<!--Subquestion-->
+            	<div class="subquestions">
+            	
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">Which brand ? <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_5_4" class="answer mutuallyExcAnswer" type="radio" value="Tuborg"></span>
+            	    
+            	    <strong><span class="answer_text form-control">Tuborg</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_5_4" class="answer mutuallyExcAnswer" type="radio" value="Heineken"></span>
+            	    
+            	    <strong><span class="answer_text form-control">Heineken</span></strong>              
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            		
+            	</div><!--End Subquestion-->
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="wine"></span>
+            	    
+            	    <strong><span class="answer_text form-control">wine</span></strong>
+            	    
+            	<!--Subquestion-->
+            	<div class="subquestions">
+            	
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">Which wine ? <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="cote du rhone"></span>
+            	    
+            	    <strong><span class="answer_text form-control">cote du rhone</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="bordeau"></span>
+            	    
+            	    <strong><span class="answer_text form-control">bordeau</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="savagnin"></span>
+            	    
+            	    <strong><span class="answer_text form-control">savagnin</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="merlot"></span>
+            	    
+            	    <strong><span class="answer_text form-control">merlot</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="tempramillo"></span>
+            	    
+            	    <strong><span class="answer_text form-control">tempramillo</span></strong>              
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            		
+            	</div><!--End Subquestion-->
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="water"></span>
+            	    
+            	    <strong><span class="answer_text form-control">water</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="juice"></span>
+            	    
+            	    <strong><span class="answer_text form-control">juice</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="whisky"></span>
+            	    
+            	    <strong><span class="answer_text form-control">whisky</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="gin"></span>
+            	    
+            	    <strong><span class="answer_text form-control">gin</span></strong>
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            	
 
         </div><!--End of page-->
+        
 
     </div><!--End of category-->
+			    			    
+
+    <div class="category">
+        <input class="category_title" type="hidden" value="who is that chicks"/>
+        <input class="category_description" type="hidden" value="she is cute"/>
+
+	
+        <div class="page">
+
+            
+            
+            	
+            	
+            	<!--Yes/No-->
+            	            <div class="question yesno  panel panel-default">
+            	                <div class="text panel-heading">Is she single ?  </div>
+            	                
+            	                <div class="panel-body">   
+            	                    <div class="input-group">
+            	                      <span class="input-group-addon"><input name="radio_7" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
+            	                      <strong><span class="answer_text form-control">Yes</span></strong>
+            	
+            	                      <span class="input-group-addon"><input name="radio_7" class="answer mutuallyExcAnswer" type="radio" value="no"></span>
+            	                      <strong><span class="answer_text form-control">No</span></strong>
+            	                    </div>
+            	                </div>
+            	            </div>
+            	
+            	
+            
+            
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">Where do you wanna bring her ? <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_8" class="answer mutuallyExcAnswer" type="radio" value="restaurant"></span>
+            	    
+            	    <strong><span class="answer_text form-control">restaurant</span></strong>              
+            	    
+            	<!--Subquestion-->
+            	<div class="subquestions">
+            	
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc  panel panel-default">
+            	               	<div class="text panel-heading">which kind of food ?  </div>
+            	                
+            	                <div class="panel-body">
+            						<div class="input-group">
+            	    					<span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="asian"></span>
+            	    
+            	    					<strong><span class="answer_text form-control">asian</span></strong>              
+            	    
+            	<!--Subquestion-->
+            							<div class="subquestions">
+            	
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">which country <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="japan"></span>
+            	    
+            	    <strong><span class="answer_text form-control">japan</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="chinese"></span>
+            	    
+            	    <strong><span class="answer_text form-control">chinese</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="thai"></span>
+            	    
+            	    <strong><span class="answer_text form-control">thai</span></strong>              
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            		
+            	</div><!--End Subquestion-->
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="danish"></span>
+            	    
+            	    <strong><span class="answer_text form-control">danish</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="fucking fast food"></span>
+            	    
+            	    <strong><span class="answer_text form-control">fucking fast food</span></strong>              
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            		
+            	</div><!--End Subquestion-->
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_8" class="answer mutuallyExcAnswer" type="radio" value="bar"></span>
+            	    
+            	    <strong><span class="answer_text form-control">bar</span></strong>              
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            	
+
+        </div><!--End of page-->
+        
+	
+        <div class="page">
+
+            
+            
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">Is taco the best language in the world ? <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
+            	    
+            	    <strong><span class="answer_text form-control">yes</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="nope"></span>
+            	    
+            	    <strong><span class="answer_text form-control">nope</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="fuck it"></span>
+            	    
+            	    <strong><span class="answer_text form-control">fuck it</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="maybe"></span>
+            	    
+            	    <strong><span class="answer_text form-control">maybe</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="I don't care"></span>
+            	    
+            	    <strong><span class="answer_text form-control">I don't care</span></strong>              
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="Other"></span>
+            	    
+            	    <input type="text" class="answer_text form-control" placeholder="kind of*"/>
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            	
+
+        </div><!--End of page-->
+        
+
+    </div><!--End of category-->
+			    			    
 
     <!--Error message-->
     <div id="error_message" class="alert alert-danger centered">
         <span>Please fill the required fields before continue! (*)</span>
     </div>
 
-    <!--Action buttons-->
+    <!--Action buttons-->    
     <div class="centered">
-        <button type="button" class="btn btn-large btn-primary" id="btn_back" onClick="back()">«Back</button>
-        <button type="button" class="btn btn-large btn-primary" id="btn_next" onClick="next()">Next»</button>
+        <button type="button" class="btn btn-large btn-primary" id="btn_back" onClick="back()">Back</button>
+        <button type="button" class="btn btn-large btn-primary" id="btn_next" onClick="next()">Next</button>
         <button type="button" class="btn btn-large btn-primary" id="btn_submit" onClick="submit()">Submit</button>
     </div>
 
@@ -319,9 +465,9 @@
     <!--JavaScript-->
 
     <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
