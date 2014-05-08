@@ -44,7 +44,7 @@ function submitForm(element) {
 	if(email){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "http://projectdee.com/EmailController2.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
-		xhr.send();	
+		//xhr.send();	
 		alert("The survey has been submitted to "+companyEmail);
 	}
 }
@@ -72,7 +72,7 @@ function getData(questionText, answerInnerElements, isRoot) {
 		var answersChecked = [];
 		for(x=0 ; x < answerInnerElements.length ; x++) {
 			if(answerInnerElements[x].checked){
-				if(answerInnerElements[x].value === "Other" ){
+				if(answerInnerElements[x].parentNode.parentNode.childNodes[3].nodeName == "INPUT"){
 					var answer = answerInnerElements[x].parentNode.parentNode.childNodes[3].value
 					if(answerInnerElements[x].parentNode.parentNode.parentNode.parentNode.classList.contains("checked")){							
 						answersChecked.push(answer);
@@ -96,7 +96,7 @@ function getData(questionText, answerInnerElements, isRoot) {
 	case "mutuallyExcAnswer":
 		for(z=0 ; z < answerInnerElements.length ; z++) {				
 			if(answerInnerElements[z].checked == true){
-				if(answerInnerElements[z].value === "Other"){
+				if(answerInnerElements[z].parentNode.parentNode.childNodes[3].nodeName == "INPUT"){
 					var answer = answerInnerElements[z].parentNode.parentNode.childNodes[3].value
 					questionDict[questionText] = [answer];
 				}else{
