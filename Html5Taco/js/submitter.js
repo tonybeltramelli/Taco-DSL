@@ -44,7 +44,7 @@ function submitForm(element) {
 	if(email){
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET", "http://projectdee.com/EmailController2.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
-		//xhr.send();	
+		xhr.send();	
 		alert("The survey has been submitted to "+companyEmail);
 	}
 }
