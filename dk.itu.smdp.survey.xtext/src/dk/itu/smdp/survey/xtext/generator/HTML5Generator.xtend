@@ -196,7 +196,7 @@ class HTML5Generator extends SurveyGenerator
 		«ELSEIF (it instanceof Rating)»
 			<!--Rating-->
             <div class="question rating «IF isMandatory»required«ENDIF» panel panel-default">
-                <div class="text panel-heading">
+                <div class="panel-heading">
                     <div class="text panel-heading">«questionText» «IF isMandatory»<span class="red">*</span> «ENDIF» </div>
                     <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
                 </div>
