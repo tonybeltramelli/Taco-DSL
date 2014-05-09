@@ -8,16 +8,21 @@ function submitForm(element) {
 	for(w=0 ; w < element.length ; w++) {	
 	
 		if(element[w].parentNode.className == "page"){
-	
-		var questionInnerElements = element[w].getElementsByClassName("text");	
-		var questionText = questionInnerElements[0].childNodes[0].data;
-		var answerInnerElements = element[w].getElementsByClassName("answer");
-		element[w].classList.add("checked")
-		if(element[w].parentNode.parentNode.parentNode.className == "subquestions" || 
-		   element[w].parentNode.parentNode.parentNode.parentNode.className == "subquestions" ||
-		   element[w].parentNode.parentNode.parentNode.parentNode.parentNode.className == "subquestions")continue;
-		
-		getData(questionText, answerInnerElements, true);
+			
+			var answerFromBox;
+			var questionInnerElements = element[w].getElementsByClassName("text");	
+			var questionText = questionInnerElements[0].childNodes[0].data;
+			var answerInnerElements = element[w].getElementsByClassName("answer");
+			var ratingAnswerElements = element[w].getElementsByClassName("rate-val");
+			if(ratingAnswerElements[0]){
+				var answerFromBox = ratingAnswerElements[0].innerHTML
+			}
+			element[w].classList.add("checked")
+			if(element[w].parentNode.parentNode.parentNode.className == "subquestions" || 
+			   element[w].parentNode.parentNode.parentNode.parentNode.className == "subquestions" ||
+			   element[w].parentNode.parentNode.parentNode.parentNode.parentNode.className == "subquestions")continue;
+			
+			getData(questionText, answerInnerElements, answerFromBox);
 		}
 	}	
 	
@@ -25,16 +30,31 @@ function submitForm(element) {
 	getPersonInfo()
 	
 	//Render results on final page
-	//var targetDiv = document.getElementById("surveyResults")	
 	var targetDiv = document.getElementById("final_message")
-	surveyResultsDiv.innerHTML += "<br /><h4>Survey Results</h4>"
+	surveyResultsDiv.innerHTML += "<br /><h4>Survey Results</h4><div class='table-responsive'>"
+	var table = document.createElement("table")
+	table.className = 'table table-bordered table-striped'
+	
+	var headingRow = table.insertRow(-1);
+	var cellHeading1 = headingRow.insertCell(0);
+	var cellHeading2 = headingRow.insertCell(1);		
+	cellHeading1.innerHTML = "<b>Questions<b>";
+	cellHeading2.innerHTML = "<b>Answers</b>";
+		
 	for(var propName in questionDict) {
 		var propValue = questionDict[propName];
-		surveyResultsDiv.innerHTML += "<div>Q: "+propName+"  A: "+propValue+ "</div><br />";
+		var row = table.insertRow(-1);
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);		
+		cell1.innerHTML = propName;
+		cell2.innerHTML = propValue;
+		//surveyResultsDiv.innerHTML += "<tr><td>Q: "+propName+"</td><td>A: "+propValue+ "</td></tr>";
 		message += " \nQ: "+propName+"  A: "+propValue;
 	}
+	
+	surveyResultsDiv.appendChild(table)
 	targetDiv.appendChild(surveyResultsDiv)
-
+	
 	//Send email
 	var	companyEmail = document.getElementById("email").value
 	var email = encodeURIComponent(companyEmail)
@@ -51,20 +71,33 @@ function submitForm(element) {
 	
     
 
-function getData(questionText, answerInnerElements, isRoot) {
-	
+function getData(questionText, answerInnerElements, ratingAnswer) {
+
 	var answerClassname = answerInnerElements[0].className.split(' ')[1]
 	
 	switch (answerClassname)
 	{	
 	case "openFieldAnswer":
+		var answer = answerInnerElements[0].value
+		if(answer){
+			formData.append(questionText, answer);
+			questionDict[questionText] = [answer];
+			var subQuestionObj = checkForSubQuestion(answerInnerElements[0], answer)
+			if(subQuestionObj){
+				getData(subQuestionObj[0], subQuestionObj[1], subQuestionObj[2])					
+			}
+		}
+		break;
+		
 	case "ratingAnswer":
 		var answer = answerInnerElements[0].value
-		formData.append(questionText, answer);
-		questionDict[questionText] = [answer];
-		var subQuestionObj = checkForSubQuestion(answerInnerElements[0], answer)
-		if(subQuestionObj){
-			getData(subQuestionObj[0], subQuestionObj[1])					
+		if(ratingAnswer !== "--"){
+			formData.append(questionText, answer);
+			questionDict[questionText] = [answer];
+			var subQuestionObj = checkForSubQuestion(answerInnerElements[0], answer)
+			if(subQuestionObj){
+				getData(subQuestionObj[0], subQuestionObj[1], subQuestionObj[2])					
+			}
 		}
 		break;
 
@@ -77,16 +110,16 @@ function getData(questionText, answerInnerElements, isRoot) {
 					if(answerInnerElements[x].parentNode.parentNode.parentNode.parentNode.classList.contains("checked")){							
 						answersChecked.push(answer);
 					}	
-					questionDict[questionText] = [answersChecked];
+					questionDict[questionText] = [answersChecked.join('<br>')];
 				}else{
 					var answer = answerInnerElements[x].value
 					if(answerInnerElements[x].parentNode.parentNode.parentNode.parentNode.classList.contains("checked")){							
 						answersChecked.push(answer);
 					}
-					questionDict[questionText] = [answersChecked];
+					questionDict[questionText] = [answersChecked.join('<br>')];
 					var subQuestionObj = checkForSubQuestion(answerInnerElements[x], answer)
 					if(subQuestionObj){
-						getData(subQuestionObj[0], subQuestionObj[1])					
+						getData(subQuestionObj[0], subQuestionObj[1], subQuestionObj[2])					
 					}
 				}
 			}			
@@ -104,7 +137,7 @@ function getData(questionText, answerInnerElements, isRoot) {
 					questionDict[questionText] = [answer];
 					var subQuestionObj = checkForSubQuestion(answerInnerElements[z], answer)
 					if(subQuestionObj){
-						getData(subQuestionObj[0], subQuestionObj[1])					
+						getData(subQuestionObj[0], subQuestionObj[1], subQuestionObj[2])					
 					}
 				}
 			}
@@ -117,7 +150,7 @@ function getData(questionText, answerInnerElements, isRoot) {
 			var answer = answerInnerElements[y].childNodes[2].nodeValue;
 			rankedArray.push(answer)
 		}
-		questionDict[questionText] = [rankedArray];
+		questionDict[questionText] = [rankedArray.join('<br>')];
 		break;		
 	}
 }	
@@ -129,18 +162,21 @@ function checkForSubQuestion(element, sourceAnswer) {
 	var elementsToCheck = subquestionsElements[0].getElementsByClassName("question")
 	subquestionsElements[0].classList.add("cheked")
 	
-	
-	//alert("elementsToCheck: "+elementsToCheck[0].innerHTML)
 	for(i=0 ; i < elementsToCheck.length ; i++) {
 		if(elementsToCheck[i].parentNode.className == "cheked")continue;
 		
+		var answerFromBox;
 		var subQuestionInnerElements = elementsToCheck[i].getElementsByClassName("text");	
 		var subQuestionText = "SubQ for "+sourceAnswer+": "+subQuestionInnerElements[0].childNodes[0].data					
 		var subAnswerInnerElements = elementsToCheck[i].getElementsByClassName("answer");
+		var ratingAnswerElements = elementsToCheck[i].getElementsByClassName("rate-val");
+			if(ratingAnswerElements[0]){
+				var answerFromBox = ratingAnswerElements[0].innerHTML
+			}
 		if(elementsToCheck[i].parentNode.parentNode.parentNode.className == "subquestions" || 
 		   elementsToCheck[i].parentNode.parentNode.parentNode.parentNode.className == "subquestions" ||
 		   elementsToCheck[i].parentNode.parentNode.parentNode.parentNode.parentNode.className == "subquestions")continue;
-		return[subQuestionText, subAnswerInnerElements]
+		return[subQuestionText, subAnswerInnerElements, answerFromBox]
 	}
 }
 
