@@ -1,6 +1,4 @@
-var formData = new FormData();
 var questionDict = {};
-var message ="";
 var surveyResultsDiv = document.createElement("div")
 
 function submitForm(element) {
@@ -31,7 +29,7 @@ function submitForm(element) {
 	
 	//Render results on final page
 	var targetDiv = document.getElementById("final_message")
-	surveyResultsDiv.innerHTML += "<br /><h4>Survey Results</h4><div class='table-responsive'>"
+	surveyResultsDiv.innerHTML += "<br /><h4>Survey Results</h4>"
 	var table = document.createElement("table")
 	table.className = 'table table-bordered table-striped'
 	
@@ -48,11 +46,12 @@ function submitForm(element) {
 		var cell2 = row.insertCell(1);		
 		cell1.innerHTML = propName;
 		cell2.innerHTML = propValue;
-		//surveyResultsDiv.innerHTML += "<tr><td>Q: "+propName+"</td><td>A: "+propValue+ "</td></tr>";
-		message += " \nQ: "+propName+"  A: "+propValue;
 	}
 	
-	surveyResultsDiv.appendChild(table)
+	var responsiveDiv = document.createElement("div")
+	responsiveDiv.className = "table-responsive"
+	responsiveDiv.appendChild(table)
+	surveyResultsDiv.appendChild(responsiveDiv)
 	targetDiv.appendChild(surveyResultsDiv)
 	
 	//Send email
@@ -61,9 +60,12 @@ function submitForm(element) {
 	var subject = "Taco Surveys* Your survey results"
 	var from = "Taco Surveys Inc."
 	
+	var message = '<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">'
+	message += surveyResultsDiv.innerHTML
+	
 	if(email){
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET", "http://projectdee.com/EmailController2.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);  
+		xhr.open("GET", "http://projectdee.com/EmailController3.php?sendTo="+email+"&subject="+subject+"&message="+encodeURIComponent(message)+"&from="+from, true);
 		xhr.send();	
 		alert("The survey has been submitted to "+companyEmail);
 	}
@@ -80,7 +82,6 @@ function getData(questionText, answerInnerElements, ratingAnswer) {
 	case "openFieldAnswer":
 		var answer = answerInnerElements[0].value
 		if(answer){
-			formData.append(questionText, answer);
 			questionDict[questionText] = [answer];
 			var subQuestionObj = checkForSubQuestion(answerInnerElements[0], answer)
 			if(subQuestionObj){
@@ -92,7 +93,6 @@ function getData(questionText, answerInnerElements, ratingAnswer) {
 	case "ratingAnswer":
 		var answer = answerInnerElements[0].value
 		if(ratingAnswer !== "--"){
-			formData.append(questionText, answer);
 			questionDict[questionText] = [answer];
 			var subQuestionObj = checkForSubQuestion(answerInnerElements[0], answer)
 			if(subQuestionObj){
@@ -185,7 +185,6 @@ function getSurveyInfo() {
 	var surveyDescription = document.getElementById("survey_description")
 	
 	surveyResultsDiv.innerHTML += "<h3>"+surveyTitle.innerHTML+"</h3><span>Description: "+surveyDescription.innerHTML+"</span><br /><br />"
-	message += surveyTitle.innerHTML+"\nDescripition: "+surveyDescription.childNodes[0].innerHTML+" \n\n"
 }
 
 function getPersonInfo() {
@@ -194,13 +193,11 @@ function getPersonInfo() {
 	var personAttributeElements = personDiv.getElementsByClassName("input-group")
 
 	surveyResultsDiv.innerHTML += "<span><strong>Respondent Details:</strong></span><br />"
-	message += "Respondent Details: \n"
 	
 	for(i=0; i<personAttributeElements.length; i++) {
 		var attributeKey = personAttributeElements[i].childNodes[1].childNodes[0].nodeValue;
 		var attributeValue =personAttributeElements[i].childNodes[2].value
 		surveyResultsDiv.innerHTML += attributeKey+": "+attributeValue+"<br />";
-		message += attributeKey+": "+attributeValue+" \n"
 	}
 }
 
