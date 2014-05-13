@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="That's cool">
+    <meta name="description" content="Survey example instance">
     <!--Style-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>Woooooaaaahh</title>
+    <title>Survey example</title>
 
 </head>
 <body>
 
     <!--Survey header-->
   	<div class="page-header">
-        <h1><span id="survey_title">Woooooaaaahh</span><span id="survey_description"><small>That's cool</small></span></h1>
+        <h1><span id="survey_title">Survey example</span><span id="survey_description"><small>Survey example instance</small></span></h1>
     </div>
 
-    <input type="hidden" id="survey_date" value="02/05/2014"/>
+    <input type="hidden" id="survey_date" value="30/04/2014"/>
     <input type="hidden" id="email" value="deebay@jubii.dk"/>
 
     <!--Progress bar-->
@@ -37,6 +37,20 @@
     <td>
         <div class="input-group">
             <span class="key input-group-addon">name</span><input type="text" class="value form-control">
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div class="input-group">
+            <span class="key input-group-addon">age</span><input type="text" class="value form-control">
+        </div>
+    </td>
+</tr>
+<tr>
+    <td>
+        <div class="input-group">
+            <span class="key input-group-addon">address</span><input type="text" class="value form-control">
         </div>
     </td>
 </tr>
@@ -57,67 +71,9 @@
 	    
 
     <div class="category">
-        <input class="category_title" type="hidden" value="what's up"/>
-        <input class="category_description" type="hidden" value=""/>
+        <input class="category_title" type="hidden" value="IT University of Copenhagen"/>
+        <input class="category_description" type="hidden" value="The topic of this section is about IT University of Copenhagen"/>
 
-	
-        <div class="page">
-
-            
-            
-            	
-            	<!--Ranking-->
-            	            <div class="question ranking required panel panel-default">
-            	                <div class="text panel-heading">Rank your hangover state today <span class="red">*</span>  </div>
-            	                
-            	                <div class="panel-body">
-            	                    <ul class="list-group sortable">
-            	                        
-            	                        <li class="list-group-item rankingAnswer answer">
-            	                            	<span>&#x21C5;</span>soooo bad
-            	                        </li>
-            	                        <li class="list-group-item rankingAnswer answer">
-            	                            	<span>&#x21C5;</span>comme si, comme ca
-            	                        </li>
-            	                        <li class="list-group-item rankingAnswer answer">
-            	                            	<span>&#x21C5;</span>just need another beer
-            	                        </li>
-            	                        <li class="list-group-item rankingAnswer answer">
-            	                            	<span>&#x21C5;</span>just get me a coffe
-            	                        </li>
-            	                        <li class="list-group-item rankingAnswer answer">
-            	                            	<span>&#x21C5;</span>did I really brought that girl home
-            	                        </li>
-            	                        
-            	                    </ul>
-            	                </div>
-            	            </div>
-            	
-            	
-            	
-            
-            
-            	
-            	
-            	<!--Rating-->
-            	            <div class="question rating  panel panel-default">
-            	                <div class="panel-heading">
-            	                    <div class="text panel-heading">Rate how much you want to swim today  </div>
-            	                    <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
-            	                </div>
-            	                <div class="panel-body">
-            	                    <div class="input-group">
-            	                        <span class="min input-group-addon">0</span>
-            	                        <input type="range" class="form-control ratingAnswer answer range" min="0" max="1000" step="100"/>
-            	                        <span class="max input-group-addon">1000</span>
-            	                    </div>
-            	                </div>
-            	            </div>
-            	
-            	
-
-        </div><!--End of page-->
-        
 	
         <div class="page">
 
@@ -125,7 +81,7 @@
             
             	<!--Open field-->
             	<div class="question openField  panel panel-default">
-            		<div class="text panel-heading">What's up ?  </div>
+            		<div class="text panel-heading">What do you thing about IT University of Copenhagen?  </div>
             						                
             		<div class="panel-body">
             			<textarea class="answer openFieldAnswer form-control" rows="3"></textarea>
@@ -141,36 +97,129 @@
             	
             	<!--Multiple choice-->
             	            <div class="question multipleChoice  panel panel-default">
-            	                <div class="text panel-heading">What would you like to drink ?  </div>
+            	                <div class="text panel-heading">How did you know about ITU?  </div>
             	                
-            	                <div class="panel-footer">Select <span class="min">3</span> to <span class="max">5</span> options. </div>
+            	                <div class="panel-footer">Select <span class="min">2</span> to <span class="max">3</span> options. </div>
             	                
             	                <div class="panel-body">
             	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="beer"></span>
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="University"></span>
             	    
-            	    <strong><span class="answer_text form-control">beer</span></strong>
+            	    <strong><span class="answer_text form-control">University</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Internet"></span>
+            	    
+            	    <strong><span class="answer_text form-control">Internet</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Friends"></span>
+            	    
+            	    <strong><span class="answer_text form-control">Friends</span></strong>
+            	    
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Other"></span>
+            	    
+            	    <input type="text" class="answer_text form-control" placeholder="Other*"/>
+            	    
+            	</div>
+            	                </div>
+            	            </div>
+            	
+            	
+            
+            
+            	
+            	
+            	<!--Rating-->
+            	            <div class="question rating required panel panel-default">
+            	                <div class="text panel-heading">
+            	                    <div class="text panel-heading">How much do you like the canteen's coffee? <span class="red">*</span>  </div>
+            	                    <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
+            	                </div>
+            	                <div class="panel-body">
+            	                    <div class="input-group">
+            	                        <span class="min input-group-addon">0</span>
+            	                        <input type="range" class="form-control ratingAnswer answer range" min="0" max="10" step="1"/>
+            	                        <span class="max input-group-addon">10</span>
+            	                    </div>
+            	                </div>
+            	            </div>
+            	
+            	
+
+        </div><!--End of page-->
+        
+	
+        <div class="page">
+
+            
+            
+            	
+            	
+            	<!--Mutually exclusive-->
+            	            <div class="question mutuallyExc required panel panel-default">
+            	               	<div class="text panel-heading">Select your favorite ITU course <span class="red">*</span>  </div>
+            	                
+            	                <div class="panel-body">
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input name="radio_4" class="answer mutuallyExcAnwser" type="radio" value="SPCT"></span>
+            	    
+            	    <strong><span class="answer_text form-control">SPCT</span></strong>              
             	    
             	<!--Subquestion-->
             	<div class="subquestions">
             	
             	
             	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc required panel panel-default">
-            	               	<div class="text panel-heading">Which brand ? <span class="red">*</span>  </div>
+            	<!--Multiple choice-->
+            	            <div class="question multipleChoice  panel panel-default">
+            	                <div class="text panel-heading">Which platforms are you interested in?  </div>
+            	                
+            	                <div class="panel-footer">Select <span class="min">1</span> to <span class="max">2</span> options. </div>
             	                
             	                <div class="panel-body">
             	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_5_4" class="answer mutuallyExcAnswer" type="radio" value="Tuborg"></span>
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Android"></span>
             	    
-            	    <strong><span class="answer_text form-control">Tuborg</span></strong>              
+            	    <strong><span class="answer_text form-control">Android</span></strong>
+            	    
+            	<!--Subquestion-->
+            	<div class="subquestions">
+            	
+            	
+            	
+            	<!--Rating-->
+            	            <div class="question rating  panel panel-default">
+            	                <div class="text panel-heading">
+            	                    <div class="text panel-heading">Rate lectures Android content?  </div>
+            	                    <div class="rating-box"><h4><span class="rate-val">--</span></h4></div>
+            	                </div>
+            	                <div class="panel-body">
+            	                    <div class="input-group">
+            	                        <span class="min input-group-addon">0</span>
+            	                        <input type="range" class="form-control ratingAnswer answer range" min="0" max="100" step="10"/>
+            	                        <span class="max input-group-addon">100</span>
+            	                    </div>
+            	                </div>
+            	            </div>
+            	
+            		
+            	</div><!--End Subquestion-->
+            	</div>
+            	<div class="input-group">
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="iPhone"></span>
+            	    
+            	    <strong><span class="answer_text form-control">iPhone</span></strong>
             	    
             	</div>
             	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_5_4" class="answer mutuallyExcAnswer" type="radio" value="Heineken"></span>
+            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="Windows Phone"></span>
             	    
-            	    <strong><span class="answer_text form-control">Heineken</span></strong>              
+            	    <strong><span class="answer_text form-control">Windows Phone</span></strong>
             	    
             	</div>
             	                </div>
@@ -180,78 +229,9 @@
             	</div><!--End Subquestion-->
             	</div>
             	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="wine"></span>
+            	    <span class="input-group-addon"><input name="radio_4" class="answer mutuallyExcAnwser" type="radio" value="SAD1"></span>
             	    
-            	    <strong><span class="answer_text form-control">wine</span></strong>
-            	    
-            	<!--Subquestion-->
-            	<div class="subquestions">
-            	
-            	
-            	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc required panel panel-default">
-            	               	<div class="text panel-heading">Which wine ? <span class="red">*</span>  </div>
-            	                
-            	                <div class="panel-body">
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="cote du rhone"></span>
-            	    
-            	    <strong><span class="answer_text form-control">cote du rhone</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="bordeau"></span>
-            	    
-            	    <strong><span class="answer_text form-control">bordeau</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="savagnin"></span>
-            	    
-            	    <strong><span class="answer_text form-control">savagnin</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="merlot"></span>
-            	    
-            	    <strong><span class="answer_text form-control">merlot</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_6_4" class="answer mutuallyExcAnswer" type="radio" value="tempramillo"></span>
-            	    
-            	    <strong><span class="answer_text form-control">tempramillo</span></strong>              
-            	    
-            	</div>
-            	                </div>
-            	            </div>
-            	
-            		
-            	</div><!--End Subquestion-->
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="water"></span>
-            	    
-            	    <strong><span class="answer_text form-control">water</span></strong>
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="juice"></span>
-            	    
-            	    <strong><span class="answer_text form-control">juice</span></strong>
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="whisky"></span>
-            	    
-            	    <strong><span class="answer_text form-control">whisky</span></strong>
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input class="answer multipleChoiceAnswer" type="checkbox" value="gin"></span>
-            	    
-            	    <strong><span class="answer_text form-control">gin</span></strong>
+            	    <strong><span class="answer_text form-control">SAD1</span></strong>              
             	    
             	</div>
             	                </div>
@@ -266,8 +246,8 @@
 			    			    
 
     <div class="category">
-        <input class="category_title" type="hidden" value="who is that chicks"/>
-        <input class="category_description" type="hidden" value="she is cute"/>
+        <input class="category_title" type="hidden" value="Professional information?"/>
+        <input class="category_description" type="hidden" value="The topic is about your professional carrier"/>
 
 	
         <div class="page">
@@ -278,7 +258,7 @@
             	
             	<!--Yes/No-->
             	            <div class="question yesno  panel panel-default">
-            	                <div class="text panel-heading">Is she single ?  </div>
+            	                <div class="text panel-heading">Are you currently working?  </div>
             	                
             	                <div class="panel-body">   
             	                    <div class="input-group">
@@ -295,147 +275,30 @@
             
             
             	
-            	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc required panel panel-default">
-            	               	<div class="text panel-heading">Where do you wanna bring her ? <span class="red">*</span>  </div>
+            	<!--Ranking-->
+            	            <div class="question ranking  panel panel-default">
+            	                <div class="text panel-heading">Rate the next companies according to your preferences  </div>
             	                
             	                <div class="panel-body">
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_8" class="answer mutuallyExcAnswer" type="radio" value="restaurant"></span>
-            	    
-            	    <strong><span class="answer_text form-control">restaurant</span></strong>              
-            	    
-            	<!--Subquestion-->
-            	<div class="subquestions">
-            	
-            	
-            	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc  panel panel-default">
-            	               	<div class="text panel-heading">which kind of food ?  </div>
-            	                
-            	                <div class="panel-body">
-            						<div class="input-group">
-            	    					<span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="asian"></span>
-            	    
-            	    					<strong><span class="answer_text form-control">asian</span></strong>              
-            	    
-            	<!--Subquestion-->
-            							<div class="subquestions">
-            	
-            	
-            	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc required panel panel-default">
-            	               	<div class="text panel-heading">which country <span class="red">*</span>  </div>
-            	                
-            	                <div class="panel-body">
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="japan"></span>
-            	    
-            	    <strong><span class="answer_text form-control">japan</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="chinese"></span>
-            	    
-            	    <strong><span class="answer_text form-control">chinese</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_10_9_8" class="answer mutuallyExcAnswer" type="radio" value="thai"></span>
-            	    
-            	    <strong><span class="answer_text form-control">thai</span></strong>              
-            	    
-            	</div>
+            	                    <ul class="list-group sortable">
+            	                        
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>Microsoft
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>Apple
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>Google
+            	                        </li>
+            	                        <li class="list-group-item rankingAnswer answer">
+            	                            	<span>&#x21C5;</span>Amazon
+            	                        </li>
+            	                        
+            	                    </ul>
             	                </div>
             	            </div>
             	
-            		
-            	</div><!--End Subquestion-->
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="danish"></span>
-            	    
-            	    <strong><span class="answer_text form-control">danish</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_9_8" class="answer mutuallyExcAnswer" type="radio" value="fucking fast food"></span>
-            	    
-            	    <strong><span class="answer_text form-control">fucking fast food</span></strong>              
-            	    
-            	</div>
-            	                </div>
-            	            </div>
-            	
-            		
-            	</div><!--End Subquestion-->
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_8" class="answer mutuallyExcAnswer" type="radio" value="bar"></span>
-            	    
-            	    <strong><span class="answer_text form-control">bar</span></strong>              
-            	    
-            	</div>
-            	                </div>
-            	            </div>
-            	
-            	
-
-        </div><!--End of page-->
-        
-	
-        <div class="page">
-
-            
-            
-            	
-            	
-            	<!--Mutually exclusive-->
-            	            <div class="question mutuallyExc required panel panel-default">
-            	               	<div class="text panel-heading">Is taco the best language in the world ? <span class="red">*</span>  </div>
-            	                
-            	                <div class="panel-body">
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="yes"></span>
-            	    
-            	    <strong><span class="answer_text form-control">yes</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="nope"></span>
-            	    
-            	    <strong><span class="answer_text form-control">nope</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="fuck it"></span>
-            	    
-            	    <strong><span class="answer_text form-control">fuck it</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="maybe"></span>
-            	    
-            	    <strong><span class="answer_text form-control">maybe</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="I don't care"></span>
-            	    
-            	    <strong><span class="answer_text form-control">I don't care</span></strong>              
-            	    
-            	</div>
-            	<div class="input-group">
-            	    <span class="input-group-addon"><input name="radio_11" class="answer mutuallyExcAnswer" type="radio" value="kind of"></span>
-            	    
-            	    <input type="text" class="answer_text form-control" placeholder="kind of*"/>
-            	    
-            	</div>
-            	                </div>
-            	            </div>
             	
             	
 
