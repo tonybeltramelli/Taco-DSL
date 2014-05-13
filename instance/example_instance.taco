@@ -1,0 +1,42 @@
+survey "Survey example"
+date "30/04/2014"
+description "Survey example instance"
+email "isin@itu.dk"
+
+person "name" , "age", "address"
+
+category "IT University of Copenhagen"
+	description "The topic of this section is about IT University of Copenhagen"
+
+	page
+		Q "What do you thing about IT University of Copenhagen?"
+
+		Q "How did you know about ITU?" [2-3]
+			A "University"
+			A "Internet"
+			A "Friends"
+			A "Other" [input]
+		Q* "How much do you like the canteen's coffee?" [0-10,1]
+
+	page
+		Q* "Select your favorite ITU course"
+			A "SPCT"
+				sub Q "Which platforms are you interested in?" [1-2]
+					A "Android"
+						sub Q "Rate lectures Android content?" [0-100,10] end
+					A "iPhone"
+					A "Windows Phone"
+				end
+			A "SAD1"
+
+category "Professional information?"
+	description "The topic is about your professional carrier"
+
+	page
+		Q "Are you currently working?" [y/n]
+
+		Q "Rate the next companies according to your preferences" [rank]
+			A "Microsoft"
+			A "Apple"
+			A "Google"
+			A "Amazon"
